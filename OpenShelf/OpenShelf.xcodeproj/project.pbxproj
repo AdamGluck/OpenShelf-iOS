@@ -20,6 +20,10 @@
 		E4621B9A195A0A58003761AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4621B98195A0A58003761AD /* InfoPlist.strings */; };
 		E4621B9C195A0A58003761AD /* OpenShelfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4621B9B195A0A58003761AD /* OpenShelfTests.m */; };
 		E4621BA7195A0DEA003761AD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4621BA6195A0DEA003761AD /* Storyboard.storyboard */; };
+		E4C05CE3195B2FC100731033 /* ICSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C05CE0195B2FC100731033 /* ICSDrawerController.m */; };
+		E4C05CE4195B2FC100731033 /* ICSDropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C05CE2195B2FC100731033 /* ICSDropShadowView.m */; };
+		E4C05CE9195B327600731033 /* ICSColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C05CE6195B327600731033 /* ICSColorsViewController.m */; };
+		E4C05CEA195B327600731033 /* ICSPlainColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C05CE8195B327600731033 /* ICSPlainColorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,14 @@
 		E4621B99195A0A58003761AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4621B9B195A0A58003761AD /* OpenShelfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenShelfTests.m; sourceTree = "<group>"; };
 		E4621BA6195A0DEA003761AD /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = Storyboards/Storyboard.storyboard; sourceTree = "<group>"; };
+		E4C05CDF195B2FC100731033 /* ICSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDrawerController.h; sourceTree = "<group>"; };
+		E4C05CE0195B2FC100731033 /* ICSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDrawerController.m; sourceTree = "<group>"; };
+		E4C05CE1195B2FC100731033 /* ICSDropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSDropShadowView.h; sourceTree = "<group>"; };
+		E4C05CE2195B2FC100731033 /* ICSDropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSDropShadowView.m; sourceTree = "<group>"; };
+		E4C05CE5195B327600731033 /* ICSColorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSColorsViewController.h; sourceTree = "<group>"; };
+		E4C05CE6195B327600731033 /* ICSColorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSColorsViewController.m; sourceTree = "<group>"; };
+		E4C05CE7195B327600731033 /* ICSPlainColorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICSPlainColorViewController.h; sourceTree = "<group>"; };
+		E4C05CE8195B327600731033 /* ICSPlainColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ICSPlainColorViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +121,7 @@
 		E4621B7C195A0A58003761AD /* OpenShelf */ = {
 			isa = PBXGroup;
 			children = (
+				E4C05CDE195B2FA500731033 /* OSDrawerController */,
 				E4621BA5195A0DAD003761AD /* Storyboards */,
 				E4621B85195A0A58003761AD /* OSAppDelegate.h */,
 				E4621B86195A0A58003761AD /* OSAppDelegate.m */,
@@ -153,6 +166,21 @@
 				E4621BA6195A0DEA003761AD /* Storyboard.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		E4C05CDE195B2FA500731033 /* OSDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				E4C05CE5195B327600731033 /* ICSColorsViewController.h */,
+				E4C05CE6195B327600731033 /* ICSColorsViewController.m */,
+				E4C05CE7195B327600731033 /* ICSPlainColorViewController.h */,
+				E4C05CE8195B327600731033 /* ICSPlainColorViewController.m */,
+				E4C05CDF195B2FC100731033 /* ICSDrawerController.h */,
+				E4C05CE0195B2FC100731033 /* ICSDrawerController.m */,
+				E4C05CE1195B2FC100731033 /* ICSDropShadowView.h */,
+				E4C05CE2195B2FC100731033 /* ICSDropShadowView.m */,
+			);
+			name = OSDrawerController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,8 +280,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C05CE9195B327600731033 /* ICSColorsViewController.m in Sources */,
 				E4621B87195A0A58003761AD /* OSAppDelegate.m in Sources */,
+				E4C05CE3195B2FC100731033 /* ICSDrawerController.m in Sources */,
 				E4621B83195A0A58003761AD /* main.m in Sources */,
+				E4C05CE4195B2FC100731033 /* ICSDropShadowView.m in Sources */,
+				E4C05CEA195B327600731033 /* ICSPlainColorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +484,7 @@
 				E4621BA1195A0A58003761AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4621BA2195A0A58003761AD /* Build configuration list for PBXNativeTarget "OpenShelfTests" */ = {
 			isa = XCConfigurationList;
@@ -460,6 +493,7 @@
 				E4621BA4195A0A58003761AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
