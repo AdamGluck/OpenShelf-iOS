@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OSAppDelegate : UIResponder <UIApplicationDelegate>
+#import "OSAccountViewController.h"
+#import "OSSideMenuViewController.h"
+#import "OSMainNavigationController.h"
+@interface OSAppDelegate : UIResponder <UIApplicationDelegate, REFrostedViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

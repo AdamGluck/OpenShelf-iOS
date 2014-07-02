@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F84D86AF-5D74-41FB-A4E7-9E0C696AFBAE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>OpenShelf</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5518009A-9794-44CE-B769-4B916C1B72AC</key>
+		<string>https://github.com/AdamGluck/OpenShelf-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>OpenShelf/OpenShelf.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5518009A-9794-44CE-B769-4B916C1B72AC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/AdamGluck/OpenShelf-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5518009A-9794-44CE-B769-4B916C1B72AC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5518009A-9794-44CE-B769-4B916C1B72AC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OpenShelf-iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>
