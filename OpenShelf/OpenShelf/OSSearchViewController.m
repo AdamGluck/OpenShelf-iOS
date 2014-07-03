@@ -8,7 +8,10 @@
 
 #import "OSSearchViewController.h"
 #import "OSMainNavigationController.h"
+#import "OSItemTableViewCell.h"
 #import "OSNetworking.h"
+#import "NSObject+MappableObject.h"
+#import "OSItem.h"
 
 @interface OSSearchViewController ()
 @property (strong, nonatomic) NSMutableArray *data;
@@ -22,12 +25,14 @@
 	self.title = @"Search";
     self.view.backgroundColor = [UIColor redColor];
     self.searchDisplayController.searchBar.placeholder = @"Search here";
+    [self.tableView registerClass:[OSItemTableViewCell class] forCellReuseIdentifier:@"itemCardCell"];
 //    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
 
 }
 
 
 #pragma mark - TableView
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
     // Return the number of sections.
     return 1;
@@ -39,26 +44,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"CellIdentifier";
-    
-    // Dequeue or create a cell of the appropriate type.
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCardCell"];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        OSItem *newItem = [OSItem createFromInfo:[_data objectAtIndex:indexPath.row]];
+        cell = [[OSItemTableViewCell alloc]initWithItem:newItem];
     }
     
-    // Configure the cell.
-    cell.textLabel.text = [NSString stringWithFormat:@"Row %ld: %@", (long)indexPath.row, [_data objectAtIndex:indexPath.row]];
+
     return cell;
 }
 
-//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section == 0) {
-//        return self.searchDisplayController.searchBar;
-//    }
-//    else return  nil;
-//}
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    OSItemDetailViewController *vc = [[OSItemDetailViewController alloc]initWithItem:
+}
+
 
 
 #pragma mark - UISearchDisplayDelegate methods
@@ -70,13 +69,29 @@
 }
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    [_data removeAllObjects];
-    [[OSNetworking sharedInstance]downloadItemsForSearchTerms:searchString success:^(NSDictionary *dictionary, NSError *error) {
-        for (id key in [dictionary allKeys]) {
-            [self.data addObject: [dictionary valueForKey:key]];
+    if (![searchString length] == 0) {
+        [_data removeAllObjects];
+        [[OSNetworking sharedInstance]downloadItemsForSearchTerms:searchString success:^(NSDictionary *dictionary, NSError *error) {
+            [self.data addObject:dictionary];
             [self.searchDisplayController.searchResultsTableView reloadData];
-        }
-    } failure:nil];
+//            if ([dictionary respondsToSelector:@selector(allKeys)]) {
+//                for (id key in [dictionary allKeys]) {
+//                    [self.data addObject: [dictionary valueForKey:key]];
+//                    [self.searchDisplayController.searchResultsTableView reloadData];
+//                }
+//            }
+//            else{
+//                for (id object in dictionary) {
+//                    [self.data addObject:object];
+//                    [self.searchDisplayController.searchResultsTableView reloadData];
+//
+//                }
+//            }
+            
+          
+        } failure:nil];
+    }
+    
     
     return NO;
 }

@@ -111,7 +111,7 @@
                             success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                             failure:(void (^)(void))failureCompletion{
 
-    NSString *searchTermsParemterString = [NSString stringWithFormat:@"http://api.duckduckgo.com/?q=%@&format=json&pretty=1",searchTerms];
+    NSString *searchTermsParemterString = [NSString stringWithFormat:@"http://echo.jsontest.com/title/testtitle/description/testdescription"];
     NSURL *url = [NSURL URLWithString: searchTermsParemterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [self askServerForRequest:request success:successCompletion failure:failureCompletion];

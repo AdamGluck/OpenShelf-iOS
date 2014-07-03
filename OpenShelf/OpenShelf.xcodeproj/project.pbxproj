@@ -27,6 +27,16 @@
 		E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB5090196397B300E73A9C /* OSContentTableViewController.m */; };
 		E4CB5096196397D800E73A9C /* OSContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB5093196397D800E73A9C /* OSContentViewController.m */; };
 		E4CB5097196397D800E73A9C /* OSSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB5095196397D800E73A9C /* OSSearchViewController.m */; };
+		E4CB50AA19649A0300E73A9C /* NSString+StyleConversions.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50A919649A0300E73A9C /* NSString+StyleConversions.m */; };
+		E4CB50AD19649EE500E73A9C /* OSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50AC19649EE500E73A9C /* OSItem.m */; };
+		E4CB50B01964A20C00E73A9C /* NSObject+MappableObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50AF1964A20C00E73A9C /* NSObject+MappableObject.m */; };
+		E4CB50B31964B66A00E73A9C /* OSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50B21964B66A00E73A9C /* OSUser.m */; };
+		E4CB50B61964BD6B00E73A9C /* OSAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50B51964BD6B00E73A9C /* OSAddress.m */; };
+		E4CB50B91964BE7400E73A9C /* OSDeliveryLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50B81964BE7400E73A9C /* OSDeliveryLocation.m */; };
+		E4CB50BC1964BE9600E73A9C /* OSCreditCard.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50BB1964BE9600E73A9C /* OSCreditCard.m */; };
+		E4CB50BF1964BFAD00E73A9C /* OSStockItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50BE1964BFAD00E73A9C /* OSStockItem.m */; };
+		E4CB50C21964C0CD00E73A9C /* OSSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50C11964C0CD00E73A9C /* OSSubscription.m */; };
+		E4CB50C51964C86200E73A9C /* OSItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB50C41964C86200E73A9C /* OSItemTableViewCell.m */; };
 		E4D8C478195B952D0051E76C /* OSSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C472195B952D0051E76C /* OSSideMenuViewController.m */; };
 		E4D8C479195B952D0051E76C /* OSMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C474195B952D0051E76C /* OSMainNavigationController.m */; };
 		E4D8C47A195B952D0051E76C /* OSExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C476195B952D0051E76C /* OSExploreViewController.m */; };
@@ -72,6 +82,26 @@
 		E4CB5093196397D800E73A9C /* OSContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSContentViewController.m; path = OpenShelf/OSContentViewController.m; sourceTree = "<group>"; };
 		E4CB5094196397D800E73A9C /* OSSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSSearchViewController.h; path = OpenShelf/OSSearchViewController.h; sourceTree = "<group>"; };
 		E4CB5095196397D800E73A9C /* OSSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSSearchViewController.m; path = OpenShelf/OSSearchViewController.m; sourceTree = "<group>"; };
+		E4CB50A819649A0300E73A9C /* NSString+StyleConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StyleConversions.h"; sourceTree = "<group>"; };
+		E4CB50A919649A0300E73A9C /* NSString+StyleConversions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StyleConversions.m"; sourceTree = "<group>"; };
+		E4CB50AB19649EE500E73A9C /* OSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSItem.h; sourceTree = "<group>"; };
+		E4CB50AC19649EE500E73A9C /* OSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSItem.m; sourceTree = "<group>"; };
+		E4CB50AE1964A20C00E73A9C /* NSObject+MappableObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MappableObject.h"; sourceTree = "<group>"; };
+		E4CB50AF1964A20C00E73A9C /* NSObject+MappableObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MappableObject.m"; sourceTree = "<group>"; };
+		E4CB50B11964B66A00E73A9C /* OSUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUser.h; sourceTree = "<group>"; };
+		E4CB50B21964B66A00E73A9C /* OSUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUser.m; sourceTree = "<group>"; };
+		E4CB50B41964BD6B00E73A9C /* OSAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSAddress.h; sourceTree = "<group>"; };
+		E4CB50B51964BD6B00E73A9C /* OSAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAddress.m; sourceTree = "<group>"; };
+		E4CB50B71964BE7400E73A9C /* OSDeliveryLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDeliveryLocation.h; sourceTree = "<group>"; };
+		E4CB50B81964BE7400E73A9C /* OSDeliveryLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDeliveryLocation.m; sourceTree = "<group>"; };
+		E4CB50BA1964BE9600E73A9C /* OSCreditCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCreditCard.h; sourceTree = "<group>"; };
+		E4CB50BB1964BE9600E73A9C /* OSCreditCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCreditCard.m; sourceTree = "<group>"; };
+		E4CB50BD1964BFAD00E73A9C /* OSStockItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSStockItem.h; sourceTree = "<group>"; };
+		E4CB50BE1964BFAD00E73A9C /* OSStockItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSStockItem.m; sourceTree = "<group>"; };
+		E4CB50C01964C0CD00E73A9C /* OSSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSubscription.h; sourceTree = "<group>"; };
+		E4CB50C11964C0CD00E73A9C /* OSSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSubscription.m; sourceTree = "<group>"; };
+		E4CB50C31964C86200E73A9C /* OSItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSItemTableViewCell.h; sourceTree = "<group>"; };
+		E4CB50C41964C86200E73A9C /* OSItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSItemTableViewCell.m; sourceTree = "<group>"; };
 		E4D8C46F195B952D0051E76C /* OSAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSAccountViewController.h; path = OpenShelf/OSAccountViewController.h; sourceTree = "<group>"; };
 		E4D8C470195B952D0051E76C /* OSAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSAccountViewController.m; path = OpenShelf/OSAccountViewController.m; sourceTree = "<group>"; };
 		E4D8C471195B952D0051E76C /* OSSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSSideMenuViewController.h; path = OpenShelf/OSSideMenuViewController.h; sourceTree = "<group>"; };
@@ -142,11 +172,12 @@
 		E4621B7C195A0A58003761AD /* OpenShelf */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB50A3196497AE00E73A9C /* Delegate */,
+				E4CB50A21964976600E73A9C /* Models */,
+				E4CB50A5196497DB00E73A9C /* Views */,
+				E4CB507919632DB200E73A9C /* Controllers */,
+				E4CB50A4196497C800E73A9C /* Categories */,
 				E4CB508A19636F5300E73A9C /* Networking */,
-				E4CB507919632DB200E73A9C /* ViewControllers */,
-				E4621BA5195A0DAD003761AD /* Storyboards */,
-				E4621B85195A0A58003761AD /* OSAppDelegate.h */,
-				E4621B86195A0A58003761AD /* OSAppDelegate.m */,
 				E4621B88195A0A58003761AD /* Images.xcassets */,
 				E4621B7D195A0A58003761AD /* Supporting Files */,
 			);
@@ -190,27 +221,27 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
-		E4CB507919632DB200E73A9C /* ViewControllers */ = {
+		E4CB507919632DB200E73A9C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E4CB508419635E2600E73A9C /* AccountViewController */,
 				E4CB508719635E5400E73A9C /* ExploreViewController */,
 				E4CB508619635E4800E73A9C /* MainNavigationController */,
-				E4CB507A19632DBD00E73A9C /* OSMainViewController */,
+				E4CB507A19632DBD00E73A9C /* MainViewController */,
 				E4CB508819635E6200E73A9C /* SearchViewController */,
-				E4CB508519635E3B00E73A9C /* SideMenuViewController */,
+				E4CB508519635E3B00E73A9C /* SideMenuViewControllers */,
 			);
-			name = ViewControllers;
+			name = Controllers;
 			path = ..;
 			sourceTree = "<group>";
 		};
-		E4CB507A19632DBD00E73A9C /* OSMainViewController */ = {
+		E4CB507A19632DBD00E73A9C /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
 				E4CB507B19632DE500E73A9C /* OSMainViewController.h */,
 				E4CB507C19632DE500E73A9C /* OSMainViewController.m */,
 			);
-			name = OSMainViewController;
+			name = MainViewController;
 			sourceTree = "<group>";
 		};
 		E4CB508419635E2600E73A9C /* AccountViewController */ = {
@@ -222,15 +253,13 @@
 			name = AccountViewController;
 			sourceTree = "<group>";
 		};
-		E4CB508519635E3B00E73A9C /* SideMenuViewController */ = {
+		E4CB508519635E3B00E73A9C /* SideMenuViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4CB508E196396CF00E73A9C /* ContentTableViewController */,
-				E4CB508919635E9900E73A9C /* ContentViewController */,
-				E4D8C471195B952D0051E76C /* OSSideMenuViewController.h */,
-				E4D8C472195B952D0051E76C /* OSSideMenuViewController.m */,
+				E4CB50A11964967400E73A9C /* ContentViewControllers(Base) */,
+				E4CB50A01964966000E73A9C /* SideMenuViewController */,
 			);
-			name = SideMenuViewController;
+			name = SideMenuViewControllers;
 			sourceTree = "<group>";
 		};
 		E4CB508619635E4800E73A9C /* MainNavigationController */ = {
@@ -285,6 +314,75 @@
 				E4CB5090196397B300E73A9C /* OSContentTableViewController.m */,
 			);
 			name = ContentTableViewController;
+			sourceTree = "<group>";
+		};
+		E4CB50A01964966000E73A9C /* SideMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E4D8C471195B952D0051E76C /* OSSideMenuViewController.h */,
+				E4D8C472195B952D0051E76C /* OSSideMenuViewController.m */,
+			);
+			name = SideMenuViewController;
+			sourceTree = "<group>";
+		};
+		E4CB50A11964967400E73A9C /* ContentViewControllers(Base) */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB508E196396CF00E73A9C /* ContentTableViewController */,
+				E4CB508919635E9900E73A9C /* ContentViewController */,
+			);
+			name = "ContentViewControllers(Base)";
+			sourceTree = "<group>";
+		};
+		E4CB50A21964976600E73A9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB50AB19649EE500E73A9C /* OSItem.h */,
+				E4CB50AC19649EE500E73A9C /* OSItem.m */,
+				E4CB50B11964B66A00E73A9C /* OSUser.h */,
+				E4CB50B21964B66A00E73A9C /* OSUser.m */,
+				E4CB50B41964BD6B00E73A9C /* OSAddress.h */,
+				E4CB50B51964BD6B00E73A9C /* OSAddress.m */,
+				E4CB50B71964BE7400E73A9C /* OSDeliveryLocation.h */,
+				E4CB50B81964BE7400E73A9C /* OSDeliveryLocation.m */,
+				E4CB50BA1964BE9600E73A9C /* OSCreditCard.h */,
+				E4CB50BB1964BE9600E73A9C /* OSCreditCard.m */,
+				E4CB50BD1964BFAD00E73A9C /* OSStockItem.h */,
+				E4CB50BE1964BFAD00E73A9C /* OSStockItem.m */,
+				E4CB50C01964C0CD00E73A9C /* OSSubscription.h */,
+				E4CB50C11964C0CD00E73A9C /* OSSubscription.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E4CB50A3196497AE00E73A9C /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				E4621B85195A0A58003761AD /* OSAppDelegate.h */,
+				E4621B86195A0A58003761AD /* OSAppDelegate.m */,
+			);
+			name = Delegate;
+			sourceTree = "<group>";
+		};
+		E4CB50A4196497C800E73A9C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB50A819649A0300E73A9C /* NSString+StyleConversions.h */,
+				E4CB50A919649A0300E73A9C /* NSString+StyleConversions.m */,
+				E4CB50AE1964A20C00E73A9C /* NSObject+MappableObject.h */,
+				E4CB50AF1964A20C00E73A9C /* NSObject+MappableObject.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		E4CB50A5196497DB00E73A9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E4621BA5195A0DAD003761AD /* Storyboards */,
+				E4CB50C31964C86200E73A9C /* OSItemTableViewCell.h */,
+				E4CB50C41964C86200E73A9C /* OSItemTableViewCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,9 +517,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4CB50B91964BE7400E73A9C /* OSDeliveryLocation.m in Sources */,
 				E4621B87195A0A58003761AD /* OSAppDelegate.m in Sources */,
 				E4D8C479195B952D0051E76C /* OSMainNavigationController.m in Sources */,
+				E4CB50B01964A20C00E73A9C /* NSObject+MappableObject.m in Sources */,
+				E4CB50BC1964BE9600E73A9C /* OSCreditCard.m in Sources */,
 				E4D8C478195B952D0051E76C /* OSSideMenuViewController.m in Sources */,
+				E4CB50B31964B66A00E73A9C /* OSUser.m in Sources */,
+				E4CB50AD19649EE500E73A9C /* OSItem.m in Sources */,
+				E4CB50AA19649A0300E73A9C /* NSString+StyleConversions.m in Sources */,
+				E4CB50C51964C86200E73A9C /* OSItemTableViewCell.m in Sources */,
 				E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */,
 				E4621B83195A0A58003761AD /* main.m in Sources */,
 				E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */,
@@ -429,6 +534,9 @@
 				E4CB5097196397D800E73A9C /* OSSearchViewController.m in Sources */,
 				E4CB507D19632DE500E73A9C /* OSMainViewController.m in Sources */,
 				E4CB508D19636F7600E73A9C /* OSNetworking.m in Sources */,
+				E4CB50BF1964BFAD00E73A9C /* OSStockItem.m in Sources */,
+				E4CB50B61964BD6B00E73A9C /* OSAddress.m in Sources */,
+				E4CB50C21964C0CD00E73A9C /* OSSubscription.m in Sources */,
 				E4D8C47A195B952D0051E76C /* OSExploreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
