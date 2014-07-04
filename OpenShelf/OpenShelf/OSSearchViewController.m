@@ -8,7 +8,7 @@
 
 #import "OSSearchViewController.h"
 #import "OSMainNavigationController.h"
-#import "OSItemTableViewCell.h"
+#import "OSItemCell.h"
 #import "OSNetworking.h"
 #import "NSObject+MappableObject.h"
 #import "OSItem.h"
@@ -18,14 +18,17 @@
 @end
 
 @implementation OSSearchViewController
-
+ static NSString *CellIdentifier = @"itemCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    OSItem *testItem = [[OSItem alloc]init];
+    testItem.title = @"testingNewTitle";
+    [_data addObject:testItem];
 	self.title = @"Search";
     self.view.backgroundColor = [UIColor redColor];
     self.searchDisplayController.searchBar.placeholder = @"Search here";
-    [self.tableView registerClass:[OSItemTableViewCell class] forCellReuseIdentifier:@"itemCardCell"];
+//    [self.tableView registerClass:[OSItemCell class] forCellReuseIdentifier:CellIdentifier];
 //    self.searchDisplayController.displaysSearchBarInNavigationBar = YES;
 
 }
@@ -39,17 +42,15 @@
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    return [_data count];
+//    return [_data count];
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemCardCell"];
-    if (cell == nil) {
-        OSItem *newItem = [OSItem createFromInfo:[_data objectAtIndex:indexPath.row]];
-        cell = [[OSItemTableViewCell alloc]initWithItem:newItem];
-    }
-    
+   
+    OSItemCell *cell = (OSItemCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    cell.itemTitleLabel.text = @"TEST";
 
     return cell;
 }
@@ -69,11 +70,14 @@
 }
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
-    if (![searchString length] == 0) {
-        [_data removeAllObjects];
-        [[OSNetworking sharedInstance]downloadItemsForSearchTerms:searchString success:^(NSDictionary *dictionary, NSError *error) {
-            [self.data addObject:dictionary];
-            [self.searchDisplayController.searchResultsTableView reloadData];
+//    if (![searchString length] == 0) {
+//        [_data removeAllObjects];
+//        [[OSNetworking sharedInstance]downloadItemsForSearchTerms:searchString success:^(NSDictionary *dictionary, NSError *error) {
+//            [self.data addObject:dictionary];
+//            [self.tableView reloadData];
+        
+            
+            
 //            if ([dictionary respondsToSelector:@selector(allKeys)]) {
 //                for (id key in [dictionary allKeys]) {
 //                    [self.data addObject: [dictionary valueForKey:key]];
@@ -87,10 +91,10 @@
 //
 //                }
 //            }
-            
-          
-        } failure:nil];
-    }
+//            
+//          
+//        } failure:nil];
+//    }
     
     
     return NO;

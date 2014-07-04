@@ -7,14 +7,14 @@
 //
 
 #import "OSItemTableViewCell.h"
-@interface OSItemTableViewCell()
 
-
-
-@end
 @implementation OSItemTableViewCell
 
-@synthesize textLabel, priceLabel,rentButton, useButton, imageView;
+@synthesize textLabel;
+@synthesize priceLabel;
+@synthesize rentButton;
+@synthesize useButton;
+@synthesize imageView;
 
 - (id)initWithItem:(OSItem *)item{
     self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCardCell"];
@@ -29,18 +29,8 @@
     return self;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+-(void)awakeFromNib{
 
-- (void)awakeFromNib
-{
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -48,6 +38,14 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (UILabel *)titleLabel {
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+    }
+    
+    return _titleLabel;
 }
 
 @end
