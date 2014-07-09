@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E40AFADA196C9045002E9744 /* OSItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40AFAD9196C9045002E9744 /* OSItemDetailViewController.m */; };
+		E40AFAE5196CE6D6002E9744 /* GKLParallaxPicturesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E40AFAE4196CE6D6002E9744 /* GKLParallaxPicturesViewController.m */; };
 		E4621B77195A0A58003761AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4621B76195A0A58003761AD /* Foundation.framework */; };
 		E4621B79195A0A58003761AD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4621B78195A0A58003761AD /* CoreGraphics.framework */; };
 		E4621B7B195A0A58003761AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4621B7A195A0A58003761AD /* UIKit.framework */; };
@@ -26,7 +28,6 @@
 		E48BCCF11966393B006D42BE /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE91966393B006D42BE /* UIImage+REFrostedViewController.m */; };
 		E48BCCF21966393B006D42BE /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCEB1966393B006D42BE /* UIView+REFrostedViewController.m */; };
 		E48BCCF31966393B006D42BE /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCED1966393B006D42BE /* UIViewController+REFrostedViewController.m */; };
-		E48BCCF6196642CC006D42BE /* OSItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCF5196642CC006D42BE /* OSItemCell.m */; };
 		E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C470195B952D0051E76C /* OSAccountViewController.m */; };
 		E4CB507D19632DE500E73A9C /* OSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB507C19632DE500E73A9C /* OSMainViewController.m */; };
 		E4CB508D19636F7600E73A9C /* OSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB508C19636F7600E73A9C /* OSNetworking.m */; };
@@ -59,6 +60,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E40AFAD8196C9045002E9744 /* OSItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSItemDetailViewController.h; sourceTree = "<group>"; };
+		E40AFAD9196C9045002E9744 /* OSItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSItemDetailViewController.m; sourceTree = "<group>"; };
+		E40AFAE3196CE6D6002E9744 /* GKLParallaxPicturesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKLParallaxPicturesViewController.h; sourceTree = "<group>"; };
+		E40AFAE4196CE6D6002E9744 /* GKLParallaxPicturesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKLParallaxPicturesViewController.m; sourceTree = "<group>"; };
 		E4621B73195A0A58003761AD /* OpenShelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenShelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4621B76195A0A58003761AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4621B78195A0A58003761AD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,8 +93,6 @@
 		E48BCCEB1966393B006D42BE /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+REFrostedViewController.m"; path = "OpenShelf/REFrostedViewController/REFrostedViewController/UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
 		E48BCCEC1966393B006D42BE /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+REFrostedViewController.h"; path = "OpenShelf/REFrostedViewController/REFrostedViewController/UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
 		E48BCCED1966393B006D42BE /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+REFrostedViewController.m"; path = "OpenShelf/REFrostedViewController/REFrostedViewController/UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
-		E48BCCF4196642CC006D42BE /* OSItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSItemCell.h; path = OpenShelf/OSItemCell.h; sourceTree = "<group>"; };
-		E48BCCF5196642CC006D42BE /* OSItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSItemCell.m; path = OpenShelf/OSItemCell.m; sourceTree = "<group>"; };
 		E4CB507B19632DE500E73A9C /* OSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSMainViewController.h; path = OpenShelf/OSMainViewController.h; sourceTree = "<group>"; };
 		E4CB507C19632DE500E73A9C /* OSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSMainViewController.m; path = OpenShelf/OSMainViewController.m; sourceTree = "<group>"; };
 		E4CB508B19636F7600E73A9C /* OSNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNetworking.h; sourceTree = "<group>"; };
@@ -154,6 +157,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E40AFAD7196C9020002E9744 /* ItemDetailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E40AFAE3196CE6D6002E9744 /* GKLParallaxPicturesViewController.h */,
+				E40AFAE4196CE6D6002E9744 /* GKLParallaxPicturesViewController.m */,
+				E40AFAD8196C9045002E9744 /* OSItemDetailViewController.h */,
+				E40AFAD9196C9045002E9744 /* OSItemDetailViewController.m */,
+			);
+			name = ItemDetailViewController;
+			sourceTree = "<group>";
+		};
 		E4621B6A195A0A58003761AD = {
 			isa = PBXGroup;
 			children = (
@@ -258,14 +272,13 @@
 		E4CB507919632DB200E73A9C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E40AFAD7196C9020002E9744 /* ItemDetailViewController */,
 				E4CB508419635E2600E73A9C /* AccountViewController */,
 				E4CB508719635E5400E73A9C /* ExploreViewController */,
 				E4CB508619635E4800E73A9C /* MainNavigationController */,
 				E4CB507A19632DBD00E73A9C /* MainViewController */,
 				E4CB508819635E6200E73A9C /* SearchViewController */,
 				E4CB508519635E3B00E73A9C /* SideMenuViewControllers */,
-				E48BCCF4196642CC006D42BE /* OSItemCell.h */,
-				E48BCCF5196642CC006D42BE /* OSItemCell.m */,
 			);
 			name = Controllers;
 			path = ..;
@@ -529,15 +542,16 @@
 				E4CB50AD19649EE500E73A9C /* OSItem.m in Sources */,
 				E4CB50AA19649A0300E73A9C /* NSString+StyleConversions.m in Sources */,
 				E48BCCF31966393B006D42BE /* UIViewController+REFrostedViewController.m in Sources */,
+				E40AFADA196C9045002E9744 /* OSItemDetailViewController.m in Sources */,
 				E48BCCF11966393B006D42BE /* UIImage+REFrostedViewController.m in Sources */,
 				E48BCCEE1966393B006D42BE /* RECommonFunctions.m in Sources */,
-				E48BCCF6196642CC006D42BE /* OSItemCell.m in Sources */,
 				E4CB50C51964C86200E73A9C /* OSItemTableViewCell.m in Sources */,
 				E48BCCEF1966393B006D42BE /* REFrostedContainerViewController.m in Sources */,
 				E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */,
 				E4621B83195A0A58003761AD /* main.m in Sources */,
 				E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */,
 				E4CB5096196397D800E73A9C /* OSContentViewController.m in Sources */,
+				E40AFAE5196CE6D6002E9744 /* GKLParallaxPicturesViewController.m in Sources */,
 				E4CB5097196397D800E73A9C /* OSSearchViewController.m in Sources */,
 				E48BCCF21966393B006D42BE /* UIView+REFrostedViewController.m in Sources */,
 				E48BCCF01966393B006D42BE /* REFrostedViewController.m in Sources */,

@@ -7,27 +7,28 @@
 //
 
 #import "OSItemTableViewCell.h"
-
+#import "OSNetworking.h"
 @implementation OSItemTableViewCell
 
-@synthesize textLabel;
-@synthesize priceLabel;
-@synthesize rentButton;
-@synthesize useButton;
-@synthesize imageView;
 
-- (id)initWithItem:(OSItem *)item{
-    self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"itemCardCell"];
+- (id)populateCellWithItem:(OSItem *)item{
     if (self) {
-        NSURL *url = [NSURL URLWithString:@"http://placehold.it/900x900"];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage *image = [UIImage imageWithData:data];
-        self.imageView.image = image;
+        self.clipsToBounds = YES;
+        self.contentMode = UIViewContentModeScaleAspectFill;
+        int photoIndex = arc4random_uniform(4);
+        NSURL *url = [NSURL URLWithString: item.imageUrls[photoIndex]];
+        [[OSNetworking sharedInstance] downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
+            if (succeeded) {
+                self.itemImageView.image = image;
+            }
+        }];
+        self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.titleLabel.text = item.title;
         self.priceLabel.text = @"$10";
     }
     return self;
 }
+
 
 -(void)awakeFromNib{
 

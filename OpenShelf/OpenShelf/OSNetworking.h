@@ -28,4 +28,5 @@
                           success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                           failure:(void (^)(void))failureCompletion;
 
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OSContentTableViewController.h"
 
-@interface OSSearchViewController : OSContentTableViewController <UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface OSSearchViewController : OSContentTableViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end

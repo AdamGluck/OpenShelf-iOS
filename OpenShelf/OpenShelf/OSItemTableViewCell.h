@@ -17,6 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *rentButton;
 @property (strong, nonatomic) IBOutlet UIButton *useButton;
 
-- (id)initWithItem:(OSItem *)item;
+- (id)populateCellWithItem:(OSItem *)item;
 
 @end
