@@ -7,15 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OSSubscription.h"
 
 @interface OSItem : NSObject
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) OSSubscription *subscription;
-@property (strong, nonatomic) NSNumber *dailyRate;
-@property (strong, nonatomic) NSArray *reviews;
+@property (strong, nonatomic) NSString *shortDescription;
+@property (nonatomic) BOOL isFeatured;
+@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSNumber *timesRented;
+@property (strong, nonatomic) NSNumber *cost;
+@property (strong, nonatomic) NSNumber *pk;
 @property (strong, nonatomic) NSArray *imageUrls;
 
 //@property (strong, nonatomic) NSNumber *itemId;

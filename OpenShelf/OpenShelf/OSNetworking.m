@@ -7,6 +7,7 @@
 
 #import "OSNetworking.h"
 
+static NSString *kBaseURL = @"http://openshelf.herokuapp.com/custom-api/";
 
 @implementation OSNetworking
 
@@ -42,7 +43,7 @@
                                          NSLog(@"Server Error:%@",[error localizedDescription]);
                                          NSError *jsonError;
                                          NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&jsonError];
-                                         NSLog(@"DownloadeData:%@",dictionary);
+                                         NSLog(@"DownloadeJSONData:%@",dictionary);
 
                                          
                                          NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
@@ -117,6 +118,22 @@
     [self askServerForRequest:request success:successCompletion failure:failureCompletion];
     
 }
+
+- (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
+                            failureBlock:(void (^)(void))failureCompletion{
+    
+    NSString *parameterString = [NSString stringWithFormat:@"%@items", kBaseURL];
+    NSURL *url = [NSURL URLWithString: parameterString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [self askServerForRequest:request
+                      success:successCompletion
+                      failure:failureCompletion];
+    
+}
+
+
+
+#pragma mark - Asynchronous image downloading
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
 {

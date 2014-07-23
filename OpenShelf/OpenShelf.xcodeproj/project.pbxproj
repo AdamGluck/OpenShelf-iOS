@@ -26,6 +26,8 @@
 		E46B9986197EFE0D00DEDD0B /* OSPagingImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B9985197EFE0D00DEDD0B /* OSPagingImageScrollView.m */; };
 		E46B9990197F308900DEDD0B /* UIView+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B998F197F308900DEDD0B /* UIView+Utilities.m */; };
 		E46B999C197F39E900DEDD0B /* UITextView+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B999B197F39E900DEDD0B /* UITextView+Utilities.m */; };
+		E46B999F19803EBA00DEDD0B /* OSPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B999E19803EBA00DEDD0B /* OSPackage.m */; };
+		E46B99A61980671D00DEDD0B /* OSLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B99A51980671D00DEDD0B /* OSLoginManager.m */; };
 		E48BCCEE1966393B006D42BE /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE31966393B006D42BE /* RECommonFunctions.m */; };
 		E48BCCEF1966393B006D42BE /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE51966393B006D42BE /* REFrostedContainerViewController.m */; };
 		E48BCCF01966393B006D42BE /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE71966393B006D42BE /* REFrostedViewController.m */; };
@@ -93,6 +95,10 @@
 		E46B998F197F308900DEDD0B /* UIView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Utilities.m"; sourceTree = "<group>"; };
 		E46B999A197F39E900DEDD0B /* UITextView+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Utilities.h"; sourceTree = "<group>"; };
 		E46B999B197F39E900DEDD0B /* UITextView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Utilities.m"; sourceTree = "<group>"; };
+		E46B999D19803EBA00DEDD0B /* OSPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPackage.h; sourceTree = "<group>"; };
+		E46B999E19803EBA00DEDD0B /* OSPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPackage.m; sourceTree = "<group>"; };
+		E46B99A41980671D00DEDD0B /* OSLoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSLoginManager.h; path = OpenShelf/OSLoginManager.h; sourceTree = "<group>"; };
+		E46B99A51980671D00DEDD0B /* OSLoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSLoginManager.m; path = OpenShelf/OSLoginManager.m; sourceTree = "<group>"; };
 		E48BCCE21966393B006D42BE /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = OpenShelf/REFrostedViewController/REFrostedViewController/RECommonFunctions.h; sourceTree = "<group>"; };
 		E48BCCE31966393B006D42BE /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = OpenShelf/REFrostedViewController/REFrostedViewController/RECommonFunctions.m; sourceTree = "<group>"; };
 		E48BCCE41966393B006D42BE /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REFrostedContainerViewController.h; path = OpenShelf/REFrostedViewController/REFrostedViewController/REFrostedContainerViewController.h; sourceTree = "<group>"; };
@@ -215,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				E4CB50A3196497AE00E73A9C /* Delegate */,
-				E4CB50A21964976600E73A9C /* Models */,
+				E4CB50A21964976600E73A9C /* Model */,
 				E4CB50A5196497DB00E73A9C /* Views */,
 				E4CB507919632DB200E73A9C /* Controllers */,
 				E4CB50A4196497C800E73A9C /* Categories */,
@@ -272,6 +278,15 @@
 			name = OSPagingImageScrollView;
 			sourceTree = "<group>";
 		};
+		E46B99A0198066E100DEDD0B /* OSLoginManager */ = {
+			isa = PBXGroup;
+			children = (
+				E46B99A41980671D00DEDD0B /* OSLoginManager.h */,
+				E46B99A51980671D00DEDD0B /* OSLoginManager.m */,
+			);
+			name = OSLoginManager;
+			sourceTree = "<group>";
+		};
 		E48BCCE11966391F006D42BE /* REFrostedViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +309,7 @@
 		E4CB507919632DB200E73A9C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E46B99A0198066E100DEDD0B /* OSLoginManager */,
 				E40AFAD7196C9020002E9744 /* ItemDetailViewController */,
 				E4CB508419635E2600E73A9C /* AccountViewController */,
 				E4CB508719635E5400E73A9C /* ExploreViewController */,
@@ -408,7 +424,7 @@
 			name = "ContentViewControllers(Base)";
 			sourceTree = "<group>";
 		};
-		E4CB50A21964976600E73A9C /* Models */ = {
+		E4CB50A21964976600E73A9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				E4CB50AB19649EE500E73A9C /* OSItem.h */,
@@ -425,8 +441,10 @@
 				E4CB50BE1964BFAD00E73A9C /* OSStockItem.m */,
 				E4CB50C01964C0CD00E73A9C /* OSSubscription.h */,
 				E4CB50C11964C0CD00E73A9C /* OSSubscription.m */,
+				E46B999D19803EBA00DEDD0B /* OSPackage.h */,
+				E46B999E19803EBA00DEDD0B /* OSPackage.m */,
 			);
-			name = Models;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		E4CB50A3196497AE00E73A9C /* Delegate */ = {
@@ -577,6 +595,7 @@
 				E4CB50C51964C86200E73A9C /* OSItemTableViewCell.m in Sources */,
 				E48BCCEF1966393B006D42BE /* REFrostedContainerViewController.m in Sources */,
 				E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */,
+				E46B99A61980671D00DEDD0B /* OSLoginManager.m in Sources */,
 				E4621B83195A0A58003761AD /* main.m in Sources */,
 				E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */,
 				E4CB5096196397D800E73A9C /* OSContentViewController.m in Sources */,
@@ -590,6 +609,7 @@
 				E4CB508D19636F7600E73A9C /* OSNetworking.m in Sources */,
 				E4CB50BF1964BFAD00E73A9C /* OSStockItem.m in Sources */,
 				E4CB50B61964BD6B00E73A9C /* OSAddress.m in Sources */,
+				E46B999F19803EBA00DEDD0B /* OSPackage.m in Sources */,
 				E4CB50C21964C0CD00E73A9C /* OSSubscription.m in Sources */,
 				E4D8C47A195B952D0051E76C /* OSExploreViewController.m in Sources */,
 				E46B9986197EFE0D00DEDD0B /* OSPagingImageScrollView.m in Sources */,

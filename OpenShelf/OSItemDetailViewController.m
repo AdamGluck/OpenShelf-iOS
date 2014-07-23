@@ -40,7 +40,7 @@
         self.item.description = [self.item.description stringByAppendingString:@"TESTING SCROLL"];
     }
     
-    self.item.dailyRate = [NSNumber numberWithDouble:10.0];
+    self.item.cost = [NSNumber numberWithDouble:10.0];
     
     //End testing
     
@@ -50,7 +50,7 @@
     
     self.titleLabel.text = self.item.title;
     [self.titleLabel sizeToFit];
-    self.priceLabel.text = [self.item.dailyRate stringValue];
+    self.priceLabel.text = [self.item.cost stringValue];
     [self.priceLabel sizeToFit];
 }
 

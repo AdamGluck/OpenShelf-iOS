@@ -21,6 +21,9 @@
                             success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                                failure:(void (^)(void))failureCompletion;
 
+- (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
+                                             failureBlock:(void (^)(void))failureCompletion;
+
 - (void)createAccountWithUsername:(NSString *)username
                             email:(NSString *)email
                          password:(NSString *)password
@@ -30,4 +33,5 @@
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 -(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView;
+
 @end

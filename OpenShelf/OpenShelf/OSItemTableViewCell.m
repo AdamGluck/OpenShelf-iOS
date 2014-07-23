@@ -10,11 +10,30 @@
 #import "OSNetworking.h"
 @implementation OSItemTableViewCell
 
+- (void)commonInit{
+    self.clipsToBounds = YES;
+    self.contentMode = UIViewContentModeScaleAspectFill;
+    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+    self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
 
+}
+
+- (id)initWithFrame:(CGRect)aRect{
+    if ((self = [super initWithFrame:aRect])) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder*)coder{
+    if ((self = [super initWithCoder:coder])) {
+        [self commonInit];
+    }
+    return self;
+}
 - (id)populateCellWithItem:(OSItem *)item{
     if (self) {
-        self.clipsToBounds = YES;
-        self.contentMode = UIViewContentModeScaleAspectFill;
+        
         int photoIndex = arc4random_uniform(4);
         NSURL *url = [NSURL URLWithString: item.imageUrls[photoIndex]];
         [[OSNetworking sharedInstance] downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
@@ -22,10 +41,8 @@
                 self.itemImageView.image = image;
             }
         }];
-        self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.titleLabel.text = item.title;
-        self.priceLabel.text = @"$10";
-        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        self.priceLabel.text = [item.cost stringValue];
 
     }
     return self;
