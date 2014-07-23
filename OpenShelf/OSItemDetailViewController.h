@@ -6,11 +6,22 @@
 //  Copyright (c) 2014 OpenShelf. All rights reserved.
 //
 
-#import "OSContentViewController.h"
 #import "OSItem.h"
-#import "GKLParallaxPicturesViewController.h"
-@interface OSItemDetailViewController : GKLParallaxPicturesViewController
--(instancetype)initWithItem:(OSItem *)item;
+#import "OSPagingImageScrollView.h"
+@interface OSItemDetailViewController : UIViewController <UIScrollViewDelegate, UITextViewDelegate>
+
 @property (strong, nonatomic) OSItem *item;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+@property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+
+@property (strong, nonatomic) IBOutlet UIButton *rentButton;
+@property (strong, nonatomic) IBOutlet UILabel *priceLabel;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) IBOutlet OSPagingImageScrollView *imageScroller;
+
+
+
 
 @end

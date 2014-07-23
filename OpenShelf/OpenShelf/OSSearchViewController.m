@@ -29,6 +29,8 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 {
     [super viewDidLoad];
 	self.title = @"Search";
+    self.navigationItem.titleView = self.searchBar;
+
     self.testImageURLs = @[@"http://www.golfersavenue.com/wp-content/uploads/2012/04/golf-club-auctions.jpg",
                            @"http://www.slingshotsports.com/14WakeParts_Tout.jpg",
                            @"http://amazingribs.com/bbq_equipment_reviews_ratings/sites/amazingribs.com/files/weber_jumbo_joe_portable_charcoal_grill_300pix.jpg",
@@ -37,7 +39,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self scrollViewDidScroll:nil];
+//    [self scrollViewDidScroll:nil];
 }
 
 
@@ -55,90 +57,20 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
     
     OSItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [cell populateCellWithItem:[_data objectAtIndex:indexPath.row]];
-
+    
     
     
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    OSItemDetailViewController *vc = [[OSItemDetailViewController alloc]initWithItem:self.data[indexPath.row]];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-
-}
-
--(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    OSItemTableViewCell *itemCell = (OSItemTableViewCell *) cell;
-    
-    // Frame
-    CGFloat cellY = itemCell.frame.origin.y;
-    CGFloat delta = cellY - tableView.contentOffset.y;
-    
-    // Get natural
-    CGFloat threshold = 200.0f;
-    CGFloat percent = delta / tableView.bounds.size.height;
-    CGFloat deltaParallax = percent * threshold;
-    
-    itemCell.itemImageView.frame = CGRectMake(0, -delta  + deltaParallax , tableView.bounds.size.width, tableView.bounds.size.height);
-}
 
 -(void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     if ([self.searchBar isFirstResponder]) {
         [self.searchBar resignFirstResponder];
     }
-    for (OSItemTableViewCell *cell in [self.tableView visibleCells])
-    {
-        
-        // Frame
-        CGFloat cellY = cell.frame.origin.y;
-        CGFloat delta = cellY - self.tableView.contentOffset.y;
-        
-        // Get natural
-        CGFloat threshold = 200.0f;
-        CGFloat percent = delta/ self.tableView.bounds.size.height;
-        CGFloat deltaParallax = percent * threshold;
-        
-        
-        cell.itemImageView.frame = CGRectMake(0, -delta + deltaParallax , self.tableView.bounds.size.width, self.tableView.bounds.size.height);
-    }
+    [super scrollViewDidScroll:scrollView];
 }
-//-(void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//{
-//    if (decelerate)
-//    {
-//        [self scrollToNearestRow];
-//    }
-//}
-//-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-//{
-//    [self scrollToNearestRow];
-//}
-//-(void) scrollToNearestRow
-//{
-//    CGPoint point = self.tableView.contentOffset;
-//
-//    // Cell
-//    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
-//    OSItemTableViewCell *cell = (OSItemTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
-//
-//    CGFloat delta = (cell.frame.origin.y + cell.frame.size.height) - point.y;
-//    CGFloat percent = delta / (float)cell.frame.size.height;
-//
-//    if (percent > 0.5)
-//    {
-//        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    }
-//    else
-//    {
-//        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
-//    }
-//
-//}
-
-
 
 #pragma mark - UISearchDisplayDelegate methods
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
@@ -185,6 +117,16 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 
 -(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     [searchBar resignFirstResponder];
+}
+
+#pragma mark - Segue Handlers
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString: @"toItemDetailController"]) {
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    OSItem *item = [_data objectAtIndex:indexPath.row];
+        ((OSItemDetailViewController *)segue.destinationViewController).item = item;
+    }
 }
 
 #pragma mark - Getters and Setters

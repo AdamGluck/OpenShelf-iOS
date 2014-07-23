@@ -34,8 +34,7 @@ static CGFloat WindowHeight = 200.0;
 static CGFloat ImageHeight  = 200;
 static CGFloat PageControlHeight = 20.0f;
 
-- (id)initWithImages:(NSArray *)images andcontentObject:(id)content{
-
+- (id)initWithImages:(NSArray *)images andcontentObject:(id)content {
     self = [super initWithNibName:nil bundle:nil];
     
     if (self) {
@@ -47,7 +46,7 @@ static CGFloat PageControlHeight = 20.0f;
             _webView = content;
         }
         
-        _imageScroller  = [[UIScrollView alloc] initWithFrame:CGRectZero];
+
         _imageScroller.backgroundColor                  = [UIColor clearColor];
         _imageScroller.showsHorizontalScrollIndicator   = NO;
         _imageScroller.showsVerticalScrollIndicator     = NO;
@@ -101,11 +100,11 @@ static CGFloat PageControlHeight = 20.0f;
         [_transparentScroller addGestureRecognizer:tapGesture];
     }
     return self;
-
+    
 }
 
 - (id)initWithImages:(NSArray *)images andContentView:(UIView *)contentView {
-    return [self initWithImages:images andcontentObject:contentView];	
+    return [self initWithImages:images andcontentObject:contentView];
 }
 
 - (id)initWithImages:(NSArray *)images andContentWebView:(UIWebView *)webView {
@@ -150,7 +149,7 @@ static CGFloat PageControlHeight = 20.0f;
 
 -(void)addImages:(NSArray *)moreImages{
     for (id image in moreImages) {
-        [self addImage:image atIndex:(int)[_imageViews count]];
+        [self addImage:image atIndex:[_imageViews count]];
     }
     [_pageControl setNumberOfPages:[_imageViews count]];
     [self layoutImages];
@@ -177,15 +176,15 @@ static CGFloat PageControlHeight = 20.0f;
     CGFloat yscroll = 0;
     
     if (yOffset > -threshold && yOffset < 0) { // user scrolled up to the image until showing the background
-        // move the imageScroller down faster
+                                               // move the imageScroller down faster
         yscroll = floorf(yOffset / 2.0);
         _imageScroller.contentOffset = CGPointMake(xOffset, yscroll);
     } else if (yOffset < 0) { // user scrolled up to the image
-        // move the imageScroller down
+                              // move the imageScroller down
         yscroll = yOffset + floorf(threshold / 2.0);
         _imageScroller.contentOffset = CGPointMake(xOffset, yscroll);
     } else { // user scrolled down
-        // move imageScroller up slowly
+             // move imageScroller up slowly
         yscroll = floorf(yOffset / 2.0);
         _imageScroller.contentOffset = CGPointMake(xOffset, yscroll);
     }
@@ -245,7 +244,7 @@ static CGFloat PageControlHeight = 20.0f;
     _imageScroller.contentOffset = CGPointMake(0.0, 0.0);
     
     _transparentScroller.contentSize = CGSizeMake([_imageViews count]*imageWidth, WindowHeight);
-//    _transparentScroller.contentOffset = CGPointMake(0.0, 0.0);
+    //    _transparentScroller.contentOffset = CGPointMake(0.0, 0.0);
 }
 
 #pragma mark - View lifecycle
@@ -256,7 +255,8 @@ static CGFloat PageControlHeight = 20.0f;
     CGRect bounds = self.view.bounds;
     
     _imageScroller.frame        = CGRectMake(0.0, 0.0, bounds.size.width, bounds.size.height);
-    _transparentScroller.frame  = CGRectMake(0.0, 0.0, bounds.size.width, WindowHeight);
+    CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    _transparentScroller.frame  = CGRectMake(0.0, navBarHeight * 2, bounds.size.width, WindowHeight);
     
     
     if (self.contentView) {

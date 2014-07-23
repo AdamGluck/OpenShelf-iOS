@@ -19,6 +19,7 @@
 {
     self.contentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"contentController"];
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
+    self.panGestureEnabled = NO;
     
 }
 

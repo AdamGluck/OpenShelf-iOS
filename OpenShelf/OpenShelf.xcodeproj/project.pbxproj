@@ -22,6 +22,10 @@
 		E4621B9A195A0A58003761AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4621B98195A0A58003761AD /* InfoPlist.strings */; };
 		E4621B9C195A0A58003761AD /* OpenShelfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4621B9B195A0A58003761AD /* OpenShelfTests.m */; };
 		E4621BA7195A0DEA003761AD /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4621BA6195A0DEA003761AD /* iPhone.storyboard */; };
+		E46B9978197D801B00DEDD0B /* OSParallaxTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B9977197D801B00DEDD0B /* OSParallaxTableViewController.m */; };
+		E46B9986197EFE0D00DEDD0B /* OSPagingImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B9985197EFE0D00DEDD0B /* OSPagingImageScrollView.m */; };
+		E46B9990197F308900DEDD0B /* UIView+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B998F197F308900DEDD0B /* UIView+Utilities.m */; };
+		E46B999C197F39E900DEDD0B /* UITextView+Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B999B197F39E900DEDD0B /* UITextView+Utilities.m */; };
 		E48BCCEE1966393B006D42BE /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE31966393B006D42BE /* RECommonFunctions.m */; };
 		E48BCCEF1966393B006D42BE /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE51966393B006D42BE /* REFrostedContainerViewController.m */; };
 		E48BCCF01966393B006D42BE /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE71966393B006D42BE /* REFrostedViewController.m */; };
@@ -81,6 +85,14 @@
 		E4621B99195A0A58003761AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4621B9B195A0A58003761AD /* OpenShelfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenShelfTests.m; sourceTree = "<group>"; };
 		E4621BA6195A0DEA003761AD /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = Storyboards/iPhone.storyboard; sourceTree = "<group>"; };
+		E46B9976197D801B00DEDD0B /* OSParallaxTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSParallaxTableViewController.h; path = OpenShelf/OSParallaxTableViewController.h; sourceTree = "<group>"; };
+		E46B9977197D801B00DEDD0B /* OSParallaxTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSParallaxTableViewController.m; path = OpenShelf/OSParallaxTableViewController.m; sourceTree = "<group>"; };
+		E46B9984197EFE0D00DEDD0B /* OSPagingImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPagingImageScrollView.h; sourceTree = "<group>"; };
+		E46B9985197EFE0D00DEDD0B /* OSPagingImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPagingImageScrollView.m; sourceTree = "<group>"; };
+		E46B998E197F308900DEDD0B /* UIView+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Utilities.h"; sourceTree = "<group>"; };
+		E46B998F197F308900DEDD0B /* UIView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Utilities.m"; sourceTree = "<group>"; };
+		E46B999A197F39E900DEDD0B /* UITextView+Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Utilities.h"; sourceTree = "<group>"; };
+		E46B999B197F39E900DEDD0B /* UITextView+Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Utilities.m"; sourceTree = "<group>"; };
 		E48BCCE21966393B006D42BE /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RECommonFunctions.h; path = OpenShelf/REFrostedViewController/REFrostedViewController/RECommonFunctions.h; sourceTree = "<group>"; };
 		E48BCCE31966393B006D42BE /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RECommonFunctions.m; path = OpenShelf/REFrostedViewController/REFrostedViewController/RECommonFunctions.m; sourceTree = "<group>"; };
 		E48BCCE41966393B006D42BE /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = REFrostedContainerViewController.h; path = OpenShelf/REFrostedViewController/REFrostedViewController/REFrostedContainerViewController.h; sourceTree = "<group>"; };
@@ -160,6 +172,7 @@
 		E40AFAD7196C9020002E9744 /* ItemDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E46B9983197EFDFC00DEDD0B /* OSPagingImageScrollView */,
 				E40AFAE3196CE6D6002E9744 /* GKLParallaxPicturesViewController.h */,
 				E40AFAE4196CE6D6002E9744 /* GKLParallaxPicturesViewController.m */,
 				E40AFAD8196C9045002E9744 /* OSItemDetailViewController.h */,
@@ -250,6 +263,15 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		E46B9983197EFDFC00DEDD0B /* OSPagingImageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				E46B9984197EFE0D00DEDD0B /* OSPagingImageScrollView.h */,
+				E46B9985197EFE0D00DEDD0B /* OSPagingImageScrollView.m */,
+			);
+			name = OSPagingImageScrollView;
+			sourceTree = "<group>";
+		};
 		E48BCCE11966391F006D42BE /* REFrostedViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +301,8 @@
 				E4CB507A19632DBD00E73A9C /* MainViewController */,
 				E4CB508819635E6200E73A9C /* SearchViewController */,
 				E4CB508519635E3B00E73A9C /* SideMenuViewControllers */,
+				E46B9976197D801B00DEDD0B /* OSParallaxTableViewController.h */,
+				E46B9977197D801B00DEDD0B /* OSParallaxTableViewController.m */,
 			);
 			name = Controllers;
 			path = ..;
@@ -421,6 +445,10 @@
 				E4CB50A919649A0300E73A9C /* NSString+StyleConversions.m */,
 				E4CB50AE1964A20C00E73A9C /* NSObject+MappableObject.h */,
 				E4CB50AF1964A20C00E73A9C /* NSObject+MappableObject.m */,
+				E46B998E197F308900DEDD0B /* UIView+Utilities.h */,
+				E46B998F197F308900DEDD0B /* UIView+Utilities.m */,
+				E46B999A197F39E900DEDD0B /* UITextView+Utilities.h */,
+				E46B999B197F39E900DEDD0B /* UITextView+Utilities.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -540,6 +568,7 @@
 				E4D8C478195B952D0051E76C /* OSSideMenuViewController.m in Sources */,
 				E4CB50B31964B66A00E73A9C /* OSUser.m in Sources */,
 				E4CB50AD19649EE500E73A9C /* OSItem.m in Sources */,
+				E46B9978197D801B00DEDD0B /* OSParallaxTableViewController.m in Sources */,
 				E4CB50AA19649A0300E73A9C /* NSString+StyleConversions.m in Sources */,
 				E48BCCF31966393B006D42BE /* UIViewController+REFrostedViewController.m in Sources */,
 				E40AFADA196C9045002E9744 /* OSItemDetailViewController.m in Sources */,
@@ -553,7 +582,9 @@
 				E4CB5096196397D800E73A9C /* OSContentViewController.m in Sources */,
 				E40AFAE5196CE6D6002E9744 /* GKLParallaxPicturesViewController.m in Sources */,
 				E4CB5097196397D800E73A9C /* OSSearchViewController.m in Sources */,
+				E46B999C197F39E900DEDD0B /* UITextView+Utilities.m in Sources */,
 				E48BCCF21966393B006D42BE /* UIView+REFrostedViewController.m in Sources */,
+				E46B9990197F308900DEDD0B /* UIView+Utilities.m in Sources */,
 				E48BCCF01966393B006D42BE /* REFrostedViewController.m in Sources */,
 				E4CB507D19632DE500E73A9C /* OSMainViewController.m in Sources */,
 				E4CB508D19636F7600E73A9C /* OSNetworking.m in Sources */,
@@ -561,6 +592,7 @@
 				E4CB50B61964BD6B00E73A9C /* OSAddress.m in Sources */,
 				E4CB50C21964C0CD00E73A9C /* OSSubscription.m in Sources */,
 				E4D8C47A195B952D0051E76C /* OSExploreViewController.m in Sources */,
+				E46B9986197EFE0D00DEDD0B /* OSPagingImageScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

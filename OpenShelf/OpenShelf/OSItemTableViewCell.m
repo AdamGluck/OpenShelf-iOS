@@ -25,6 +25,8 @@
         self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
         self.titleLabel.text = item.title;
         self.priceLabel.text = @"$10";
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+
     }
     return self;
 }

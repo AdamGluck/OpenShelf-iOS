@@ -13,7 +13,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
+    [navigationBarAppearance setBarTintColor:[UIColor colorWithRed:46.0/255.0 green:138.0/255.0 blue:95.0/255.0 alpha:1.0]];
+    [navigationBarAppearance setTintColor:[UIColor whiteColor]];
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
+    [navigationBarAppearance setTitleTextAttributes:textAttributes];
+
     return YES;
 
 }

@@ -29,4 +29,5 @@
                           failure:(void (^)(void))failureCompletion;
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
+-(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView;
 @end

@@ -134,6 +134,17 @@
                            }];
 }
 
+-(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView{
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSData *imageData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:urlString]];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            UIImage *downloadedImage = [[UIImage alloc] initWithData:imageData];
+            [imageView setImage:downloadedImage];
+        });
+    });
+}
+
 
 
 

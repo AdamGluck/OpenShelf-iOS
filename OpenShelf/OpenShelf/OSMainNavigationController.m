@@ -1,10 +1,4 @@
-//
-//  DEMONavigationController.m
-//  REFrostedViewControllerExample
-//
-//  Created by Roman Efimov on 9/18/13.
-//  Copyright (c) 2013 Roman Efimov. All rights reserved.
-//
+
 
 #import "OSMainNavigationController.h"
 #import "OSSideMenuViewController.h"
@@ -20,7 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
+//    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:@"requestMenu" object:nil];
 }
 

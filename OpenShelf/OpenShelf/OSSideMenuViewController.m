@@ -171,7 +171,7 @@
 
 - (OSMainNavigationController *)navigationController {
     if (!_navigationController) {
-        _navigationController = [[OSMainNavigationController alloc] initWithRootViewController:self.exploreViewController];
+        _navigationController = [[OSMainNavigationController alloc] initWithRootViewController:self.searchViewController];
     }
     
     return _navigationController;
