@@ -11,10 +11,10 @@
 @implementation OSItemTableViewCell
 
 - (void)commonInit{
-    self.clipsToBounds = YES;
-    self.contentMode = UIViewContentModeScaleAspectFill;
-    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
-    self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
+//    self.clipsToBounds = YES;
+//    self.contentMode = UIViewContentModeScaleAspectFill;
+//    [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+//    self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
 
 }
 
@@ -33,14 +33,17 @@
 }
 - (id)populateCellWithItem:(OSItem *)item{
     if (self) {
-        
-        int photoIndex = arc4random_uniform(4);
-        NSURL *url = [NSURL URLWithString: item.imageUrls[photoIndex]];
+        self.clipsToBounds = YES;
+//        self.contentMode = UIViewContentModeScaleAspectFill;
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
+        self.itemImageView.contentMode = UIViewContentModeScaleAspectFill;
+        NSURL *url = [NSURL URLWithString: item.primaryImage];
         [[OSNetworking sharedInstance] downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image) {
             if (succeeded) {
                 self.itemImageView.image = image;
             }
         }];
+       
         self.titleLabel.text = item.title;
         self.priceLabel.text = [item.cost stringValue];
 

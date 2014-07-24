@@ -17,8 +17,8 @@
 @property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSNumber *timesRented;
 @property (strong, nonatomic) NSNumber *cost;
-@property (strong, nonatomic) NSNumber *pk;
-@property (strong, nonatomic) NSArray *imageUrls;
+@property (strong, nonatomic) NSNumber *id;
+@property (strong, nonatomic) NSArray *images;
+@property (strong, nonatomic) NSString *primaryImage;
 
-//@property (strong, nonatomic) NSNumber *itemId;
 @end

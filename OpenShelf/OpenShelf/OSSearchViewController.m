@@ -16,10 +16,9 @@
 #import "OSItemDetailViewController.h"
 
 @interface OSSearchViewController ()
+@property (strong, nonatomic) NSMutableArray *sectionedInventoryList;
 @property (nonatomic, strong) NSMutableArray *featuredInventoryList;
-@property (strong, nonatomic) NSMutableArray *inventoryList;
-
-@property (strong, nonatomic) NSArray *testImageURLs;
+@property (strong, nonatomic) NSMutableArray *nonFeaturedInventoryList;
 @end
 
 @implementation OSSearchViewController
@@ -32,11 +31,6 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
     [super viewDidLoad];
 	self.title = @"Search";
     self.navigationItem.titleView = self.searchBar;
-    
-    self.testImageURLs = @[@"http://www.golfersavenue.com/wp-content/uploads/2012/04/golf-club-auctions.jpg",
-                           @"http://www.slingshotsports.com/14WakeParts_Tout.jpg",
-                           @"http://amazingribs.com/bbq_equipment_reviews_ratings/sites/amazingribs.com/files/weber_jumbo_joe_portable_charcoal_grill_300pix.jpg",
-                           @"http://img2-3.timeinc.net/toh/i/g/0107_toolkit/cordless-tool-kits-01.jpg"];
     [self loadInventoryList];
 }
 
@@ -49,42 +43,40 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 #pragma mark - TableView
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)aTableView {
-    if (self.featuredInventoryList.count > 0) {
-        return 2;
-    }
-    else{
-        return 1;
-    }
+//    if (self.featuredInventoryList.count > 0) {
+//        return 2;
+//    }
+//    else{
+//        return 1;
+//    }
+    return [self.sectionedInventoryList count];
 }
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    if (self.featuredInventoryList.count > 0 && section == 1) {
-        return [self.featuredInventoryList count];
-    }
-    else{
-        return [self.inventoryList count];
-    }
+//    if (self.featuredInventoryList.count > 0 && section == 0) {
+//        return [self.featuredInventoryList count];
+//    }
+//    else{
+//        return [self.nonFeaturedInventoryList count];
+//    }
+    
+    return [[self.sectionedInventoryList objectAtIndex:section] count];
  
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OSItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    if (self.featuredInventoryList.count > 0 && indexPath.section == 1) {
-        [cell populateCellWithItem:[self.featuredInventoryList objectAtIndex:indexPath.row]];
-    }
-    else{
-        [cell populateCellWithItem:[self.inventoryList objectAtIndex:indexPath.row]];
-    }
+    [cell populateCellWithItem:[self getItemForIndexPath:indexPath]];
     return cell;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (self.featuredInventoryList.count > 0) {
+    if (self.sectionedInventoryList.count > 0) {
         switch (section) {
-            case 1:
+            case 0:
                 return @"Featured Items";
                 break;
-            case 2:
+            case 1:
                 return @"Other Cool Shit";
                 break;
                 
@@ -93,7 +85,18 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
                 break;
         }
     }
+    else return @"Search Results";
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSNumber *height;
+    if (!height) {
+        UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        height = @(cell.bounds.size.height);
+    }
+    return [height floatValue];
 }
 
 
@@ -107,15 +110,14 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 
 #pragma mark - UISearchDisplayDelegate methods
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-    [_inventoryList removeAllObjects];
+    [_nonFeaturedInventoryList removeAllObjects];
     if (![searchText length] == 0) {
         [[OSNetworking sharedInstance]downloadItemsForSearchTerms:searchText
                                                           success:^(NSDictionary *dictionary, NSError *error){
                                                               //Adds multiple items for testing purposes, remove loop once backend is built
                                                               for (int i = 0; i < 20; i++) {
                                                                   OSItem *item = [OSItem createFromInfo:dictionary];
-                                                                  item.imageUrls = self.testImageURLs;
-                                                                  [self.inventoryList addObject:item];
+                                                                  [self.nonFeaturedInventoryList addObject:item];
                                                               }
                                                               
                                                               [self.tableView reloadData];
@@ -157,7 +159,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString: @"toItemDetailController"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        OSItem *item = [_inventoryList objectAtIndex:indexPath.row];
+        OSItem *item = [self getItemForIndexPath:indexPath];
         ((OSItemDetailViewController *)segue.destinationViewController).item = item;
     }
 }
@@ -173,7 +175,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
                 [self.featuredInventoryList addObject:item];
             }
             else {
-                [self.inventoryList addObject:item];
+                [self.nonFeaturedInventoryList addObject:item];
             }
         }
         NSMutableArray *packages = [dictionary objectForKey:@"packages"];
@@ -183,9 +185,10 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
                 [self.featuredInventoryList addObject:package];
             }
             else {
-                [self.inventoryList addObject:package];
+                [self.nonFeaturedInventoryList addObject:package];
             }
         }
+        [self resetSectionedInventoryList];
         [self.tableView reloadData];
         
     } failureBlock:^{
@@ -193,14 +196,29 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
     }];
 }
 
+-(void)resetSectionedInventoryList{
+    if (!self.sectionedInventoryList) {
+        self.sectionedInventoryList = [[NSMutableArray alloc]init];
+    }
+    [self.sectionedInventoryList removeAllObjects];
+    [self.sectionedInventoryList addObject:self.featuredInventoryList];
+    [self.sectionedInventoryList addObject:self.nonFeaturedInventoryList];
+    
+}
+
+-(OSItem *)getItemForIndexPath:(NSIndexPath *)indexPath{
+    NSMutableArray *sectionItems = [self.sectionedInventoryList objectAtIndex:indexPath.section];
+    return [sectionItems objectAtIndex:indexPath.row];
+}
+
 #pragma mark - Lazy Getters
 
-- (NSMutableArray *)inventoryList {
-    if (!_inventoryList) {
-        _inventoryList = [[NSMutableArray alloc] init];
+- (NSMutableArray *)nonFeaturedInventoryList {
+    if (!_nonFeaturedInventoryList) {
+        _nonFeaturedInventoryList = [[NSMutableArray alloc] init];
     }
     
-    return _inventoryList;
+    return _nonFeaturedInventoryList;
 }
 - (NSMutableArray *)featuredInventoryList {
     if (!_featuredInventoryList) {

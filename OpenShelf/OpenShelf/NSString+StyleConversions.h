@@ -10,4 +10,5 @@
 
 @interface NSString (StyleConversions)
 -(NSString*)underscoreToCamelCase;
+-(NSString *)camelCaseToUnderscores;
 @end

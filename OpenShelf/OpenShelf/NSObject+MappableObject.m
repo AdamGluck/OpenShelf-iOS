@@ -15,16 +15,37 @@
 + (instancetype)createFromInfo:(NSDictionary *)info {
     NSObject *object = [self new];
     
+//    for (NSString *key in [info allKeys]) {
+//        id value = info[key];
+//        NSString *keyToCamelCase = [key underscoreToCamelCase];
+//        
+//        if ([object respondsToSelector:@selector(key)]) {
+//            [object setValue:value
+//                      forKey:key];
+//        }
+//        else if ([object.class instancesRespondToSelector:@selector(keyToCam)]) {
+//                [object setValue:value
+//                          forKey:keyToCamelCase];
+//            
+//        }
+//    }
     for (NSString *property in object.propertyList) {
+        // look for the underscore in camelcase form first
         id value = info[property];
-        // look for the underscore form "firstName" -> "first_name"
+        NSString *underscoreProperty;
+        
+        // if it doesn't exist, convert to underscore and check that
         if (value == nil) {
-            NSString *camelCaseProperty = [property underscoreToCamelCase];
-            value = info[camelCaseProperty];
+            underscoreProperty = [property camelCaseToUnderscores];
+            value = info[underscoreProperty];
         }
+        
+        // if it still doesn't exist, dictionary does not contain value for that property
         if (value == nil) {
-            NSLog(@"No value in dictionary for key %@", property);
+            NSLog(@"No value in dictionary for keys %@, %@", property, underscoreProperty);
         }
+        
+        // else if it does, set the property to the value
         else{
         [object setValue:value
                   forKey:property];

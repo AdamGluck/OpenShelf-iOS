@@ -25,8 +25,8 @@
 
 -(void)viewDidLoad{
     [self setupViews];
-    self.imageViews = [NSMutableArray arrayWithCapacity:[self.item.imageUrls count]];
-    [self.imageScroller setScrollViewContents:self.item.imageUrls];
+    self.imageViews = [NSMutableArray arrayWithCapacity:[self.item.images count]];
+    [self.imageScroller setScrollViewContents:self.item.images];
     [self.imageScroller setExclusiveTouch:YES];
     
     [self.deliverButton addTarget:self action:@selector(deliverButtonPressed) forControlEvents:UIControlEventTouchUpInside];
