@@ -16,7 +16,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
-@property (strong, nonatomic) IBOutlet UIButton *rentButton;
+@property (strong, nonatomic) IBOutlet UIButton *deliverButton;
 @property (strong, nonatomic) IBOutlet UILabel *priceLabel;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) IBOutlet OSPagingImageScrollView *imageScroller;

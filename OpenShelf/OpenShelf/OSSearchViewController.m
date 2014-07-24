@@ -168,8 +168,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
     [[OSNetworking sharedInstance]downloadInventoryListWithSuccessBlock:^(NSDictionary *dictionary, NSError *error) {
         NSMutableArray *items = [dictionary objectForKey:@"items"];
         for (NSDictionary *itemDictionary in items) {
-            NSDictionary *itemFieldsDictionary = [itemDictionary objectForKey:@"fields"];
-            OSItem *item = [OSItem createFromInfo:itemFieldsDictionary];
+            OSItem *item = [OSItem createFromInfo:itemDictionary];
             if (item.isFeatured) {
                 [self.featuredInventoryList addObject:item];
             }
@@ -179,8 +178,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
         }
         NSMutableArray *packages = [dictionary objectForKey:@"packages"];
         for (NSDictionary *packageDictionary in packages) {
-            NSDictionary *packageFieldsDictionary = [packageDictionary objectForKey:@"fields"];
-            OSPackage *package = [OSPackage createFromInfo:packageFieldsDictionary];
+            OSPackage *package = [OSPackage createFromInfo:packageDictionary];
             if (package.isFeatured) {
                 [self.featuredInventoryList addObject:package];
             }

@@ -7,7 +7,8 @@
 //
 
 #import "OSLoginManager.h"
-
+#import "OSNetworking.h"
+#import "OSLoginViewController.h"
 @implementation OSLoginManager
 
 #pragma mark - Public Method
@@ -23,6 +24,18 @@
     return shared;
 }
 
+
+-(void)presentLoginPage:(UIViewController *)vc
+                    successfullLogin:(void (^)(void))successCompletion
+                    canceldLogin:(void (^)(void))canceledCompletion{
+    OSLoginViewController *loginVC = [[OSLoginViewController alloc]init];
+    loginVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    loginVC.successfulLoginCompletion = successCompletion;
+    loginVC.cancelledLoginCompletion = canceledCompletion;
+    [vc presentViewController:loginVC animated:YES completion:nil];
+
+}
+    
 
 
 @end

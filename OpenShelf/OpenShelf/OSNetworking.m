@@ -7,7 +7,7 @@
 
 #import "OSNetworking.h"
 
-static NSString *kBaseURL = @"http://openshelf.herokuapp.com/custom-api/";
+static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api/";
 
 @implementation OSNetworking
 
@@ -122,7 +122,7 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/custom-api/";
 - (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                             failureBlock:(void (^)(void))failureCompletion{
     
-    NSString *parameterString = [NSString stringWithFormat:@"%@items", kBaseURL];
+    NSString *parameterString = [NSString stringWithFormat:@"%@items/all", kBaseURL];
     NSURL *url = [NSURL URLWithString: parameterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [self askServerForRequest:request

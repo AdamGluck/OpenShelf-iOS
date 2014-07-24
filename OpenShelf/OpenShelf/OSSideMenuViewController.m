@@ -6,7 +6,7 @@
 //
 
 #import "OSSideMenuViewController.h"
-
+#import "OSLoginManager.h"
 
 @implementation OSSideMenuViewController
 
@@ -60,10 +60,10 @@
 //{
 //    if (sectionIndex == 0)
 //        return nil;
-//    
+//
 //    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
 //    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
-//    
+//
 //    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
 //    label.text = @"Friends Online";
 //    label.font = [UIFont systemFontOfSize:15];
@@ -71,7 +71,7 @@
 //    label.backgroundColor = [UIColor clearColor];
 //    [label sizeToFit];
 //    [view addSubview:label];
-//    
+//
 //    return view;
 //}
 
@@ -101,11 +101,38 @@
         default:
             break;
     }
-      self.navigationController = [[OSMainNavigationController alloc] initWithRootViewController:vcToPresent];
+    //Checks if user is logged in before presenting account page
+    if (vcToPresent == self.accountViewController && ![OSLoginManager sharedInstance].user) {
+        [[OSLoginManager sharedInstance]presentLoginPage:self
+                                        successfullLogin:^{
+                                            [self switchContentVCToVC:vcToPresent];
+                                        }
+                                            canceldLogin:^{
+                                                [self presentFailedLoginAlert];
+                                            }];
+    }
+    else{
+        [self switchContentVCToVC:vcToPresent];
+    }
+    
+    
+}
 
+-(void)switchContentVCToVC:(UIViewController*)viewController{
+    self.navigationController = [[OSMainNavigationController alloc] initWithRootViewController:viewController];
+    
     self.frostedViewController.contentViewController = self.navigationController;
     
     [self.frostedViewController hideMenuViewController];
+}
+
+-(void)presentFailedLoginAlert{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Failed to login"
+                                                 message:@"You must login to view your account page, ASSHOLE."
+                                                delegate:nil
+                                       cancelButtonTitle:@"OK"
+                                       otherButtonTitles:nil];
+    [av show];
 }
 
 #pragma mark -
@@ -138,7 +165,7 @@
     
     NSArray *titles = @[@"Account", @"Search", @"Explore"];
     cell.textLabel.text = titles[indexPath.row];
-
+    
     
     return cell;
 }

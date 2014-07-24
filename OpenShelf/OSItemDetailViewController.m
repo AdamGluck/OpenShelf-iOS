@@ -10,6 +10,7 @@
 #import "OSNetworking.h"
 #import "UIView+Utilities.h"
 #import "UITextView+Utilities.h"
+#import "OSLoginManager.h"
 
 
 @interface OSItemDetailViewController()
@@ -27,7 +28,8 @@
     self.imageViews = [NSMutableArray arrayWithCapacity:[self.item.imageUrls count]];
     [self.imageScroller setScrollViewContents:self.item.imageUrls];
     [self.imageScroller setExclusiveTouch:YES];
-
+    
+    [self.deliverButton addTarget:self action:@selector(deliverButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -59,6 +61,20 @@
     CGFloat height = 0;
     height = self.contentView.frame.size.height + self.imageScroller.frame.size.height + self.navigationController.navigationBar.frame.size.height;
     [self.mainScrollView setContentSize:CGSizeMake(self.mainScrollView.frame.size.width, height)];
+}
+
+#pragma mark - Button Handling
+
+-(void)deliverButtonPressed{
+    OSUser *user =  [OSLoginManager sharedInstance].user;
+    if (user) {
+        [[OSLoginManager sharedInstance] presentLoginPage:self successfullLogin:^{
+            NSLog(@"USER LOGGED IN%@", [OSLoginManager sharedInstance].user);
+        } canceldLogin:^{
+             NSLog(@"User failed to log in");
+        }];
+    }
+   
 }
 
 

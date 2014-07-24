@@ -19,10 +19,16 @@
         id value = info[property];
         // look for the underscore form "firstName" -> "first_name"
         if (value == nil) {
-            value = info[[property underscoreToCamelCase]];
+            NSString *camelCaseProperty = [property underscoreToCamelCase];
+            value = info[camelCaseProperty];
         }
+        if (value == nil) {
+            NSLog(@"No value in dictionary for key %@", property);
+        }
+        else{
         [object setValue:value
                   forKey:property];
+        }
     }
     
     return object;
