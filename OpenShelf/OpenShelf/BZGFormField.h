@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class OSFormField;
+@class BZGFormField;
 
 typedef NS_ENUM(NSInteger, BZGLeftIndicatorState) {
     BZGLeftIndicatorStateInactive,
@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger, BZGFormFieldState) {
 
 @protocol BZGFormFieldDelegate;
 
-typedef BOOL (^BZGTextValidationBlock)(OSFormField *field, NSString *text);
+typedef BOOL (^BZGTextValidationBlock)(BZGFormField *field, NSString *text);
 
-@interface OSFormField : UIView <UITextFieldDelegate, UIAlertViewDelegate>
+@interface BZGFormField : UIView <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) id <BZGFormFieldDelegate> delegate;
 @property (strong, nonatomic) UITextField *textField;

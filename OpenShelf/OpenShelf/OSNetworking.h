@@ -12,7 +12,7 @@
 + (id)sharedInstance;
 
 
-- (void)loginWithUsername:(NSString *)username
+- (void)loginWithEmail:(NSString *)email
                  password:(NSString *)password
                   success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                   failure:(void (^)(void))failureCompletion;

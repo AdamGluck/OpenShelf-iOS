@@ -14,7 +14,7 @@
 - (void)commonInit{
     self.textField.placeholder = @"Password";
     self.textField.secureTextEntry = YES;
-    [self setTextValidationBlock:^BOOL(OSFormField *field, NSString *text) {
+    [self setTextValidationBlock:^BOOL(BZGFormField *field, NSString *text) {
         if (text.length == 0 || [text isEqualToString:@""]) {
             field.alertView.title = @"Must fill in this field";
             return NO;

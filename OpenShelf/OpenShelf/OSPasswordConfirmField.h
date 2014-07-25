@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 OpenShelf. All rights reserved.
 //
 
-#import "OSFormField.h"
+#import "BZGFormField.h"
 #import "OSPasswordField.h"
 
-@interface OSPasswordConfirmField : OSFormField
+@interface OSPasswordConfirmField : BZGFormField
 @property (weak, nonatomic) OSPasswordField *passwordField;
 @end

@@ -34,4 +34,10 @@
     }
     [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, h)];
 }
+
+-(void)addMultipleSubviews:(NSArray *)views{
+    for (UIView *view in views) {
+        [self addSubview:view];
+    }
+}
 @end

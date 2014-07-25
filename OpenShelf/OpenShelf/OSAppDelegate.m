@@ -7,7 +7,7 @@
 //
 
 #import "OSAppDelegate.h"
-
+#import "BZGFormField.h"
 
 @implementation OSAppDelegate
 
@@ -18,6 +18,10 @@
     [navigationBarAppearance setTintColor:[UIColor whiteColor]];
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
     [navigationBarAppearance setTitleTextAttributes:textAttributes];
+    
+    BZGFormField *formFieldAppearance = [BZGFormField appearance];
+    [formFieldAppearance setBackgroundColor:[UIColor colorWithRed:0.925 green:0.941 blue:0.945 alpha:0.7]];
+    
 
     return YES;
 

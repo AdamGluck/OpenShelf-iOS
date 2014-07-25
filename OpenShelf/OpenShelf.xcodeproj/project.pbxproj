@@ -32,7 +32,7 @@
 		E46B99AC198075CD00DEDD0B /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46B99AA198075CD00DEDD0B /* BlurView.m */; };
 		E46B99B019807B0D00DEDD0B /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46B99AF19807B0D00DEDD0B /* GPUImage.framework */; };
 		E47F07691980A6E4009D6609 /* demoVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E46B99B619807BDA00DEDD0B /* demoVideo.mp4 */; };
-		E47F076E1981B286009D6609 /* OSFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = E47F076D1981B286009D6609 /* OSFormField.m */; };
+		E47F076E1981B286009D6609 /* BZGFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = E47F076D1981B286009D6609 /* BZGFormField.m */; };
 		E47F07711981B3E3009D6609 /* OSSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47F07701981B3E3009D6609 /* OSSignupViewController.m */; };
 		E47F07741981B48A009D6609 /* OSEmailFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = E47F07731981B48A009D6609 /* OSEmailFormField.m */; };
 		E47F07771981B602009D6609 /* OSPasswordField.m in Sources */ = {isa = PBXBuildFile; fileRef = E47F07761981B602009D6609 /* OSPasswordField.m */; };
@@ -115,8 +115,8 @@
 		E46B99AA198075CD00DEDD0B /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurView.m; sourceTree = "<group>"; };
 		E46B99AF19807B0D00DEDD0B /* GPUImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GPUImage.framework; sourceTree = "<group>"; };
 		E46B99B619807BDA00DEDD0B /* demoVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demoVideo.mp4; sourceTree = "<group>"; };
-		E47F076C1981B286009D6609 /* OSFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSFormField.h; sourceTree = "<group>"; };
-		E47F076D1981B286009D6609 /* OSFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSFormField.m; sourceTree = "<group>"; };
+		E47F076C1981B286009D6609 /* BZGFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BZGFormField.h; sourceTree = "<group>"; };
+		E47F076D1981B286009D6609 /* BZGFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BZGFormField.m; sourceTree = "<group>"; };
 		E47F076F1981B3E3009D6609 /* OSSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSSignupViewController.h; path = OpenShelf/OSSignupViewController.h; sourceTree = "<group>"; };
 		E47F07701981B3E3009D6609 /* OSSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSSignupViewController.m; path = OpenShelf/OSSignupViewController.m; sourceTree = "<group>"; };
 		E47F07721981B48A009D6609 /* OSEmailFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEmailFormField.h; sourceTree = "<group>"; };
@@ -354,8 +354,8 @@
 		E47F076B1981B277009D6609 /* OSFormField */ = {
 			isa = PBXGroup;
 			children = (
-				E47F076C1981B286009D6609 /* OSFormField.h */,
-				E47F076D1981B286009D6609 /* OSFormField.m */,
+				E47F076C1981B286009D6609 /* BZGFormField.h */,
+				E47F076D1981B286009D6609 /* BZGFormField.m */,
 				E47F07721981B48A009D6609 /* OSEmailFormField.h */,
 				E47F07731981B48A009D6609 /* OSEmailFormField.m */,
 				E47F07751981B602009D6609 /* OSPasswordField.h */,
@@ -681,7 +681,7 @@
 				E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */,
 				E46B99A61980671D00DEDD0B /* OSLoginManager.m in Sources */,
 				E4621B83195A0A58003761AD /* main.m in Sources */,
-				E47F076E1981B286009D6609 /* OSFormField.m in Sources */,
+				E47F076E1981B286009D6609 /* BZGFormField.m in Sources */,
 				E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */,
 				E4CB5096196397D800E73A9C /* OSContentViewController.m in Sources */,
 				E40AFAE5196CE6D6002E9744 /* GKLParallaxPicturesViewController.m in Sources */,

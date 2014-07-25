@@ -1,5 +1,5 @@
 
-#import "OSFormField.h"
+#import "BZGFormField.h"
 
 #define UIColorFromRGB(rgbValue) \
 [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -17,7 +17,7 @@ alpha:1.0]
 
 static NSString * const kValidationAnimationKey = @"validationAnimationKey";
 
-@implementation OSFormField {
+@implementation BZGFormField {
     CGFloat _currentLeftIndicatorAspectRatio;
     BZGLeftIndicatorState _currentLeftIndicatorState;
     BZGFormFieldState _currentFormFieldState;
@@ -80,11 +80,12 @@ static NSString * const kValidationAnimationKey = @"validationAnimationKey";
 
 - (void)setup
 {
+    
     self.leftIndicatorInactiveWidth = DEFAULT_LEFT_INDICATOR_INACTIVE_ASPECT_RATIO;
     self.leftIndicatorActiveWidth = DEFAULT_LEFT_INDICATOR_ACTIVE_ASPECT_RATIO;
     self.leftIndicatorRightPadding = DEFAULT_LEFT_TEXT_PADDING;
     _currentLeftIndicatorAspectRatio = self.leftIndicatorInactiveWidth;
-    _textValidationBlock = ^BOOL(OSFormField *field, NSString *text) { return YES; };
+    _textValidationBlock = ^BOOL(BZGFormField *field, NSString *text) { return YES; };
 
     self.leftIndicatorInvalidColor = DEFAULT_INVALID_COLOR;
     self.leftIndicatorValidColor = DEFAULT_VALID_COLOR;

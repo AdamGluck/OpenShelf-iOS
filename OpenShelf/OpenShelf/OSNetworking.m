@@ -7,7 +7,7 @@
 
 #import "OSNetworking.h"
 
-static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api/";
+static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
 
 @implementation OSNetworking
 
@@ -92,15 +92,15 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api/";
 /* 
  Attempts to log the user in on the server.
  */
-- (void)loginWithUsername:(NSString *)username
+- (void)loginWithEmail:(NSString *)email
                  password:(NSString *)password
                   success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                   failure:(void (^)(void))failureCompletion{
 
-    NSString *loginParameterString = @"NEED TO CREATE PARAMETER STRING";
+    NSString *loginParameterString = [NSString stringWithFormat:@"%@api/users/account/email=%@&password=%@", kBaseURL, email, password];
     NSURL *url = [NSURL URLWithString: loginParameterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
+    request.HTTPMethod = @"GET";
     [self askServerForRequest:request success:successCompletion failure:failureCompletion];
 }
 
@@ -122,7 +122,7 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api/";
 - (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                             failureBlock:(void (^)(void))failureCompletion{
     
-    NSString *parameterString = [NSString stringWithFormat:@"%@items/all", kBaseURL];
+    NSString *parameterString = [NSString stringWithFormat:@"%@api/items/all", kBaseURL];
     NSURL *url = [NSURL URLWithString: parameterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [self askServerForRequest:request

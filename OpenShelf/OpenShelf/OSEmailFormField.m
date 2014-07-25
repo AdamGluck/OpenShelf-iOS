@@ -11,8 +11,8 @@
 @implementation OSEmailFormField
 - (void)commonInit{
     
-    self.textField.placeholder = @"Email";
-    [self setTextValidationBlock:^BOOL(OSFormField *field, NSString *text) {
+    self.textField.placeholder = @"EMAIL";
+    [self setTextValidationBlock:^BOOL(BZGFormField *field, NSString *text) {
         if (text.length == 0 || [text isEqualToString:@""]) {
             field.alertView.title = @"Must fill in this field";
             return NO;
@@ -30,7 +30,7 @@
     }];
     
     //Add online validation
-    [self setAsyncTextValidationBlock:^BOOL(OSFormField *field, NSString *text) {
+    [self setAsyncTextValidationBlock:^BOOL(BZGFormField *field, NSString *text) {
         NSError *error;
         NSString *str = [NSString stringWithFormat:@"https://api.mailgun.net/v2/address/validate?address=%@&api_key=%@", [text stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding], @"pubkey-5ogiflzbnjrljiky49qxsiozqef5jxp7"];
         NSData *responseData = [NSData dataWithContentsOfURL:[NSURL URLWithString:str]];

@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 OpenShelf. All rights reserved.
 //
 
-#import "OSFormField.h"
+#import "BZGFormField.h"
 
-@interface OSEmailFormField : OSFormField
+@interface OSEmailFormField : BZGFormField
 
 @end

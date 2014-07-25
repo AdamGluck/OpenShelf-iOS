@@ -11,4 +11,5 @@
 @interface UIView (Utilities)
 -(void)resizeToFitSubviews;
 -(void)resizeHeightToFitSubviewsHeight;
+-(void)addMultipleSubviews:(NSArray *)views;
 @end
