@@ -42,7 +42,7 @@
         self.item.description = [self.item.description stringByAppendingString:@"TESTING SCROLL"];
     }
     
-    self.item.cost = [NSNumber numberWithDouble:10.0];
+//    self.item.cost = [NSNumber numberWithDouble:10.0];
     
     //End testing
     
@@ -50,9 +50,9 @@
    
     [self.contentView resizeHeightToFitSubviewsHeight];
     
-    self.titleLabel.text = self.item.title;
+    self.titleLabel.text = [self.item.title uppercaseString];
     [self.titleLabel sizeToFit];
-    self.priceLabel.text = [self.item.cost stringValue];
+    self.priceLabel.text = self.item.formattedPrice;
     [self.priceLabel sizeToFit];
 }
 

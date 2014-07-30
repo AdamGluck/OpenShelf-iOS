@@ -7,20 +7,15 @@
 //
 
 #import "OSAppDelegate.h"
-#import "BZGFormField.h"
+#import "OSTheme.h"
 
 @implementation OSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
-    [navigationBarAppearance setBarTintColor:[UIColor colorWithRed:46.0/255.0 green:138.0/255.0 blue:95.0/255.0 alpha:1.0]];
-    [navigationBarAppearance setTintColor:[UIColor whiteColor]];
-    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];
-    [navigationBarAppearance setTitleTextAttributes:textAttributes];
+    [OSTheme applyTheme]; 
+
     
-    BZGFormField *formFieldAppearance = [BZGFormField appearance];
-    [formFieldAppearance setBackgroundColor:[UIColor colorWithRed:0.925 green:0.941 blue:0.945 alpha:0.7]];
     
 
     return YES;

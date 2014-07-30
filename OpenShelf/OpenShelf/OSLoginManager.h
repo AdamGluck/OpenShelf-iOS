@@ -21,5 +21,5 @@
 -(void)presentLoginPage:(UIViewController *)vc
        successfullLogin:(void (^)(void))successCompletion
            canceldLogin:(void (^)(void))canceledCompletion;
-
+-(void)logout;
 @end

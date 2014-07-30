@@ -7,7 +7,7 @@
 
 #import "OSAccountViewController.h"
 #import "OSMainNavigationController.h"
-
+#import "OSLoginManager.h"
 @interface OSAccountViewController ()
 
 @end
@@ -17,7 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.title = @"My Account";
+	self.title = @"MY ACCOUNT";
     
 }
 
@@ -96,6 +96,10 @@
  // Pass the selected object to the new view controller.
  }
  */
+- (IBAction)logoutButtonPressed:(id)sender {
+    [[OSLoginManager sharedInstance]logout];
+    
+}
 
 
 @end

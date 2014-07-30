@@ -21,4 +21,6 @@
 @property (strong, nonatomic) NSArray *images;
 @property (strong, nonatomic) NSString *primaryImage;
 
+-(NSString *)formattedPrice;
+
 @end

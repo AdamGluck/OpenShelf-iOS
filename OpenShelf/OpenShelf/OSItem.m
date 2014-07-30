@@ -9,5 +9,8 @@
 #import "OSItem.h"
 
 @implementation OSItem
+-(NSString *)formattedPrice{
+    return [NSString stringWithFormat:@"$%@",[self.cost stringValue]];
+}
 
 @end

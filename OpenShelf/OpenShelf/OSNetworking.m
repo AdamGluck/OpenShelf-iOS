@@ -70,20 +70,25 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
 /* 
  Attempts to create a new account in the database.
  */
-- (void)createAccountWithUsername:(NSString *)username
-                            email:(NSString *)email
+- (void)createAccountWithEmail:(NSString *)email
                          password:(NSString *)password
              passwordConfirmation:(NSString *)passwordConfirmation
                           success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                           failure:(void (^)(void))failureCompletion{
 
-    NSString *accountParameterString = @"NEED TO CREATE PARAMETER STRING";
+    NSString *urlString = [NSString stringWithFormat:@"%@api/users/account/", kBaseURL];
     
-    NSURL *url = [NSURL URLWithString:accountParameterString];
+    NSURL *url = [NSURL URLWithString:urlString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    //request.HTTPBody = [playerDataParametersString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dictionary = @{ @"email" : email, @"password" : password };
+    
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:0
+                                                         error:nil];
+    request.HTTPBody = JSONData;
+
     request.HTTPMethod = @"POST";
     [self askServerForRequest:request success:successCompletion failure:failureCompletion];
     

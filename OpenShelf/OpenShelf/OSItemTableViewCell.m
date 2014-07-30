@@ -46,10 +46,14 @@
        
         self.titleLabel.text = item.title;
         self.priceLabel.text = [item.cost stringValue];
-
+//        [self.expandableView.detailButton addTarget:self action:@selector(selectThisRow) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
+
+//-(void)selectThisRow{
+//    [self setSelected:YES];
+//}
 
 
 -(void)awakeFromNib{

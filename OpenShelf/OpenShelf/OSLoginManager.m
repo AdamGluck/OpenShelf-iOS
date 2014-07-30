@@ -35,6 +35,11 @@
     [vc presentViewController:loginVC animated:YES completion:nil];
 
 }
+
+-(void)logout{
+    //TODO: other logout stuff
+    self.user = nil;
+}
     
 
 

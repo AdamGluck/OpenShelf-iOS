@@ -44,6 +44,11 @@
 		E48BCCF11966393B006D42BE /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCE91966393B006D42BE /* UIImage+REFrostedViewController.m */; };
 		E48BCCF21966393B006D42BE /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCEB1966393B006D42BE /* UIView+REFrostedViewController.m */; };
 		E48BCCF31966393B006D42BE /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48BCCED1966393B006D42BE /* UIViewController+REFrostedViewController.m */; };
+		E4C2950A1988409500F62CB0 /* OSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C295091988409500F62CB0 /* OSTheme.m */; };
+		E4C2950B1988449B00F62CB0 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4C2950719883D4300F62CB0 /* Montserrat-Regular.ttf */; };
+		E4C2950C1988449E00F62CB0 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4C2950619883C7B00F62CB0 /* Montserrat-Bold.ttf */; };
+		E4C295101988584600F62CB0 /* OSExpandableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2950F1988584600F62CB0 /* OSExpandableView.m */; };
+		E4C295131988701700F62CB0 /* OSCornerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C295121988701700F62CB0 /* OSCornerButton.m */; };
 		E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C470195B952D0051E76C /* OSAccountViewController.m */; };
 		E4CB507D19632DE500E73A9C /* OSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB507C19632DE500E73A9C /* OSMainViewController.m */; };
 		E4CB508D19636F7600E73A9C /* OSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB508C19636F7600E73A9C /* OSNetworking.m */; };
@@ -139,6 +144,14 @@
 		E48BCCEB1966393B006D42BE /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+REFrostedViewController.m"; path = "OpenShelf/REFrostedViewController/REFrostedViewController/UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
 		E48BCCEC1966393B006D42BE /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+REFrostedViewController.h"; path = "OpenShelf/REFrostedViewController/REFrostedViewController/UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
 		E48BCCED1966393B006D42BE /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+REFrostedViewController.m"; path = "OpenShelf/REFrostedViewController/REFrostedViewController/UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
+		E4C2950619883C7B00F62CB0 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		E4C2950719883D4300F62CB0 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		E4C295081988409500F62CB0 /* OSTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTheme.h; sourceTree = "<group>"; };
+		E4C295091988409500F62CB0 /* OSTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTheme.m; sourceTree = "<group>"; };
+		E4C2950E1988584600F62CB0 /* OSExpandableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSExpandableView.h; sourceTree = "<group>"; };
+		E4C2950F1988584600F62CB0 /* OSExpandableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSExpandableView.m; sourceTree = "<group>"; };
+		E4C295111988701700F62CB0 /* OSCornerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCornerButton.h; sourceTree = "<group>"; };
+		E4C295121988701700F62CB0 /* OSCornerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCornerButton.m; sourceTree = "<group>"; };
 		E4CB507B19632DE500E73A9C /* OSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSMainViewController.h; path = OpenShelf/OSMainViewController.h; sourceTree = "<group>"; };
 		E4CB507C19632DE500E73A9C /* OSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSMainViewController.m; path = OpenShelf/OSMainViewController.m; sourceTree = "<group>"; };
 		E4CB508B19636F7600E73A9C /* OSNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNetworking.h; sourceTree = "<group>"; };
@@ -253,6 +266,7 @@
 				E47F076A1981B268009D6609 /* Components */,
 				E46B99AD1980796A00DEDD0B /* Assets */,
 				E4CB50A3196497AE00E73A9C /* Delegate */,
+				E4621BA5195A0DAD003761AD /* Storyboards */,
 				E4CB50A21964976600E73A9C /* Model */,
 				E4CB50A5196497DB00E73A9C /* Views */,
 				E4CB507919632DB200E73A9C /* Controllers */,
@@ -270,6 +284,8 @@
 				E4621B7F195A0A58003761AD /* InfoPlist.strings */,
 				E4621B82195A0A58003761AD /* main.m */,
 				E4621B84195A0A58003761AD /* OpenShelf-Prefix.pch */,
+				E4C295081988409500F62CB0 /* OSTheme.h */,
+				E4C295091988409500F62CB0 /* OSTheme.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -329,6 +345,7 @@
 		E46B99AD1980796A00DEDD0B /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				E4C2950519883C7200F62CB0 /* Fonts */,
 				E4621B88195A0A58003761AD /* Images.xcassets */,
 				E46B99B319807BA600DEDD0B /* Videos */,
 			);
@@ -385,15 +402,37 @@
 			name = REFrostedViewController;
 			sourceTree = "<group>";
 		};
+		E4C2950519883C7200F62CB0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E4C2950719883D4300F62CB0 /* Montserrat-Regular.ttf */,
+				E4C2950619883C7B00F62CB0 /* Montserrat-Bold.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		E4C2950D1988582E00F62CB0 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB50C31964C86200E73A9C /* OSItemTableViewCell.h */,
+				E4CB50C41964C86200E73A9C /* OSItemTableViewCell.m */,
+				E4C2950E1988584600F62CB0 /* OSExpandableView.h */,
+				E4C2950F1988584600F62CB0 /* OSExpandableView.m */,
+				E4C295111988701700F62CB0 /* OSCornerButton.h */,
+				E4C295121988701700F62CB0 /* OSCornerButton.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		E4CB507919632DB200E73A9C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				E4CB508419635E2600E73A9C /* AccountViewController */,
 				E4CB508719635E5400E73A9C /* ExploreViewController */,
 				E40AFAD7196C9020002E9744 /* ItemDetailViewController */,
+				E46B99A0198066E100DEDD0B /* LoginAndAccountCreation */,
 				E4CB508619635E4800E73A9C /* MainNavigationController */,
 				E4CB507A19632DBD00E73A9C /* MainViewController */,
-				E46B99A0198066E100DEDD0B /* LoginAndAccountCreation */,
 				E46B9976197D801B00DEDD0B /* OSParallaxTableViewController.h */,
 				E46B9977197D801B00DEDD0B /* OSParallaxTableViewController.m */,
 				E4CB508819635E6200E73A9C /* SearchViewController */,
@@ -553,9 +592,7 @@
 		E4CB50A5196497DB00E73A9C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E4621BA5195A0DAD003761AD /* Storyboards */,
-				E4CB50C31964C86200E73A9C /* OSItemTableViewCell.h */,
-				E4CB50C41964C86200E73A9C /* OSItemTableViewCell.m */,
+				E4C2950D1988582E00F62CB0 /* TableViewCell */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -638,7 +675,9 @@
 			files = (
 				E47F07691980A6E4009D6609 /* demoVideo.mp4 in Resources */,
 				E4621B81195A0A58003761AD /* InfoPlist.strings in Resources */,
+				E4C2950C1988449E00F62CB0 /* Montserrat-Bold.ttf in Resources */,
 				E4621B89195A0A58003761AD /* Images.xcassets in Resources */,
+				E4C2950B1988449B00F62CB0 /* Montserrat-Regular.ttf in Resources */,
 				E4621BA7195A0DEA003761AD /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,11 +697,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C295101988584600F62CB0 /* OSExpandableView.m in Sources */,
 				E4CB50B91964BE7400E73A9C /* OSDeliveryLocation.m in Sources */,
 				E47F07711981B3E3009D6609 /* OSSignupViewController.m in Sources */,
 				E47F077D1981C179009D6609 /* OSVideoBackgroundViewController.m in Sources */,
 				E4621B87195A0A58003761AD /* OSAppDelegate.m in Sources */,
 				E4D8C479195B952D0051E76C /* OSMainNavigationController.m in Sources */,
+				E4C295131988701700F62CB0 /* OSCornerButton.m in Sources */,
+				E4C2950A1988409500F62CB0 /* OSTheme.m in Sources */,
 				E4CB50B01964A20C00E73A9C /* NSObject+MappableObject.m in Sources */,
 				E4CB50BC1964BE9600E73A9C /* OSCreditCard.m in Sources */,
 				E4D8C478195B952D0051E76C /* OSSideMenuViewController.m in Sources */,

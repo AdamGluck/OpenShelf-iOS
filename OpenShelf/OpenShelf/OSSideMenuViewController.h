@@ -21,4 +21,6 @@
 @property (strong, nonatomic) OSExploreViewController *exploreViewController;
 @property (strong, nonatomic) OSSearchViewController *searchViewController;
 @property (strong, nonatomic) OSMainNavigationController *navigationController;
+
+-(void)switchContentVCToVC:(UIViewController*)viewController;
 @end

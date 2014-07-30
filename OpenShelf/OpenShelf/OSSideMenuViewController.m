@@ -94,10 +94,6 @@
         case 1:
             vcToPresent = self.searchViewController;
             break;
-        case 2:
-            vcToPresent = self.exploreViewController;
-            break;
-            
         default:
             break;
     }
@@ -150,7 +146,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,7 +159,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    NSArray *titles = @[@"Account", @"Search", @"Explore"];
+    NSArray *titles = @[@"Account", @"Search"];
     cell.textLabel.text = titles[indexPath.row];
     
     
@@ -188,13 +184,13 @@
     return _accountViewController;
 }
 
-- (OSExploreViewController *)exploreViewController {
-    if (!_exploreViewController) {
-        _exploreViewController =  [[UIStoryboard storyboardWithName:@"iPhone" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"exploreController"];
-    }
-    
-    return _exploreViewController;
-}
+//- (OSExploreViewController *)exploreViewController {
+//    if (!_exploreViewController) {
+//        _exploreViewController =  [[UIStoryboard storyboardWithName:@"iPhone" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"exploreController"];
+//    }
+//    
+//    return _exploreViewController;
+//}
 
 - (OSMainNavigationController *)navigationController {
     if (!_navigationController) {

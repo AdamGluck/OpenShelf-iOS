@@ -10,5 +10,8 @@
 #import "OSPasswordField.h"
 
 @interface OSPasswordConfirmField : BZGFormField
-@property (weak, nonatomic) OSPasswordField *passwordField;
+//@property (weak, nonatomic) OSPasswordField *passwordField;
+
+-(void)setPasswordField:(OSPasswordField *)passwordField;
+
 @end

@@ -50,7 +50,32 @@ static CGFloat columnPadding = 15.0f;
     
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // register for keyboard notifications
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    // unregister for keyboard notifications while not visible.
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+}
 - (void) setupLoginView
 {
     self.loginView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -76,16 +101,7 @@ static CGFloat columnPadding = 15.0f;
     [self.loginView addSubview:self.passwordField];
     [self.loginView addSubview:loginButton];
     
-//    [self.loginView addSubview:emailView];
-//    [self.loginView addSubview:passwordView];
-//    [self.blurViews addObjectsFromArray:@[emailView, passwordView]];
-    
-//    NSArray *viewsToPosition = @[self.emailField, self.passwordField, loginButton];
-//    [self positionViewColumnStartingAtPoint:self.view.center viewArray:viewsToPosition];
-    
 }
-
-
 
 -(void)setupCreateAccountView{
     self.createAccountView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -95,30 +111,23 @@ static CGFloat columnPadding = 15.0f;
     [self.view addSubview:self.createAccountView];
     
     //Create account button setup
-    self.createAccountButton = [self buttonWithTitle:@"Create Account" action:@selector(attemptLogin)];
+    self.createAccountButton = [self buttonWithTitle:@"Create Account" action:@selector(attemptAccountCreation)];
     
     //Email Form
     self.signupEmailField = [[OSEmailFormField alloc]initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight)];
-//    BlurView *signUpEmailView = [self blurredViewWithImageNamed:@"user" formField:self.signupEmailField];
     
     //Password Form
     self.signupPasswordField = [[OSPasswordField alloc]initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight)];
-    self.passwordField.textField.placeholder = @"PASSWORD";
-//    BlurView *signupPasswordView = [self blurredViewWithImageNamed:@"lock" formField:self.signupPasswordField];
-    
     
     //Confirm Password Form
     self.signupPasswordConfirmField = [[OSPasswordConfirmField alloc]initWithFrame:CGRectMake(0, 0, fieldWidth, fieldHeight)];
-    self.signupPasswordConfirmField.textField.placeholder = @"CONFIRM PASSWORD";
-//    BlurView *signUpPasswordConfirmView = [self blurredViewWithImageNamed:@"user" formField:self.signupPasswordConfirmField];
+    [self.signupPasswordConfirmField setPasswordField: self.signupPasswordField];
     
     NSArray *views = @[self.signupEmailField, self.signupPasswordField, self.signupPasswordConfirmField, self.createAccountButton];
     
     [self.createAccountView addMultipleSubviews:views];
     
     [self positionViewColumnStartingAtPoint:CGPointMake(self.view.center.x, self.view.center.y - buttonHeight)  viewArray:views];
-    
-//    [self.blurViews addObjectsFromArray: views];
 }
 
 
@@ -136,7 +145,9 @@ static CGFloat columnPadding = 15.0f;
 }
 
 -(void)setupToggleViewButton{
-    self.toggleViewButton = [self buttonWithTitle:@"Need an Account?" action:@selector(toggleViewButtonPressed)];
+    self.toggleViewButton = [self buttonWithTitle:@"Don't have an Account? Sign up!" action:@selector(toggleViewButtonPressed)];
+    self.toggleViewButton.titleLabel.adjustsFontSizeToFitWidth = TRUE;
+
     CGFloat padding = self.toggleViewButton.frame.size.height;
     CGPoint toggleViewButtonPosition = CGPointMake(self.view.center.x, CGRectGetMaxY(self.view.frame) - padding);
     self.toggleViewButton.center = toggleViewButtonPosition;
@@ -145,6 +156,8 @@ static CGFloat columnPadding = 15.0f;
 }
 
 -(void)toggleViewButtonPressed{
+    NSString *newTitle = ([self.toggleViewButton.titleLabel.text isEqualToString:@"Don't have an Account? Sign up!"]) ? @"Already have an account? Sign in!" : @"Don't have an Account? Sign up!";
+    [self.toggleViewButton setTitle:newTitle forState:UIControlStateNormal];
     UIView *hiddenView = (self.createAccountView.hidden) ? self.createAccountView : self.loginView;
     UIView *visibleView = (self.createAccountView.hidden) ? self.loginView : self.createAccountView;
     [UIView animateWithDuration:0.5
@@ -231,7 +244,9 @@ static CGFloat columnPadding = 15.0f;
             NSLog(@"Login successful");
             OSUser *user = [OSUser createFromInfo:dictionary];
             [OSLoginManager sharedInstance].user = user;
-            self.successfulLoginCompletion();
+            [self dismissViewControllerAnimated:YES completion:^{
+                self.successfulLoginCompletion();
+            }];
         } failure:^{
             NSLog(@"Failed to login");
         }];
@@ -241,10 +256,56 @@ static CGFloat columnPadding = 15.0f;
     }
 }
 
+-(void)attemptAccountCreation{
+    if (self.signupEmailField.formFieldState == BZGFormFieldStateValid && self.signupPasswordField.formFieldState == BZGFormFieldStateValid && self.signupPasswordConfirmField.formFieldState == BZGFormFieldStateValid) {
+        [[OSNetworking sharedInstance]createAccountWithEmail:self.signupEmailField.textField.text
+                                                    password:self.signupPasswordField.textField.text
+                                        passwordConfirmation:self.signupPasswordConfirmField.textField.text success:^(NSDictionary *dictionary, NSError *error) {
+             NSLog(@"Account Created Successfully");
+        } failure:^{
+             NSLog(@"Account Creation Failed");
+        }];
+    }
+    else{
+         NSLog(@"Form is invalid");
+    }
+}
+
 -(void)dismissButtonPressed{
     [self dismissViewControllerAnimated:YES completion:^{
         self.cancelledLoginCompletion();
     }];
+}
+
+- (void)keyboardWillHide:(NSNotification *)aNotification
+{
+    // the keyboard is hiding reset the table's height
+    NSTimeInterval animationDuration =
+    [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect frame = self.view.frame;
+    frame.origin.y += 180;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame = frame;
+    [UIView commitAnimations];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField{
+    
+}
+
+
+- (void)keyboardWillShow:(NSNotification *)aNotification
+{
+    // the keyboard is showing so resize the table's height
+    NSTimeInterval animationDuration =
+    [[[aNotification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGRect frame = self.view.frame;
+    frame.origin.y -= 180;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    self.view.frame = frame;
+    [UIView commitAnimations];
 }
 
 @end

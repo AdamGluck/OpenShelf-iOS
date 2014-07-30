@@ -7,7 +7,7 @@
 #import "OSVideoBackgroundViewController.h"
 
 
-@interface OSLoginViewController : OSVideoBackgroundViewController<UIGestureRecognizerDelegate>
+@interface OSLoginViewController : OSVideoBackgroundViewController<UIGestureRecognizerDelegate, UITextFieldDelegate>
 
 
 @property (copy, nonatomic) void (^successfulLoginCompletion)(void);

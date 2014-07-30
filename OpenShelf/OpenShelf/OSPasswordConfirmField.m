@@ -11,7 +11,7 @@
 @implementation OSPasswordConfirmField
 
 - (void)commonInit{
-    self.textField.placeholder = @"Confirm Password";
+    self.textField.placeholder = @"CONFIRM PASSWORD";
     self.textField.secureTextEntry = YES;
 }
 
@@ -30,14 +30,14 @@
 }
 
 -(void)setPasswordField:(OSPasswordField *)passwordField{
-    self.passwordField = passwordField;
-    __unsafe_unretained typeof(self) weakSelf = self;
+//    self.passwordField = passwordField;
+//    __unsafe_unretained typeof(self) weakSelf = self;
     [self setTextValidationBlock:^BOOL(BZGFormField *field, NSString *text) {
         if (text.length == 0 || [text isEqualToString:@""]) {
             field.alertView.title = @"Must fill in this field";
             return NO;
         }
-        else if (![text isEqualToString:weakSelf.textField.text]) {
+        else if (![text isEqualToString:passwordField.textField.text]) {
             field.alertView.title = @"Password confirmion doesn't match password";
             return NO;
         } else {

@@ -24,8 +24,7 @@
 - (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                                              failureBlock:(void (^)(void))failureCompletion;
 
-- (void)createAccountWithUsername:(NSString *)username
-                            email:(NSString *)email
+- (void)createAccountWithEmail:(NSString *)email
                          password:(NSString *)password
              passwordConfirmation:(NSString *)passwordConfirmation
                           success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
