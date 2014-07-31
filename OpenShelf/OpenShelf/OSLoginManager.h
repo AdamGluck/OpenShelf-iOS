@@ -22,4 +22,5 @@
        successfullLogin:(void (^)(void))successCompletion
            canceldLogin:(void (^)(void))canceledCompletion;
 -(void)logout;
+-(void)attemptAutoLogin;
 @end

@@ -13,7 +13,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -44,6 +43,9 @@
         [view addSubview:label];
         view;
     });
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoggedOut) name:kUserLoggedOutNotification object:nil];
 }
 
 #pragma mark -
@@ -115,11 +117,16 @@
 }
 
 -(void)switchContentVCToVC:(UIViewController*)viewController{
-    self.navigationController = [[OSMainNavigationController alloc] initWithRootViewController:viewController];
+
+    [self.navigationController setViewControllers:@[viewController]];
     
     self.frostedViewController.contentViewController = self.navigationController;
     
     [self.frostedViewController hideMenuViewController];
+}
+
+-(void)userLoggedOut{
+    [self switchContentVCToVC:self.searchViewController];
 }
 
 -(void)presentFailedLoginAlert{
@@ -176,7 +183,7 @@
     return _searchViewController;
 }
 
-- (OSAccountViewController *)accountViewController {
+- (OSAccountTableViewController *)accountViewController {
     if (!_accountViewController) {
         _accountViewController = [[UIStoryboard storyboardWithName:@"iPhone" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"accountController"];
     }
@@ -194,7 +201,7 @@
 
 - (OSMainNavigationController *)navigationController {
     if (!_navigationController) {
-        _navigationController = [[OSMainNavigationController alloc] initWithRootViewController:self.searchViewController];
+        _navigationController = [[OSMainNavigationController alloc] initWithRootViewController:self.accountViewController];
     }
     
     return _navigationController;

@@ -9,6 +9,7 @@
 #import "OSPasswordField.h"
 #import "OSPasswordConfirmField.h"
 #import "UIView+Utilities.h"
+#import "SSKeychain.h"
 
 static CGFloat buttonWidth = 250.0f;
 static CGFloat buttonHeight = 50.0f;
@@ -16,6 +17,8 @@ static CGFloat imageWidth = 50.f;
 static CGFloat fieldWidth = 250.0f;
 static CGFloat fieldHeight = 50.0f;
 static CGFloat columnPadding = 15.0f;
+static CGFloat switchWidth = 100.0f;
+static CGFloat switchHeight = 50.0f;
 
 @interface OSLoginViewController ()
 @property (strong, nonatomic) UIButton *dismissButton;
@@ -29,6 +32,8 @@ static CGFloat columnPadding = 15.0f;
 @property (strong, nonatomic) OSEmailFormField *signupEmailField;
 @property (strong, nonatomic) OSPasswordField *signupPasswordField;
 @property (strong, nonatomic) OSPasswordConfirmField *signupPasswordConfirmField;
+@property (strong, nonatomic) UISwitch *autoLoginSwitch;
+@property (strong, nonatomic) UIImageView *logoImageView;
 
 @end
 
@@ -100,7 +105,7 @@ static CGFloat columnPadding = 15.0f;
     [self.loginView addSubview:self.emailField];
     [self.loginView addSubview:self.passwordField];
     [self.loginView addSubview:loginButton];
-    
+    [self setupAutoLoginSwitch];
 }
 
 -(void)setupCreateAccountView{
@@ -128,6 +133,7 @@ static CGFloat columnPadding = 15.0f;
     [self.createAccountView addMultipleSubviews:views];
     
     [self positionViewColumnStartingAtPoint:CGPointMake(self.view.center.x, self.view.center.y - buttonHeight)  viewArray:views];
+    
 }
 
 
@@ -138,10 +144,10 @@ static CGFloat columnPadding = 15.0f;
 }
 
 -(void)setupLogo{
-    UIImageView * loginImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 110)];
-    [loginImage setImage:[UIImage imageNamed:@"logoclubby.png"]];
-    loginImage.center = CGPointMake(self.view.frame.size.width/2, 120);
-    [self.view addSubview:loginImage];
+    self.logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 110, 110)];
+    [self.logoImageView setImage:[UIImage imageNamed:@"logoclubby.png"]];
+    self.logoImageView.center = CGPointMake(self.view.frame.size.width/2, 120);
+    [self.view addSubview:self.logoImageView];
 }
 
 -(void)setupToggleViewButton{
@@ -153,6 +159,20 @@ static CGFloat columnPadding = 15.0f;
     self.toggleViewButton.center = toggleViewButtonPosition;
     [self.view addSubview:self.toggleViewButton];
     
+}
+
+-(void)setupAutoLoginSwitch{
+    self.autoLoginSwitch = [[UISwitch alloc]init];
+    self.autoLoginSwitch.center = CGPointMake(self.emailField.frame.origin.x + self.autoLoginSwitch.frame.size.width / 2, self.emailField.frame.origin.y - self.autoLoginSwitch.frame.size.height /2 - columnPadding);
+    [self.autoLoginSwitch setOn:FALSE];
+    [self.loginView addSubview:self.autoLoginSwitch];
+    
+    UILabel *switchLabel = [[UILabel alloc]init];
+    [switchLabel setTextColor:[UIColor whiteColor]];
+    [switchLabel setText:@"REMEMBER ME"];
+    [switchLabel sizeToFit];
+    switchLabel.center = CGPointMake(self.view.center.x, self.autoLoginSwitch.center.y);
+    [self.loginView addSubview:switchLabel];
 }
 
 -(void)toggleViewButtonPressed{
@@ -237,6 +257,8 @@ static CGFloat columnPadding = 15.0f;
     
 }
 
+
+
 -(void)attemptLogin{
     if (self.passwordField.formFieldState == BZGFormFieldStateValid) {
 
@@ -244,6 +266,19 @@ static CGFloat columnPadding = 15.0f;
             NSLog(@"Login successful");
             OSUser *user = [OSUser createFromInfo:dictionary];
             [OSLoginManager sharedInstance].user = user;
+            
+            //Save auto-login preferences to user defaults
+            if ([self.autoLoginSwitch isOn]) {
+                NSString *email = self.emailField.textField.text;
+                NSString *password = self.passwordField.textField.text;
+                NSError *error;
+                [SSKeychain setPassword:password forService:[[NSBundle mainBundle] bundleIdentifier] account:email error:&error];
+                if (error) {
+                    NSLog(@"%@", [error localizedDescription]);
+                }
+            }
+
+            
             [self dismissViewControllerAnimated:YES completion:^{
                 self.successfulLoginCompletion();
             }];

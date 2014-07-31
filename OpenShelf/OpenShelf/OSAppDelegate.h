@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "OSAccountViewController.h"
+#import "OSAccountTableViewController.h"
 #import "OSSideMenuViewController.h"
 #import "OSMainNavigationController.h"
 @interface OSAppDelegate : UIResponder <UIApplicationDelegate, REFrostedViewControllerDelegate>

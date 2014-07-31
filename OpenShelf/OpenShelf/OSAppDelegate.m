@@ -8,13 +8,14 @@
 
 #import "OSAppDelegate.h"
 #import "OSTheme.h"
+#import "OSLoginManager.h"
 
 @implementation OSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[OSLoginManager sharedInstance] attemptAutoLogin];
     [OSTheme applyTheme]; 
-
     
     
 
@@ -48,5 +49,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

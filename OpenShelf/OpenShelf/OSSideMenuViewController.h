@@ -6,10 +6,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "OSAccountViewController.h"
+#import "OSAccountTableViewController.h"
 #import "OSSearchViewController.h"
 #import "OSExploreViewController.h"
-#import "OSAccountViewController.h"
+#import "OSAccountTableViewController.h"
 #import "OSExploreViewController.h"
 #import "OSMainNavigationController.h"
 #import "OSSearchViewController.h"
@@ -17,7 +17,7 @@
 
 @interface OSSideMenuViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) OSAccountViewController *accountViewController;
+@property (strong, nonatomic) OSAccountTableViewController *accountViewController;
 @property (strong, nonatomic) OSExploreViewController *exploreViewController;
 @property (strong, nonatomic) OSSearchViewController *searchViewController;
 @property (strong, nonatomic) OSMainNavigationController *navigationController;

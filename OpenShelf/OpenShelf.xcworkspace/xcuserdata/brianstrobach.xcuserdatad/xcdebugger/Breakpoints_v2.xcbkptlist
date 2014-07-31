@@ -20,12 +20,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OSLoginViewController.m"
-            timestampString = "428356114.65867"
+            timestampString = "428451447.762333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "-setupCreateAccountView"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "-attemptLogin"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenShelf/OSNetworking.m"
+            timestampString = "428452996.375977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "-loginWithEmail:password:success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpenShelf/OSExpandableView.m"
-            timestampString = "428380783.596963"
+            filePath = "OpenShelf/OSSideMenuViewController.m"
+            timestampString = "428455098.935707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "-didMoveToSuperview"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "-userLoggedOut"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpenShelf/OSExpandableView.m"
-            timestampString = "428381687.309019"
+            filePath = "OpenShelf/OSSideMenuViewController.m"
+            timestampString = "428455098.491142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-didMoveToSuperview"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-switchContentVCToVC:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

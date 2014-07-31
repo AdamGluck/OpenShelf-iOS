@@ -49,7 +49,20 @@
 		E4C2950C1988449E00F62CB0 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4C2950619883C7B00F62CB0 /* Montserrat-Bold.ttf */; };
 		E4C295101988584600F62CB0 /* OSExpandableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2950F1988584600F62CB0 /* OSExpandableView.m */; };
 		E4C295131988701700F62CB0 /* OSCornerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C295121988701700F62CB0 /* OSCornerButton.m */; };
-		E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C470195B952D0051E76C /* OSAccountViewController.m */; };
+		E4C2951D198960E000F62CB0 /* libCardIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2951C198960E000F62CB0 /* libCardIO.a */; };
+		E4C2951F198960F600F62CB0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2951E198960F600F62CB0 /* AudioToolbox.framework */; };
+		E4C29521198960FF00F62CB0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C29520198960FF00F62CB0 /* AVFoundation.framework */; };
+		E4C295231989610A00F62CB0 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C295221989610A00F62CB0 /* CoreMedia.framework */; };
+		E4C295251989611300F62CB0 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C295241989611300F62CB0 /* CoreVideo.framework */; };
+		E4C295271989611D00F62CB0 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C295261989611D00F62CB0 /* MobileCoreServices.framework */; };
+		E4C295291989612800F62CB0 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C295281989612800F62CB0 /* OpenGLES.framework */; };
+		E4C2952B1989613100F62CB0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2952A1989613100F62CB0 /* QuartzCore.framework */; };
+		E4C2952D1989613B00F62CB0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2952C1989613B00F62CB0 /* Security.framework */; };
+		E4C295301989632700F62CB0 /* OSPaymentMethodTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2952F1989632700F62CB0 /* OSPaymentMethodTableViewController.m */; };
+		E4C29534198979DB00F62CB0 /* OSAccountInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C29533198979DB00F62CB0 /* OSAccountInfoTableViewController.m */; };
+		E4C295381989801300F62CB0 /* OSDeliveryLocationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C295371989801300F62CB0 /* OSDeliveryLocationsTableViewController.m */; };
+		E4C2954019899AB000F62CB0 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C2953F19899AB000F62CB0 /* SSKeychain.m */; };
+		E4CB507819632C2C00E73A9C /* OSAccountTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C470195B952D0051E76C /* OSAccountTableViewController.m */; };
 		E4CB507D19632DE500E73A9C /* OSMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB507C19632DE500E73A9C /* OSMainViewController.m */; };
 		E4CB508D19636F7600E73A9C /* OSNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB508C19636F7600E73A9C /* OSNetworking.m */; };
 		E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB5090196397B300E73A9C /* OSContentTableViewController.m */; };
@@ -152,6 +165,30 @@
 		E4C2950F1988584600F62CB0 /* OSExpandableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSExpandableView.m; sourceTree = "<group>"; };
 		E4C295111988701700F62CB0 /* OSCornerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCornerButton.h; sourceTree = "<group>"; };
 		E4C295121988701700F62CB0 /* OSCornerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCornerButton.m; sourceTree = "<group>"; };
+		E4C29516198960E000F62CB0 /* CardIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIO.h; sourceTree = "<group>"; };
+		E4C29517198960E000F62CB0 /* CardIOCreditCardInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOCreditCardInfo.h; sourceTree = "<group>"; };
+		E4C29518198960E000F62CB0 /* CardIOPaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewController.h; sourceTree = "<group>"; };
+		E4C29519198960E000F62CB0 /* CardIOPaymentViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOPaymentViewControllerDelegate.h; sourceTree = "<group>"; };
+		E4C2951A198960E000F62CB0 /* CardIOView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOView.h; sourceTree = "<group>"; };
+		E4C2951B198960E000F62CB0 /* CardIOViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardIOViewDelegate.h; sourceTree = "<group>"; };
+		E4C2951C198960E000F62CB0 /* libCardIO.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCardIO.a; sourceTree = "<group>"; };
+		E4C2951E198960F600F62CB0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E4C29520198960FF00F62CB0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4C295221989610A00F62CB0 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E4C295241989611300F62CB0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E4C295261989611D00F62CB0 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E4C295281989612800F62CB0 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E4C2952A1989613100F62CB0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E4C2952C1989613B00F62CB0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E4C2952E1989632700F62CB0 /* OSPaymentMethodTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSPaymentMethodTableViewController.h; sourceTree = "<group>"; };
+		E4C2952F1989632700F62CB0 /* OSPaymentMethodTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSPaymentMethodTableViewController.m; sourceTree = "<group>"; };
+		E4C29532198979DB00F62CB0 /* OSAccountInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSAccountInfoTableViewController.h; sourceTree = "<group>"; };
+		E4C29533198979DB00F62CB0 /* OSAccountInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAccountInfoTableViewController.m; sourceTree = "<group>"; };
+		E4C295361989801300F62CB0 /* OSDeliveryLocationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDeliveryLocationsTableViewController.h; sourceTree = "<group>"; };
+		E4C295371989801300F62CB0 /* OSDeliveryLocationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDeliveryLocationsTableViewController.m; sourceTree = "<group>"; };
+		E4C2953E19899AB000F62CB0 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		E4C2953F19899AB000F62CB0 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		E4C295411989B17B00F62CB0 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E4CB507B19632DE500E73A9C /* OSMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSMainViewController.h; path = OpenShelf/OSMainViewController.h; sourceTree = "<group>"; };
 		E4CB507C19632DE500E73A9C /* OSMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSMainViewController.m; path = OpenShelf/OSMainViewController.m; sourceTree = "<group>"; };
 		E4CB508B19636F7600E73A9C /* OSNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNetworking.h; sourceTree = "<group>"; };
@@ -182,8 +219,8 @@
 		E4CB50C11964C0CD00E73A9C /* OSSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSubscription.m; sourceTree = "<group>"; };
 		E4CB50C31964C86200E73A9C /* OSItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSItemTableViewCell.h; sourceTree = "<group>"; };
 		E4CB50C41964C86200E73A9C /* OSItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSItemTableViewCell.m; sourceTree = "<group>"; };
-		E4D8C46F195B952D0051E76C /* OSAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSAccountViewController.h; path = OpenShelf/OSAccountViewController.h; sourceTree = "<group>"; };
-		E4D8C470195B952D0051E76C /* OSAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSAccountViewController.m; path = OpenShelf/OSAccountViewController.m; sourceTree = "<group>"; };
+		E4D8C46F195B952D0051E76C /* OSAccountTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSAccountTableViewController.h; path = OpenShelf/OSAccountTableViewController.h; sourceTree = "<group>"; };
+		E4D8C470195B952D0051E76C /* OSAccountTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSAccountTableViewController.m; path = OpenShelf/OSAccountTableViewController.m; sourceTree = "<group>"; };
 		E4D8C471195B952D0051E76C /* OSSideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSSideMenuViewController.h; path = OpenShelf/OSSideMenuViewController.h; sourceTree = "<group>"; };
 		E4D8C472195B952D0051E76C /* OSSideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSSideMenuViewController.m; path = OpenShelf/OSSideMenuViewController.m; sourceTree = "<group>"; };
 		E4D8C473195B952D0051E76C /* OSMainNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSMainNavigationController.h; path = OpenShelf/OSMainNavigationController.h; sourceTree = "<group>"; };
@@ -197,8 +234,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C2952D1989613B00F62CB0 /* Security.framework in Frameworks */,
+				E4C2952B1989613100F62CB0 /* QuartzCore.framework in Frameworks */,
+				E4C295291989612800F62CB0 /* OpenGLES.framework in Frameworks */,
+				E4C295271989611D00F62CB0 /* MobileCoreServices.framework in Frameworks */,
+				E4C295251989611300F62CB0 /* CoreVideo.framework in Frameworks */,
+				E4C295231989610A00F62CB0 /* CoreMedia.framework in Frameworks */,
+				E4C29521198960FF00F62CB0 /* AVFoundation.framework in Frameworks */,
+				E4C2951F198960F600F62CB0 /* AudioToolbox.framework in Frameworks */,
 				E4621B79195A0A58003761AD /* CoreGraphics.framework in Frameworks */,
 				E46B99B019807B0D00DEDD0B /* GPUImage.framework in Frameworks */,
+				E4C2951D198960E000F62CB0 /* libCardIO.a in Frameworks */,
 				E4621B7B195A0A58003761AD /* UIKit.framework in Frameworks */,
 				E4621B77195A0A58003761AD /* Foundation.framework in Frameworks */,
 			);
@@ -251,6 +297,14 @@
 		E4621B75195A0A58003761AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4C2952C1989613B00F62CB0 /* Security.framework */,
+				E4C2952A1989613100F62CB0 /* QuartzCore.framework */,
+				E4C295281989612800F62CB0 /* OpenGLES.framework */,
+				E4C295261989611D00F62CB0 /* MobileCoreServices.framework */,
+				E4C295241989611300F62CB0 /* CoreVideo.framework */,
+				E4C295221989610A00F62CB0 /* CoreMedia.framework */,
+				E4C29520198960FF00F62CB0 /* AVFoundation.framework */,
+				E4C2951E198960F600F62CB0 /* AudioToolbox.framework */,
 				E46B99AF19807B0D00DEDD0B /* GPUImage.framework */,
 				E4621B76195A0A58003761AD /* Foundation.framework */,
 				E4621B78195A0A58003761AD /* CoreGraphics.framework */,
@@ -286,6 +340,7 @@
 				E4621B84195A0A58003761AD /* OpenShelf-Prefix.pch */,
 				E4C295081988409500F62CB0 /* OSTheme.h */,
 				E4C295091988409500F62CB0 /* OSTheme.m */,
+				E4C295411989B17B00F62CB0 /* Constants.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -328,6 +383,7 @@
 		E46B99A0198066E100DEDD0B /* LoginAndAccountCreation */ = {
 			isa = PBXGroup;
 			children = (
+				E4C2953A19899A2B00F62CB0 /* Keychain Wrapper */,
 				E46B99A7198075CD00DEDD0B /* OSLoginViewController.h */,
 				E46B99A8198075CD00DEDD0B /* OSLoginViewController.m */,
 				E46B99A9198075CD00DEDD0B /* BlurView.h */,
@@ -424,6 +480,57 @@
 			name = TableViewCell;
 			sourceTree = "<group>";
 		};
+		E4C295141989607000F62CB0 /* PaymentMethodController */ = {
+			isa = PBXGroup;
+			children = (
+				E4C29515198960E000F62CB0 /* CardIO */,
+				E4C2952E1989632700F62CB0 /* OSPaymentMethodTableViewController.h */,
+				E4C2952F1989632700F62CB0 /* OSPaymentMethodTableViewController.m */,
+			);
+			name = PaymentMethodController;
+			sourceTree = "<group>";
+		};
+		E4C29515198960E000F62CB0 /* CardIO */ = {
+			isa = PBXGroup;
+			children = (
+				E4C29516198960E000F62CB0 /* CardIO.h */,
+				E4C29517198960E000F62CB0 /* CardIOCreditCardInfo.h */,
+				E4C29518198960E000F62CB0 /* CardIOPaymentViewController.h */,
+				E4C29519198960E000F62CB0 /* CardIOPaymentViewControllerDelegate.h */,
+				E4C2951A198960E000F62CB0 /* CardIOView.h */,
+				E4C2951B198960E000F62CB0 /* CardIOViewDelegate.h */,
+				E4C2951C198960E000F62CB0 /* libCardIO.a */,
+			);
+			path = CardIO;
+			sourceTree = "<group>";
+		};
+		E4C29531198979BE00F62CB0 /* AccountInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				E4C29532198979DB00F62CB0 /* OSAccountInfoTableViewController.h */,
+				E4C29533198979DB00F62CB0 /* OSAccountInfoTableViewController.m */,
+			);
+			name = AccountInfoController;
+			sourceTree = "<group>";
+		};
+		E4C2953519897FA700F62CB0 /* DeliveryLocationsController */ = {
+			isa = PBXGroup;
+			children = (
+				E4C295361989801300F62CB0 /* OSDeliveryLocationsTableViewController.h */,
+				E4C295371989801300F62CB0 /* OSDeliveryLocationsTableViewController.m */,
+			);
+			name = DeliveryLocationsController;
+			sourceTree = "<group>";
+		};
+		E4C2953A19899A2B00F62CB0 /* Keychain Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				E4C2953E19899AB000F62CB0 /* SSKeychain.h */,
+				E4C2953F19899AB000F62CB0 /* SSKeychain.m */,
+			);
+			name = "Keychain Wrapper";
+			sourceTree = "<group>";
+		};
 		E4CB507919632DB200E73A9C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,8 +561,11 @@
 		E4CB508419635E2600E73A9C /* AccountViewController */ = {
 			isa = PBXGroup;
 			children = (
-				E4D8C46F195B952D0051E76C /* OSAccountViewController.h */,
-				E4D8C470195B952D0051E76C /* OSAccountViewController.m */,
+				E4C2953519897FA700F62CB0 /* DeliveryLocationsController */,
+				E4C29531198979BE00F62CB0 /* AccountInfoController */,
+				E4C295141989607000F62CB0 /* PaymentMethodController */,
+				E4D8C46F195B952D0051E76C /* OSAccountTableViewController.h */,
+				E4D8C470195B952D0051E76C /* OSAccountTableViewController.m */,
 			);
 			name = AccountViewController;
 			sourceTree = "<group>";
@@ -711,6 +821,7 @@
 				E4CB50B31964B66A00E73A9C /* OSUser.m in Sources */,
 				E4CB50AD19649EE500E73A9C /* OSItem.m in Sources */,
 				E46B99AB198075CD00DEDD0B /* OSLoginViewController.m in Sources */,
+				E4C2954019899AB000F62CB0 /* SSKeychain.m in Sources */,
 				E46B9978197D801B00DEDD0B /* OSParallaxTableViewController.m in Sources */,
 				E4CB50AA19649A0300E73A9C /* NSString+StyleConversions.m in Sources */,
 				E48BCCF31966393B006D42BE /* UIViewController+REFrostedViewController.m in Sources */,
@@ -719,12 +830,14 @@
 				E47F07741981B48A009D6609 /* OSEmailFormField.m in Sources */,
 				E48BCCEE1966393B006D42BE /* RECommonFunctions.m in Sources */,
 				E4CB50C51964C86200E73A9C /* OSItemTableViewCell.m in Sources */,
+				E4C295381989801300F62CB0 /* OSDeliveryLocationsTableViewController.m in Sources */,
 				E48BCCEF1966393B006D42BE /* REFrostedContainerViewController.m in Sources */,
 				E4CB5091196397B300E73A9C /* OSContentTableViewController.m in Sources */,
 				E46B99A61980671D00DEDD0B /* OSLoginManager.m in Sources */,
 				E4621B83195A0A58003761AD /* main.m in Sources */,
 				E47F076E1981B286009D6609 /* BZGFormField.m in Sources */,
-				E4CB507819632C2C00E73A9C /* OSAccountViewController.m in Sources */,
+				E4C29534198979DB00F62CB0 /* OSAccountInfoTableViewController.m in Sources */,
+				E4CB507819632C2C00E73A9C /* OSAccountTableViewController.m in Sources */,
 				E4CB5096196397D800E73A9C /* OSContentViewController.m in Sources */,
 				E40AFAE5196CE6D6002E9744 /* GKLParallaxPicturesViewController.m in Sources */,
 				E4CB5097196397D800E73A9C /* OSSearchViewController.m in Sources */,
@@ -741,6 +854,7 @@
 				E46B99AC198075CD00DEDD0B /* BlurView.m in Sources */,
 				E4CB50C21964C0CD00E73A9C /* OSSubscription.m in Sources */,
 				E4D8C47A195B952D0051E76C /* OSExploreViewController.m in Sources */,
+				E4C295301989632700F62CB0 /* OSPaymentMethodTableViewController.m in Sources */,
 				E47F077A1981B73C009D6609 /* OSPasswordConfirmField.m in Sources */,
 				E46B9986197EFE0D00DEDD0B /* OSPagingImageScrollView.m in Sources */,
 			);
@@ -867,6 +981,10 @@
 				GCC_PREFIX_HEADER = "OpenShelf/OpenShelf-Prefix.pch";
 				INFOPLIST_FILE = "OpenShelf/OpenShelf-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CardIO",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -885,6 +1003,10 @@
 				GCC_PREFIX_HEADER = "OpenShelf/OpenShelf-Prefix.pch";
 				INFOPLIST_FILE = "OpenShelf/OpenShelf-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CardIO",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -45,6 +45,9 @@
         cell.itemImageView.frame = CGRectMake(0, -delta + deltaParallax , self.tableView.bounds.size.width, self.tableView.bounds.size.height);
     }
 }
+
+//Enables snapping
+
 //-(void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 //{
 //    if (decelerate)

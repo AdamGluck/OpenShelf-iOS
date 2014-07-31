@@ -15,20 +15,20 @@
 + (instancetype)createFromInfo:(NSDictionary *)info {
     NSObject *object = [self new];
     
-//    for (NSString *key in [info allKeys]) {
-//        id value = info[key];
-//        NSString *keyToCamelCase = [key underscoreToCamelCase];
-//        
-//        if ([object respondsToSelector:@selector(key)]) {
-//            [object setValue:value
-//                      forKey:key];
-//        }
-//        else if ([object.class instancesRespondToSelector:@selector(keyToCam)]) {
-//                [object setValue:value
-//                          forKey:keyToCamelCase];
-//            
-//        }
-//    }
+    //    for (NSString *key in [info allKeys]) {
+    //        id value = info[key];
+    //        NSString *keyToCamelCase = [key underscoreToCamelCase];
+    //
+    //        if ([object respondsToSelector:@selector(key)]) {
+    //            [object setValue:value
+    //                      forKey:key];
+    //        }
+    //        else if ([object.class instancesRespondToSelector:@selector(keyToCam)]) {
+    //                [object setValue:value
+    //                          forKey:keyToCamelCase];
+    //
+    //        }
+    //    }
     for (NSString *property in object.propertyList) {
         // look for the underscore in camelcase form first
         id value = info[property];
@@ -47,8 +47,19 @@
         
         // else if it does, set the property to the value
         else{
-        [object setValue:value
-                  forKey:property];
+            //Recursive call to handle collections
+//            if ([value isKindOfClass:[NSArray class]]) {
+//                NSMutableArray *array = [[NSMutableArray alloc]init];
+//                for (NSDictionary *objectDict in value) {
+//                    NSObject *newObject = [NSObject createFromInfo:objectDict];
+//                    [array addObject:newObject];
+//                }
+//                [object setValue:array forKey:property];
+//            }
+//            else{
+                [object setValue:value
+                          forKey:property];
+//            }
         }
     }
     
