@@ -6,8 +6,9 @@
 //
 
 #import "OSNetworking.h"
+#import "OSAddress.h"
 
-static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
+static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api";
 
 @implementation OSNetworking
 
@@ -76,7 +77,7 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
                           success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                           failure:(void (^)(void))failureCompletion{
 
-    NSString *urlString = [NSString stringWithFormat:@"%@api/users/account/", kBaseURL];
+    NSString *urlString = [NSString stringWithFormat:@"%@/users/account/", kBaseURL];
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -102,7 +103,7 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
                   success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                   failure:(void (^)(void))failureCompletion{
 
-    NSString *loginParameterString = [NSString stringWithFormat:@"%@api/users/account/email=%@&password=%@", kBaseURL, email, password];
+    NSString *loginParameterString = [NSString stringWithFormat:@"%@/users/account/email=%@&password=%@", kBaseURL, email, password];
     NSURL *url = [NSURL URLWithString: loginParameterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET";
@@ -127,7 +128,7 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
 - (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                             failureBlock:(void (^)(void))failureCompletion{
     
-    NSString *parameterString = [NSString stringWithFormat:@"%@api/items/all", kBaseURL];
+    NSString *parameterString = [NSString stringWithFormat:@"%@/items/all", kBaseURL];
     NSURL *url = [NSURL URLWithString: parameterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [self askServerForRequest:request
@@ -136,7 +137,27 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/";
     
 }
 
-
+- (void)addAddressToDatabase:(OSAddress *)address
+                       success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
+                       failure:(void (^)(void))failureCompletion{
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/address/add/", kBaseURL];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    NSDictionary *dictionary = [address toJSONObject];
+    
+    NSData *JSONData = [NSJSONSerialization dataWithJSONObject:dictionary
+                                                       options:0
+                                                         error:nil];
+    request.HTTPBody = JSONData;
+    
+    request.HTTPMethod = @"POST";
+    [self askServerForRequest:request success:successCompletion failure:failureCompletion];
+    
+}
 
 #pragma mark - Asynchronous image downloading
 

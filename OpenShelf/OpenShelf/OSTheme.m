@@ -26,7 +26,7 @@ static int kButtonFontSize = 20;
     [self applyThemeToNavigationBar];
     [self applyThemeToFormFields];
     [self applyThemeToButtons];
-    [self applyThemeToLabels];
+//    [self applyThemeToLabels];
 }
 
 + (void)applyThemeToTableCells

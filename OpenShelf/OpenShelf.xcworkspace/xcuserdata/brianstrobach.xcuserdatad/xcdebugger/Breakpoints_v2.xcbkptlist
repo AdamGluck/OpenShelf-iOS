@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OpenShelf/OSNetworking.m"
-            timestampString = "428452996.375977"
+            timestampString = "428544124.672138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-loginWithEmail:password:success:failure:"
             landmarkType = "5">
          </BreakpointContent>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpenShelf/OSSideMenuViewController.m"
-            timestampString = "428455098.935707"
+            filePath = "OpenShelf/OSLocationPicker.m"
+            timestampString = "428555380.248643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
-            landmarkName = "-userLoggedOut"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-locateUserButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +67,77 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OpenShelf/OSSideMenuViewController.m"
-            timestampString = "428455098.491142"
+            filePath = "OpenShelf/OSLocationPicker.m"
+            timestampString = "428555380.248643"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "-switchContentVCToVC:"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-handleSearchForSearchString:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenShelf/OSLocationPicker.m"
+            timestampString = "428555380.248643"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "-searchBar:textDidChange:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenShelf/OSLocationPicker.m"
+            timestampString = "428555375.849108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "-commonInit"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenShelf/OSLocationPicker.m"
+            timestampString = "428555407.108237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "-initWithCoder:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OpenShelf/OSLocationPicker.m"
+            timestampString = "428555408.176714"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "-initWithNibName:bundle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OSAddress.h"
+@interface OSDeliveryLocation : OSAddress
+@property (strong, nonatomic) NSNumber *userId;
+@property (strong, nonatomic) NSString *title;
 
-@interface OSDeliveryLocation : NSObject
+-(NSDictionary *)toJSONObject;
 
 @end

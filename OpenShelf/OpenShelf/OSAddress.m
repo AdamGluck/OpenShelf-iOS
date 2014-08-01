@@ -10,5 +10,8 @@
 
 @implementation OSAddress
 
+-(NSDictionary *)toJSONObject{
+    return @{@"address_data" : @{@"street_number": self.streetNumber, @"zip_code" : self.zip, @"state" : self.state, @"city" : self.city}};
+}
 
 @end

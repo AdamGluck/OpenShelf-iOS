@@ -7,18 +7,36 @@
 //
 
 #import "OSDeliveryLocationsTableViewController.h"
+#import "OSLocationPicker.h"
 
 @interface OSDeliveryLocationsTableViewController ()
-
+@property (strong, nonatomic) NSMutableArray *locations;
 @end
 
 @implementation OSDeliveryLocationsTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+- (void)commonInit{
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+	self.navigationItem.rightBarButtonItem = addButton;
+}
+
+-(id)initWithStyle:(UITableViewStyle)style{
+    if ((self = [super initWithStyle:style])) {
+        [self commonInit];
+    }
+    return self;
+}
+
+-(id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder*)coder{
+    if ((self = [super initWithCoder:coder])) {
+        [self commonInit];
     }
     return self;
 }
@@ -27,11 +45,10 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self downloadLocations];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,26 +57,35 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Button Handling
+
+-(void)addButtonPressed{
+    OSLocationPicker *locPicker = [self.storyboard instantiateViewControllerWithIdentifier:@"locationPickerController"];
+    [self presentViewController:locPicker animated:YES completion:nil];
+    
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.locations.count;
+}
+
+-(void)downloadLocations{
+    //TODO: networking code for downloading locations and refreshing table
 }
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     
     // Configure the cell...
     

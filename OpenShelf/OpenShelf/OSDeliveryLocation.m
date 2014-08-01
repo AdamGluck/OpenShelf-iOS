@@ -10,4 +10,12 @@
 
 @implementation OSDeliveryLocation
 
+
+-(NSDictionary *)toJSONObject{
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]initWithDictionary:[super toJSONObject]];
+    NSDictionary *deliveryLocationData = @{@"user_id": self.userId, @"title" : self.title};
+    [data setObject:deliveryLocationData forKey:@"delivery_location_data"];
+    return data;
+}
+
 @end
