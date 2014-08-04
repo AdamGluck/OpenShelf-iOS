@@ -109,6 +109,7 @@
         if ([response[@"status"] isEqualToString:@"OK"]) {
             [self succeedWithPlace:response[@"result"]];
         }
+        NSLog(@"%@", response);
         
         // Must have received a status of UNKNOWN_ERROR, ZERO_RESULTS, OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST.
         NSDictionary *userInfo = @{NSLocalizedDescriptionKey: response[@"status"]};

@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "OSAddress.h"
-@interface OSDeliveryLocation : OSAddress
-@property (strong, nonatomic) NSNumber *userId;
+@interface OSDeliveryLocation : NSObject
+@property (strong, nonatomic) NSNumber *id;
 @property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) OSAddress *address;
 
 -(NSDictionary *)toJSONObject;
+-(id)initWithAddress:(OSAddress *)address userID: (NSNumber *)userID  title:(NSString *)title;
 
 @end

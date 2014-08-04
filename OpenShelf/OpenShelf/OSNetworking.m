@@ -48,12 +48,13 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api";
 
                                          
                                          NSHTTPURLResponse *httpResp = (NSHTTPURLResponse*) response;
-                                         if (httpResp.statusCode == 200) {
+                        
+                                         if (httpResp.statusCode >= 200 && httpResp.statusCode <300) {
                                              dispatch_async(dispatch_get_main_queue(), ^{
                                                  successCompletion(dictionary,nil);
                                              });
                                          } else {
-                                             NSLog(@"Fail Not 200:");
+                                            NSLog(@"Failed with status: %ld", (long)httpResp.statusCode);
                                              NSLog(@"Errors:%@", dictionary);
                                              
                                              NSMutableString *errorMessage = [dictionary objectForKey:@"errors"];
@@ -141,7 +142,7 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api";
                        success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
                        failure:(void (^)(void))failureCompletion{
     
-    NSString *urlString = [NSString stringWithFormat:@"%@/address/add/", kBaseURL];
+    NSString *urlString = [NSString stringWithFormat:@"%@/addresses/add/", kBaseURL];
     
     NSURL *url = [NSURL URLWithString:urlString];
     

@@ -11,9 +11,10 @@
 @interface OSAddress : NSObject
 
 @property (strong, nonatomic) NSString *streetNumber;
-@property (strong, nonatomic) NSNumber *zip;
+@property (strong, nonatomic) NSNumber *zipCode;
 @property (strong, nonatomic) NSString *city;
 @property (strong, nonatomic) NSString *state;
+@property (strong, nonatomic) NSNumber *id;
 
 -(NSDictionary *)toJSONObject;
 

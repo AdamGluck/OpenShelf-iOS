@@ -15,20 +15,7 @@
 + (instancetype)createFromInfo:(NSDictionary *)info {
     NSObject *object = [self new];
     
-    //    for (NSString *key in [info allKeys]) {
-    //        id value = info[key];
-    //        NSString *keyToCamelCase = [key underscoreToCamelCase];
-    //
-    //        if ([object respondsToSelector:@selector(key)]) {
-    //            [object setValue:value
-    //                      forKey:key];
-    //        }
-    //        else if ([object.class instancesRespondToSelector:@selector(keyToCam)]) {
-    //                [object setValue:value
-    //                          forKey:keyToCamelCase];
-    //
-    //        }
-    //    }
+    
     for (NSString *property in object.propertyList) {
         // look for the underscore in camelcase form first
         id value = info[property];
@@ -47,21 +34,49 @@
         
         // else if it does, set the property to the value
         else{
-            //Recursive call to handle collections
-//            if ([value isKindOfClass:[NSArray class]]) {
-//                NSMutableArray *array = [[NSMutableArray alloc]init];
-//                for (NSDictionary *objectDict in value) {
-//                    NSObject *newObject = [NSObject createFromInfo:objectDict];
-//                    [array addObject:newObject];
-//                }
+            //Recursive calls to handle collections
+            if ([value isKindOfClass:[NSArray class]]) {
+                
+                NSMutableArray *array = [[NSMutableArray alloc]init];
+                for (NSObject *object in value) {
+                    if ([object isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary *objectDict = (NSDictionary *)object;
+                        NSString *className = [self convertPluralKeyToClassName:property];
+                        
+                        NSObject *childObject = [NSClassFromString(className) createFromInfo:objectDict];
+                        [array addObject:childObject];
+                        
+                    }
+                    else{
+                        [array addObject:object];
+                    }
+                    
+                }
 //                [object setValue:array forKey:property];
-//            }
-//            else{
-                [object setValue:value
-                          forKey:property];
-//            }
+                value = array;
+            }
+            else if ([value isKindOfClass:[NSDictionary class]]){
+                NSString *className = [self convertKeyToClassName:property];
+                value = [NSClassFromString(className) createFromInfo:value];
+            }
+            [object setValue:value forKey:property];
         }
     }
+    
+    //    for (NSString *key in [info allKeys]) {
+    //        id value = info[key];
+    //        NSString *keyToCamelCase = [key underscoreToCamelCase];
+    //
+    //        if ([object respondsToSelector:@selector(key)]) {
+    //            [object setValue:value
+    //                      forKey:key];
+    //        }
+    //        else if ([object.class instancesRespondToSelector:@selector(keyToCam)]) {
+    //                [object setValue:value
+    //                          forKey:keyToCamelCase];
+    //
+    //        }
+    //    }
     
     return object;
 }
@@ -88,5 +103,17 @@
     } while ([currentClass superclass]);
     
     return propertyList;
+}
+
+-(NSString *)convertPluralKeyToClassName:(NSString *)string{
+    NSString *className = [self convertKeyToClassName:string];
+    className = [className substringToIndex:[className length] - 1];
+    return className;
+}
+-(NSString *)convertKeyToClassName:(NSString *)string{
+    NSString *className = [string stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                          withString:[[string substringToIndex:1] capitalizedString]];
+    className = [NSString stringWithFormat:@"OS%@",className];
+    return className;
 }
 @end

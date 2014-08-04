@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OSAddress.h"
 
 @interface OSNetworking : NSObject
 
@@ -32,5 +33,9 @@
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 -(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView;
+
+- (void)addAddressToDatabase:(OSAddress *)address
+                     success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
+                     failure:(void (^)(void))failureCompletion;
 
 @end

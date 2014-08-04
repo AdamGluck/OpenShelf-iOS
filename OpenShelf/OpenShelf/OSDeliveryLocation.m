@@ -10,10 +10,20 @@
 
 @implementation OSDeliveryLocation
 
+-(id)initWithAddress:(OSAddress *)address userID:(NSNumber *)userID  title:(NSString *)title{
+    self = [super init];
+    if(self) {
+        self.address = address;
+        self.id = userID;
+        self.title = title;
+    }
+    return self;
+    
+}
 
 -(NSDictionary *)toJSONObject{
-    NSMutableDictionary *data = [[NSMutableDictionary alloc]initWithDictionary:[super toJSONObject]];
-    NSDictionary *deliveryLocationData = @{@"user_id": self.userId, @"title" : self.title};
+    NSMutableDictionary *data = [[NSMutableDictionary alloc]initWithDictionary:[self.address toJSONObject]];
+    NSDictionary *deliveryLocationData = @{@"user_id": self.id, @"title" : self.title};
     [data setObject:deliveryLocationData forKey:@"delivery_location_data"];
     return data;
 }

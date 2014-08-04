@@ -1,9 +1,10 @@
 
 #import "OSLocationPicker.h"
 #import "SPGooglePlacesAutocomplete.h"
+#import "OSAddress.h"
 
 @interface OSLocationPicker ()
-
+@property (strong, nonatomic) OSAddress *selectedAddress;
 
 
 @end
@@ -11,9 +12,8 @@
 @implementation OSLocationPicker
 
 - (void)commonInit{
-    //Demo api key
-//    self.searchQuery = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:@"AIzaSyAFsaDn7vyI8pS53zBgYRxu0HfRwYqH-9E"];
-            self.searchQuery = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:@""];
+    self.searchQuery = [[SPGooglePlacesAutocompleteQuery alloc] initWithApiKey:@"AIzaSyDzWbPUKgj_uFhwS1MPsu4BO_tRid4ghQg"];
+    
     self.shouldBeginEditing = YES;
     self.geocoder = [[CLGeocoder alloc] init];
 }
@@ -34,7 +34,8 @@
 
 
 - (void)viewDidLoad {
-    self.searchDisplayController.searchBar.placeholder = @"Search or Address";
+    self.searchDisplayController.searchBar.placeholder = @"SEARCH OR ENTER AN ADDRESS";
+
 }
 
 - (void)viewDidUnload {
@@ -44,6 +45,34 @@
 
 
 - (IBAction)locateUserButtonPressed:(id)sender {
+    [self selectUserLocation];
+}
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)saveButtonPressed:(id)sender {
+    if (self.selectedAddress) {
+        [self.delegate userDidSaveAddress:self.selectedAddress];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    else{
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                     message:@"You must first select an address."
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+        [av show];
+    }
+}
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    if ( !self.selectedAddress)
+    {
+        [self selectUserLocation];
+    }
+}
+
+-(void)selectUserLocation{
     MKCoordinateRegion region;
     MKCoordinateSpan span;
     
@@ -62,12 +91,9 @@
     [self.geocoder reverseGeocodeLocation:currentlocation completionHandler:^(NSArray *placemarks, NSError *error) {
         NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
         if (error == nil && [placemarks count] > 0) {
+            [self.mapView removeAnnotation:self.selectedPlaceAnnotation];
             self.placemark = [placemarks lastObject];
-            self.addressLabel.text = [NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@",
-                                 self.placemark.subThoroughfare, self.placemark.thoroughfare,
-                                 self.placemark.postalCode, self.placemark.locality,
-                                 self.placemark.administrativeArea,
-                                 self.placemark.country];
+            [self updateSelectedAddress];
         } else {
             NSLog(@"%@", error.debugDescription);
         }
@@ -75,7 +101,6 @@
     
     [self.mapView setRegion:region animated:YES];
 }
-
 #pragma mark -
 #pragma mark UITableViewDataSource
 
@@ -149,6 +174,8 @@
         } else if (placemark) {
             [self addPlacemarkAnnotationToMap:placemark addressString:addressString];
             [self recenterMapToPlacemark:placemark];
+            self.placemark = placemark;
+            [self updateSelectedAddress];
             [self dismissSearchControllerWhileStayingActive];
             [self.searchDisplayController.searchResultsTableView deselectRowAtIndexPath:indexPath animated:NO];
         }
@@ -201,7 +228,8 @@
         NSTimeInterval animationDuration = 0.3;
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:animationDuration];
-        self.searchDisplayController.searchResultsTableView.alpha = 0.75;
+        [self.searchDisplayController.searchResultsTableView setUserInteractionEnabled:YES];
+        self.searchDisplayController.searchResultsTableView.alpha = 1.0;
         [UIView commitAnimations];
         
         [self.searchDisplayController.searchBar setShowsCancelButton:YES animated:YES];
@@ -240,6 +268,21 @@
 
 - (void)annotationDetailButtonPressed:(id)sender {
     // Detail view controller application logic here.
+}
+
+-(void)updateSelectedAddress{
+    self.addressLabel.text = [NSString stringWithFormat:@"%@ %@\n%@, %@ %@",
+                              self.placemark.subThoroughfare,
+                              self.placemark.thoroughfare,
+                              self.placemark.locality,
+                              self.placemark.administrativeArea,
+                              self.placemark.postalCode];
+    self.selectedAddress = [[OSAddress alloc]init];
+    self.selectedAddress.zipCode = [NSNumber numberWithDouble:[self.placemark.postalCode doubleValue]];
+    self.selectedAddress.streetNumber = [NSString stringWithFormat:@"%@ %@",
+                                         self.placemark.subThoroughfare, self.placemark.thoroughfare];
+    self.selectedAddress.city = self.placemark.locality;
+    self.selectedAddress.state = self.placemark.administrativeArea;
 }
 
 @end

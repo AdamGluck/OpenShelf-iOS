@@ -144,6 +144,7 @@
             [self succeedWithPlaces:response[@"predictions"]];
             return;
         }
+        NSLog(@"%@", response);
         
         // Must have received a status of OVER_QUERY_LIMIT, REQUEST_DENIED or INVALID_REQUEST.
         NSDictionary *userInfo = @{NSLocalizedDescriptionKey: response[@"status"]};

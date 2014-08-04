@@ -8,7 +8,11 @@
 
 #import "OSDeliveryLocationsTableViewController.h"
 #import "OSLocationPicker.h"
+#import "OSNetworking.h"
+#import "OSDeliveryLocation.h"
+#import "OSLoginManager.h"
 
+static NSString *kCellIdentifier = @"deliveryLocationTableviewCell";
 @interface OSDeliveryLocationsTableViewController ()
 @property (strong, nonatomic) NSMutableArray *locations;
 @end
@@ -61,8 +65,20 @@
 
 -(void)addButtonPressed{
     OSLocationPicker *locPicker = [self.storyboard instantiateViewControllerWithIdentifier:@"locationPickerController"];
+    locPicker.delegate = self;
     [self presentViewController:locPicker animated:YES completion:nil];
-    
+//    [self.navigationController pushViewController:locPicker animated:YES];
+}
+
+#pragma mark - Location Picker Delegate Methods
+
+-(void)userDidSaveAddress:(OSAddress *)address{
+    OSDeliveryLocation *location = [[OSDeliveryLocation alloc]initWithAddress:address userID: [OSLoginManager sharedInstance].user.id title:@"TESTTITLE"];
+    [[OSNetworking sharedInstance] addAddressToDatabase:location success:^(NSDictionary *dictionary, NSError *error) {
+        NSLog(@"Successfully Save Address to DB");
+    } failure:^{
+         NSLog(@"Failed to save address to DB");
+    }];
 }
 #pragma mark - Table view data source
 
@@ -75,23 +91,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.locations.count;
+    return [OSLoginManager sharedInstance].user.deliveryLocations.count;
 }
 
 -(void)downloadLocations{
     //TODO: networking code for downloading locations and refreshing table
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     
+
     // Configure the cell...
-    
+    OSDeliveryLocation *location = [[OSLoginManager sharedInstance].user.deliveryLocations objectAtIndex:indexPath.row];
+    cell.textLabel.text = location.title;
+    cell.detailTextLabel.text = location.address.streetNumber;
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

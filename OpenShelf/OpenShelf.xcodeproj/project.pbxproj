@@ -333,16 +333,16 @@
 		E4621B7C195A0A58003761AD /* OpenShelf */ = {
 			isa = PBXGroup;
 			children = (
-				E47F076A1981B268009D6609 /* Components */,
 				E46B99AD1980796A00DEDD0B /* Assets */,
-				E4CB50A3196497AE00E73A9C /* Delegate */,
-				E4621BA5195A0DAD003761AD /* Storyboards */,
-				E4CB50A21964976600E73A9C /* Model */,
-				E4CB50A5196497DB00E73A9C /* Views */,
-				E4CB507919632DB200E73A9C /* Controllers */,
 				E4CB50A4196497C800E73A9C /* Categories */,
+				E47F076A1981B268009D6609 /* Components */,
+				E4CB507919632DB200E73A9C /* Controllers */,
+				E4CB50A3196497AE00E73A9C /* Delegate */,
+				E4CB50A21964976600E73A9C /* Model */,
 				E4CB508A19636F5300E73A9C /* Networking */,
+				E4621BA5195A0DAD003761AD /* Storyboards */,
 				E4621B7D195A0A58003761AD /* Supporting Files */,
+				E4CB50A5196497DB00E73A9C /* Views */,
 			);
 			path = OpenShelf;
 			sourceTree = "<group>";
