@@ -11,7 +11,7 @@
 #import "UIView+Utilities.h"
 #import "UITextView+Utilities.h"
 #import "OSLoginManager.h"
-
+#import "OSOrderTableViewController.h"
 
 @interface OSItemDetailViewController()
 
@@ -28,7 +28,7 @@
     self.imageViews = [NSMutableArray arrayWithCapacity:[self.item.images count]];
     [self.imageScroller setScrollViewContents:self.item.images];
     [self.imageScroller setExclusiveTouch:YES];
-    
+    self.view.backgroundColor= [UIColor whiteColor];
     [self.deliverButton addTarget:self action:@selector(deliverButtonPressed) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -53,7 +53,7 @@
     self.titleLabel.text = [self.item.title uppercaseString];
     [self.titleLabel sizeToFit];
     self.priceLabel.text = self.item.formattedPrice;
-    [self.priceLabel sizeToFit];
+    self.priceLabel.layer.zPosition = 100;
 }
 
 -(void)viewWillLayoutSubviews{
@@ -67,16 +67,24 @@
 
 -(void)deliverButtonPressed{
     OSUser *user =  [OSLoginManager sharedInstance].user;
-    if (user) {
+    if (!user) {
         [[OSLoginManager sharedInstance] presentLoginPage:self successfullLogin:^{
             NSLog(@"USER LOGGED IN%@", [OSLoginManager sharedInstance].user);
         } canceldLogin:^{
              NSLog(@"User failed to log in");
         }];
     }
+    else{
+        [self performSegueWithIdentifier:@"toOrderController" sender:nil];
+    }
    
 }
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"toOrderController"]) {
+        OSOrderTableViewController *vc = segue.destinationViewController;
+        vc.item = self.item;
+    }
+}
 
 @end

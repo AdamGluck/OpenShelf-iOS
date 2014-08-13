@@ -48,8 +48,8 @@ static CGFloat switchHeight = 50.0f;
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismissKeyboard)];
     tap.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:tap];
-//    [self.loginView addGestureRecognizer:tap];
-//    [self.createAccountView addGestureRecognizer:tap];
+    //    [self.loginView addGestureRecognizer:tap];
+    //    [self.createAccountView addGestureRecognizer:tap];
     tap.delegate = self;
     
     
@@ -96,8 +96,8 @@ static CGFloat switchHeight = 50.0f;
     //Password Form
     self.passwordField = [[BZGFormField alloc]initWithFrame:CGRectMake(self.emailField.frame.origin.x, self.emailField.frame.origin.y + fieldHeight + columnPadding, fieldWidth, fieldHeight)];
     self.passwordField.textField.placeholder = @"PASSWORD";
-//    BlurView *passwordView = [self blurredViewWithImageNamed:@"lock" formField:self.passwordField];
-
+    //    BlurView *passwordView = [self blurredViewWithImageNamed:@"lock" formField:self.passwordField];
+    
     //BUTTON
     UIButton * loginButton = [self buttonWithTitle:@"LOGIN" action:@selector(attemptLogin)];
     loginButton.center = CGPointMake(self.view.center.x, self.passwordField.center.y + buttonHeight + columnPadding);
@@ -153,7 +153,7 @@ static CGFloat switchHeight = 50.0f;
 -(void)setupToggleViewButton{
     self.toggleViewButton = [self buttonWithTitle:@"Don't have an Account? Sign up!" action:@selector(toggleViewButtonPressed)];
     self.toggleViewButton.titleLabel.adjustsFontSizeToFitWidth = TRUE;
-
+    
     CGFloat padding = self.toggleViewButton.frame.size.height;
     CGPoint toggleViewButtonPosition = CGPointMake(self.view.center.x, CGRectGetMaxY(self.view.frame) - padding);
     self.toggleViewButton.center = toggleViewButtonPosition;
@@ -253,7 +253,7 @@ static CGFloat switchHeight = 50.0f;
 -(void) dismissKeyboard
 {
     [self.view endEditing:YES];
-
+    
     
 }
 
@@ -261,30 +261,32 @@ static CGFloat switchHeight = 50.0f;
 
 -(void)attemptLogin{
     if (self.passwordField.formFieldState == BZGFormFieldStateValid) {
-
-        [[OSNetworking sharedInstance]loginWithEmail:self.emailField.textField.text password:self.passwordField.textField.text success:^(NSDictionary *dictionary, NSError *error) {
-            NSLog(@"Login successful");
-            OSUser *user = [OSUser createFromInfo:dictionary];
-            [OSLoginManager sharedInstance].user = user;
-            
-            //Save auto-login preferences to user defaults
-            if ([self.autoLoginSwitch isOn]) {
-                NSString *email = self.emailField.textField.text;
-                NSString *password = self.passwordField.textField.text;
-                NSError *error;
-                [SSKeychain setPassword:password forService:[[NSBundle mainBundle] bundleIdentifier] account:email error:&error];
-                if (error) {
-                    NSLog(@"%@", [error localizedDescription]);
-                }
-            }
-
-            
-            [self dismissViewControllerAnimated:YES completion:^{
-                self.successfulLoginCompletion();
-            }];
-        } failure:^{
-            NSLog(@"Failed to login");
-        }];
+        
+        [[OSNetworking sharedInstance]loginWithEmail:self.emailField.textField.text
+                                            password:self.passwordField.textField.text
+                                             success:^(NSDictionary *dictionary) {
+                                                 NSLog(@"Login successful");
+                                                 OSUser *user = [OSUser createFromInfo:dictionary];
+                                                 [OSLoginManager sharedInstance].user = user;
+                                                 
+                                                 //Save auto-login preferences to user defaults
+                                                 if ([self.autoLoginSwitch isOn]) {
+                                                     NSString *email = self.emailField.textField.text;
+                                                     NSString *password = self.passwordField.textField.text;
+                                                     NSError *error;
+                                                     [SSKeychain setPassword:password forService:[[NSBundle mainBundle] bundleIdentifier] account:email error:&error];
+                                                     if (error) {
+                                                         NSLog(@"%@", [error localizedDescription]);
+                                                     }
+                                                 }
+                                                 
+                                                 
+                                                 [self dismissViewControllerAnimated:YES completion:^{
+                                                     self.successfulLoginCompletion();
+                                                 }];
+                                             } failure:^(NSError *error){
+                                                 NSLog(@"Failed to login");
+                                             }];
     }
     else{
         NSLog(@"Form is invalid");
@@ -295,14 +297,14 @@ static CGFloat switchHeight = 50.0f;
     if (self.signupEmailField.formFieldState == BZGFormFieldStateValid && self.signupPasswordField.formFieldState == BZGFormFieldStateValid && self.signupPasswordConfirmField.formFieldState == BZGFormFieldStateValid) {
         [[OSNetworking sharedInstance]createAccountWithEmail:self.signupEmailField.textField.text
                                                     password:self.signupPasswordField.textField.text
-                                        passwordConfirmation:self.signupPasswordConfirmField.textField.text success:^(NSDictionary *dictionary, NSError *error) {
-             NSLog(@"Account Created Successfully");
-        } failure:^{
-             NSLog(@"Account Creation Failed");
-        }];
+                                        passwordConfirmation:self.signupPasswordConfirmField.textField.text success:^(NSDictionary *dictionary) {
+                                            NSLog(@"Account Created Successfully");
+                                        } failure:^(NSError *error){
+                                            NSLog(@"Account Creation Failed");
+                                        }];
     }
     else{
-         NSLog(@"Form is invalid");
+        NSLog(@"Form is invalid");
     }
 }
 

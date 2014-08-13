@@ -9,6 +9,7 @@
 #ifndef OpenShelf_Constants_h
 #define OpenShelf_Constants_h
 
+#define UNIVERSAL_BUTTON_HEIGHT 75
 #define kUserLoggedOutNotification @"UserLoggedOutNotification"
 
 #endif

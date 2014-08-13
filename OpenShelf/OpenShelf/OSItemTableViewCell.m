@@ -45,7 +45,7 @@
         }];
        
         self.titleLabel.text = item.title;
-        self.priceLabel.text = [item.cost stringValue];
+        self.priceLabel.text = item.formattedPrice;
 //        [self.expandableView.detailButton addTarget:self action:@selector(selectThisRow) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;

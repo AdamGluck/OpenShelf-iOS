@@ -57,11 +57,11 @@
     NSString *password = [SSKeychain passwordForService:[[NSBundle mainBundle]bundleIdentifier] account:accountLogin];
     
     if (password) {
-        [[OSNetworking sharedInstance]loginWithEmail:accountLogin password:password success:^(NSDictionary *dictionary, NSError *error) {
+        [[OSNetworking sharedInstance]loginWithEmail:accountLogin password:password success:^(NSDictionary *dictionary) {
             OSUser *user = [OSUser createFromInfo:dictionary];
             [OSLoginManager sharedInstance].user = user;
              NSLog(@"AUTOLOGIN successful");
-        } failure:^{
+        } failure:^(NSError *error){
              NSLog(@"AUTOLOGIN unsuccessful");
         }];
     }

@@ -52,7 +52,7 @@
                     }
                     
                 }
-//                [object setValue:array forKey:property];
+                //                [object setValue:array forKey:property];
                 value = array;
             }
             else if ([value isKindOfClass:[NSDictionary class]]){
@@ -111,6 +111,51 @@
     return className;
 }
 -(NSString *)convertKeyToClassName:(NSString *)string{
+    NSString *className = [string stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                          withString:[[string substringToIndex:1] capitalizedString]];
+    className = [NSString stringWithFormat:@"OS%@",className];
+    return className;
+}
+
+-(NSDictionary *)mapToDictionary{
+    NSMutableDictionary *dictionary = [NSMutableDictionary new];
+    for (NSString *property in self.propertyList) {
+        NSString *key = [property camelCaseToUnderscores];
+        id value = [self valueForKey:property];
+        if ([value isKindOfClass:NSArray.class]) {
+            NSMutableArray *array = [NSMutableArray arrayWithArray:(NSArray *) value];
+            if ([[array firstObject] respondsToSelector:@selector(mapToDictionary)]) {
+                for (int i = 0; i < array.count; i++) {
+                    NSObject *object = array[i];
+                    NSDictionary *objectDict = [object mapToDictionary];
+                    [array replaceObjectAtIndex:i withObject:objectDict];
+                }
+                
+            }
+            [dictionary setValue:array forKey:key];
+        }
+        else{
+            if ([value respondsToSelector:@selector(propertyList)] && ((NSObject *)value).propertyList.count > 1) {
+                NSObject *object = (NSObject *)value;
+                NSDictionary *objectDict = [object mapToDictionary];
+                [dictionary setValue:objectDict forKey:key];
+            }
+            else{
+                [dictionary setValue:[self valueForKey:property] forKey:key];
+            }
+        }
+    }
+    
+    return dictionary;
+}
+
+
+-(NSString *)convertClassNameToPluralKey:(NSString *)string{
+    NSString *className = [self convertKeyToClassName:string];
+    className = [className substringToIndex:[className length] - 1];
+    return className;
+}
+-(NSString *)convertClassNameToKey:(NSString *)string{
     NSString *className = [string stringByReplacingCharactersInRange:NSMakeRange(0,1)
                                                           withString:[[string substringToIndex:1] capitalizedString]];
     className = [NSString stringWithFormat:@"OS%@",className];

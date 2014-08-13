@@ -7,35 +7,43 @@
 
 #import <Foundation/Foundation.h>
 #import "OSAddress.h"
-
+#import "OSOrder.h"
 @interface OSNetworking : NSObject
 
 + (id)sharedInstance;
 
 
 - (void)loginWithEmail:(NSString *)email
-                 password:(NSString *)password
-                  success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
-                  failure:(void (^)(void))failureCompletion;
+              password:(NSString *)password
+               success:(void (^)(NSDictionary *dictionary))successCompletion
+               failure:(void (^)(NSError *error))failureCompletion;
 
 - (void)downloadItemsForSearchTerms:(NSString *)searchTerms
-                            success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
-                               failure:(void (^)(void))failureCompletion;
+                            success:(void (^)(NSDictionary *dictionary))successCompletion
+                            failure:(void (^)(NSError *error))failureCompletion;
 
-- (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
-                                             failureBlock:(void (^)(void))failureCompletion;
+- (void)downloadInventoryListWithSuccessBlock:(void (^)(NSDictionary *dictionary))successCompletion
+                                 failureBlock:(void (^)(NSError *error))failureCompletion;
 
 - (void)createAccountWithEmail:(NSString *)email
-                         password:(NSString *)password
-             passwordConfirmation:(NSString *)passwordConfirmation
-                          success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
-                          failure:(void (^)(void))failureCompletion;
+                      password:(NSString *)password
+          passwordConfirmation:(NSString *)passwordConfirmation
+                       success:(void (^)(NSDictionary *dictionary))successCompletion
+                       failure:(void (^)(NSError *error))failureCompletion;
 
 - (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 -(void)loadImageFromURLString:(NSString*)urlString forImageView:(UIImageView*)imageView;
 
 - (void)addAddressToDatabase:(OSAddress *)address
-                     success:(void (^)(NSDictionary *dictionary, NSError *error))successCompletion
-                     failure:(void (^)(void))failureCompletion;
+                     success:(void (^)(NSDictionary *dictionary))successCompletion
+                     failure:(void (^)(NSError *error))failureCompletion;
 
+- (void)placeOrder:(OSOrder *)order
+           success:(void (^)(NSDictionary *dictionary))successCompletion
+           failure:(void (^)(NSError *error))failureCompletion;
+
+-(void)addCreditCardWithId:(NSString *)token
+                 forUserId:(NSNumber *)userId
+                   success:(void (^)(NSDictionary *dictionary))successCompletion
+                   failure:(void (^)(NSError *error))failureCompletion;
 @end

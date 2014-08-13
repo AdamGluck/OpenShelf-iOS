@@ -14,7 +14,7 @@
 #import "OSItem.h"
 #import "OSPackage.h"
 #import "OSItemDetailViewController.h"
-
+#import "MBProgressHUD.h"
 @interface OSSearchViewController ()
 @property (strong, nonatomic) NSMutableArray *sectionedInventoryList;
 @property (nonatomic, strong) NSMutableArray *featuredInventoryList;
@@ -113,7 +113,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
     [_nonFeaturedInventoryList removeAllObjects];
     if (![searchText length] == 0) {
         [[OSNetworking sharedInstance]downloadItemsForSearchTerms:searchText
-                                                          success:^(NSDictionary *dictionary, NSError *error){
+                                                          success:^(NSDictionary *dictionary){
                                                               //Adds multiple items for testing purposes, remove loop once backend is built
                                                               for (int i = 0; i < 20; i++) {
                                                                   OSItem *item = [OSItem createFromInfo:dictionary];
@@ -167,7 +167,9 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 
 
 -(void)loadInventoryList{
-    [[OSNetworking sharedInstance]downloadInventoryListWithSuccessBlock:^(NSDictionary *dictionary, NSError *error) {
+    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+
+    [[OSNetworking sharedInstance]downloadInventoryListWithSuccessBlock:^(NSDictionary *dictionary) {
         NSMutableArray *items = [dictionary objectForKey:@"items"];
         for (NSDictionary *itemDictionary in items) {
             OSItem *item = [OSItem createFromInfo:itemDictionary];
@@ -190,8 +192,10 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
         }
         [self resetSectionedInventoryList];
         [self.tableView reloadData];
+        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
         
-    } failureBlock:^{
+    } failureBlock:^(NSError *error){
+        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
         NSLog(@"Failed to download");
     }];
 }

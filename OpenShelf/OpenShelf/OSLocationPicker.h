@@ -5,7 +5,7 @@
 
 
 
-@protocol LocationPickerDelegate <NSObject>
+@protocol OSLocationPickerDelegate <NSObject>
 
 @required
 - (void) userDidSaveAddress:(OSAddress *)address;
@@ -14,7 +14,7 @@
 @interface OSLocationPicker : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, MKMapViewDelegate>
 
 
-@property (nonatomic, assign) id<LocationPickerDelegate> delegate;
+@property (nonatomic, assign) id<OSLocationPickerDelegate> delegate;
     
 @property (strong, nonatomic) SPGooglePlacesAutocompleteQuery *searchQuery;
 @property (strong, nonatomic) NSArray *searchResultPlaces;

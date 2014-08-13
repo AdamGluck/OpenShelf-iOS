@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "OSLocationPicker.h"
 
-@interface OSDeliveryLocationsTableViewController : UITableViewController <LocationPickerDelegate>
+@interface OSDeliveryLocationsTableViewController : UITableViewController <OSLocationPickerDelegate>
 
 @end

@@ -10,4 +10,5 @@
 
 @interface NSObject (MappableObject)
 + (instancetype)createFromInfo:(NSDictionary *)info;
+-(NSDictionary *)mapToDictionary;
 @end
