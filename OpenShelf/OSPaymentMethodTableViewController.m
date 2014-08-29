@@ -10,9 +10,11 @@
 #import "CardIO.h"
 #import "OSLoginManager.h"
 #import "OSUser.h"
-
+#import "OSCreditCard.h"
+#import "STPView.h"
+#import "PKTextField.h"
+static NSString *kCellIdentifier = @"paymentMethodTableviewCell";
 @interface OSPaymentMethodTableViewController ()
-@property (strong, nonatomic) NSMutableArray *cards;
 @property (strong, nonatomic) OSUser *user;
 
 @end
@@ -21,7 +23,6 @@
 
 - (void)commonInit{
     self.user = [OSLoginManager sharedInstance].user;
-    self.cards = self.user.cards;
 }
 
 - (id)initWithCoder:(NSCoder*)coder{
@@ -60,28 +61,59 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.user.stripeCardArray.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    OSCreditCard *card = [self.user.stripeCardArray objectAtIndex:indexPath.row];
     
+    UIImage *cardImage = [UIImage imageNamed:[card.brand lowercaseString]];
+//    STPView *cardView = [[STPView alloc] initWithFrame:cell.frame];
+//    [cardView.paymentView.cardNumberField setText:card.last4];
+//    cardView.isUserInteractionEnabled = NO;
+    
+//    [cell addSubview:cardView];
+//
+//    switch (cardType) {
+//        case PKCardTypeAmex:
+//            cardTypeName = @"amex";
+//            break;
+//        case PKCardTypeDinersClub:
+//            cardTypeName = @"diners";
+//            break;
+//        case PKCardTypeDiscover:
+//            cardTypeName = @"discover";
+//            break;
+//        case PKCardTypeJCB:
+//            cardTypeName = @"jcb";
+//            break;
+//        case PKCardTypeMasterCard:
+//            cardTypeName = @"mastercard";
+//            break;
+//        case PKCardTypeVisa:
+//            cardTypeName = @"visa";
+//            break;
+//        default:
+//            break;
+//    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ ending in %@", card.brand, card.last4];
+    cell.imageView.image = cardImage;
+//    [cell addSubview:cardImage];
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

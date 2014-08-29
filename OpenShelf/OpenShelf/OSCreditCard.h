@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface OSCreditCard : NSObject
-
+#import "STPCard.h"
+@interface OSCreditCard : STPCard
+@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSString *brand;
+@property (strong, nonatomic) NSString *customer;
 @end

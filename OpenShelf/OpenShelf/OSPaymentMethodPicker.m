@@ -95,6 +95,7 @@
                                                success:^(NSDictionary *dictionary) {
                                                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                                                    [self.navigationController popViewControllerAnimated:YES];
+                                                   [self.delegate userDidSavePaymentMethod];
                                                    
                                                } failure:^(NSError *error){
                                                    [MBProgressHUD hideHUDForView:self.view animated:YES];

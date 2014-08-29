@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (MappableObject)
-+ (instancetype)createFromInfo:(NSDictionary *)info;
++ (instancetype)createWithDataFromDictionary:(NSDictionary *)info;
 -(NSDictionary *)mapToDictionary;
 @end

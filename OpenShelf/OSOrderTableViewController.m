@@ -115,10 +115,9 @@ static CGFloat headerHeight = 50;
             break;
         case 1:
             comboBox.title = @"Select a payment method";
-//          options = user.cards;
-            for (int i=1; i<=10; i++) {
-                [options addObject:[NSNumber numberWithInt:i]];
-                [titles addObject:[NSString stringWithFormat:@"Payment Method %d", i]];
+            options = user.stripeCardArray;
+            for (OSCreditCard *card in options) {
+                [titles addObject:[NSString stringWithFormat:@"%@ ending in %@", card.brand, card.last4]];
             }
             self.paymentMethodComboBox = comboBox;
             break;
@@ -221,18 +220,36 @@ static CGFloat headerHeight = 50;
 
 -(void)launchPaymentMethodPicker{
     OSPaymentMethodPicker *paymentPicker = [[OSPaymentMethodPicker alloc]init];
+    paymentPicker.delegate = self;
     [self.navigationController pushViewController:paymentPicker animated:YES];
 }
 
 -(void)placeOrder{
     self.order.addressId = ((OSAddress *)self.deliveryLocationComboBox.selection).id;
+    self.order.cardId = ((OSCreditCard *)self.paymentMethodComboBox.selection).id;
     //TODO: record selected payment method to order
     
     if (self.order.isValid) {
+        [OSProgressHUD showGlobalProgressHUDWithTitle:@"Placing Order"];
         [[OSNetworking sharedInstance] placeOrder:self.order success:^(NSDictionary *dictionary) {
              NSLog(@"ORDER PLACEMENT SUCCESS");
+            [OSProgressHUD dismissGlobalHUD];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Thanks"
+                                                         message:@"Your order has been placed."
+                                                        delegate:nil
+                                               cancelButtonTitle:@"Awesome!"
+                                               otherButtonTitles:nil];
+            [av show];
+            [self.navigationController popViewControllerAnimated:YES];
         } failure:^(NSError *error){
              NSLog(@"FAILED TO PLACE ORDER");
+            [OSProgressHUD dismissGlobalHUD];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                         message:[NSString stringWithFormat:@"There was an issue with your order. Error: %@", error.localizedDescription]
+                                                        delegate:nil
+                                               cancelButtonTitle:@"Dang!"
+                                               otherButtonTitles:nil];
+            [av show];
         }];
     }
 
@@ -241,7 +258,20 @@ static CGFloat headerHeight = 50;
 #pragma Location Picker delegate methods
 
 -(void)userDidSaveAddress:(OSAddress *)address{
+    [self refreshUserInfo];
+}
 
+
+-(void)userDidSavePaymentMethod{
+    [self refreshUserInfo];
+}
+
+-(void)refreshUserInfo{
+    [[OSLoginManager sharedInstance]refreshUserInfoWithSuccess:^(NSDictionary *dictionary) {
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+         NSLog(@"Failed to reload user data.");
+    }];
 }
 
 #pragma lazy getters

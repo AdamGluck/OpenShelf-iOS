@@ -75,6 +75,11 @@ static NSString *kCellIdentifier = @"deliveryLocationTableviewCell";
 -(void)userDidSaveAddress:(OSAddress *)address{
     OSDeliveryLocation *location = [[OSDeliveryLocation alloc]initWithAddress:address userID: [OSLoginManager sharedInstance].user.id title:@"TESTTITLE"];
     [[OSNetworking sharedInstance] addAddressToDatabase:location success:^(NSDictionary *dictionary) {
+        [[OSLoginManager sharedInstance] refreshUserInfoWithSuccess:^(NSDictionary *dictionary) {
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+             NSLog(@"Failed to reload user data");
+        }];
         NSLog(@"Successfully Save Address to DB");
     } failure:^(NSError *error){
          NSLog(@"Failed to save address to DB");

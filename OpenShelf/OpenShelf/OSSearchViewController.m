@@ -15,6 +15,8 @@
 #import "OSPackage.h"
 #import "OSItemDetailViewController.h"
 #import "MBProgressHUD.h"
+#import "OSLoginManager.h"
+
 @interface OSSearchViewController ()
 @property (strong, nonatomic) NSMutableArray *sectionedInventoryList;
 @property (nonatomic, strong) NSMutableArray *featuredInventoryList;
@@ -29,9 +31,11 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[OSLoginManager sharedInstance] attemptAutoLogin];
 	self.title = @"Search";
     self.navigationItem.titleView = self.searchBar;
     [self loadInventoryList];
+
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -77,7 +81,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
                 return @"Featured Items";
                 break;
             case 1:
-                return @"Other Cool Shit";
+                return @"Other Cool Stuff";
                 break;
                 
             default:
@@ -116,7 +120,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
                                                           success:^(NSDictionary *dictionary){
                                                               //Adds multiple items for testing purposes, remove loop once backend is built
                                                               for (int i = 0; i < 20; i++) {
-                                                                  OSItem *item = [OSItem createFromInfo:dictionary];
+                                                                  OSItem *item = [OSItem createWithDataFromDictionary:dictionary];
                                                                   [self.nonFeaturedInventoryList addObject:item];
                                                               }
                                                               
@@ -167,12 +171,12 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
 
 
 -(void)loadInventoryList{
-    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+//    [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
 
     [[OSNetworking sharedInstance]downloadInventoryListWithSuccessBlock:^(NSDictionary *dictionary) {
         NSMutableArray *items = [dictionary objectForKey:@"items"];
         for (NSDictionary *itemDictionary in items) {
-            OSItem *item = [OSItem createFromInfo:itemDictionary];
+            OSItem *item = [OSItem createWithDataFromDictionary:itemDictionary];
             if (item.isFeatured) {
                 [self.featuredInventoryList addObject:item];
             }
@@ -182,7 +186,7 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
         }
         NSMutableArray *packages = [dictionary objectForKey:@"packages"];
         for (NSDictionary *packageDictionary in packages) {
-            OSPackage *package = [OSPackage createFromInfo:packageDictionary];
+            OSPackage *package = [OSPackage createWithDataFromDictionary:packageDictionary];
             if (package.isFeatured) {
                 [self.featuredInventoryList addObject:package];
             }
@@ -192,10 +196,10 @@ static NSString *CellIdentifier = @"OSItemTableViewCell";
         }
         [self resetSectionedInventoryList];
         [self.tableView reloadData];
-        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
+//        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
         
     } failureBlock:^(NSError *error){
-        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
+//        [MBProgressHUD hideHUDForView:self.tableView animated:YES];
         NSLog(@"Failed to download");
     }];
 }

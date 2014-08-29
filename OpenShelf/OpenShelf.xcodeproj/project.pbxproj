@@ -128,6 +128,7 @@
 		E4D8C478195B952D0051E76C /* OSSideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C472195B952D0051E76C /* OSSideMenuViewController.m */; };
 		E4D8C479195B952D0051E76C /* OSMainNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C474195B952D0051E76C /* OSMainNavigationController.m */; };
 		E4D8C47A195B952D0051E76C /* OSExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D8C476195B952D0051E76C /* OSExploreViewController.m */; };
+		E4DABC0A19AE4B5200BEABC3 /* OSProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DABC0919AE4B5200BEABC3 /* OSProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -351,6 +352,8 @@
 		E4D8C474195B952D0051E76C /* OSMainNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSMainNavigationController.m; path = OpenShelf/OSMainNavigationController.m; sourceTree = "<group>"; };
 		E4D8C475195B952D0051E76C /* OSExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSExploreViewController.h; path = OpenShelf/OSExploreViewController.h; sourceTree = "<group>"; };
 		E4D8C476195B952D0051E76C /* OSExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSExploreViewController.m; path = OpenShelf/OSExploreViewController.m; sourceTree = "<group>"; };
+		E4DABC0819AE4B5200BEABC3 /* OSProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSProgressHUD.h; sourceTree = "<group>"; };
+		E4DABC0919AE4B5200BEABC3 /* OSProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -756,6 +759,8 @@
 		E4C41805199C02BC00D956CD /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				E4DABC0819AE4B5200BEABC3 /* OSProgressHUD.h */,
+				E4DABC0919AE4B5200BEABC3 /* OSProgressHUD.m */,
 				E4C41806199C02BC00D956CD /* MBProgressHUD.h */,
 				E4C41807199C02BC00D956CD /* MBProgressHUD.m */,
 			);
@@ -1145,6 +1150,7 @@
 				E4CB50AD19649EE500E73A9C /* OSItem.m in Sources */,
 				E46B99AB198075CD00DEDD0B /* OSLoginViewController.m in Sources */,
 				E446C4B7199175DB000A14E5 /* OSComboBoxView.m in Sources */,
+				E4DABC0A19AE4B5200BEABC3 /* OSProgressHUD.m in Sources */,
 				E4C417FA199BE4DC00D956CD /* STPAPIConnection.m in Sources */,
 				E4C417FC199BE4DC00D956CD /* STPToken.m in Sources */,
 				E4C2954019899AB000F62CB0 /* SSKeychain.m in Sources */,

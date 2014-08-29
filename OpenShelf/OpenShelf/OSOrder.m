@@ -19,7 +19,7 @@
     return self;
 }
 -(Boolean)isValid{
-    if (self.objectId && self.userId && self.addressId && self.isPackage) {
+    if (self.objectId && self.userId && self.addressId && self.cardId) {
         return TRUE;
     }
     else{

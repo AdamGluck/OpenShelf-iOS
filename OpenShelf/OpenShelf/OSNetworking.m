@@ -7,8 +7,8 @@
 
 #import "OSNetworking.h"
 #import "OSAddress.h"
-
-static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api";
+#import "OSLoginManager.h"
+static NSString *kBaseURL = @"https://openshelf.herokuapp.com/api";
 
 @implementation OSNetworking
 
@@ -103,7 +103,9 @@ static NSString *kBaseURL = @"http://openshelf.herokuapp.com/api";
                  password:(NSString *)password
                   success:(void (^)(NSDictionary *dictionary))successCompletion
                   failure:(void (^)(NSError *error))failureCompletion{
-
+    [OSLoginManager sharedInstance].password = password;
+    [OSLoginManager sharedInstance].email = email;
+    
     NSString *loginParameterString = [NSString stringWithFormat:@"%@/users/account/email=%@&password=%@", kBaseURL, email, password];
     NSURL *url = [NSURL URLWithString: loginParameterString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];

@@ -13,6 +13,6 @@
 @property (strong, nonatomic) NSNumber *objectId;
 @property (strong, nonatomic) NSNumber *userId;
 @property (strong, nonatomic) NSNumber *addressId;
-
+@property (strong, nonatomic) NSString *cardId;
 -(Boolean)isValid;
 @end

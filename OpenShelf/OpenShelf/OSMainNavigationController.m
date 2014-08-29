@@ -2,6 +2,7 @@
 
 #import "OSMainNavigationController.h"
 #import "OSSideMenuViewController.h"
+#import "OSLoginManager.h"
 
 @interface OSMainNavigationController ()
 
@@ -14,6 +15,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 //    [self.view addGestureRecognizer:[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMenu) name:@"requestMenu" object:nil];
 }

@@ -14,8 +14,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[OSLoginManager sharedInstance] attemptAutoLogin];
-    [OSTheme applyTheme]; 
+//    [[OSLoginManager sharedInstance] attemptAutoLogin];
+    [OSTheme applyTheme];
     
     
 

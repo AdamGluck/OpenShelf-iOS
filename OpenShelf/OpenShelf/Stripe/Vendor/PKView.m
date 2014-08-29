@@ -382,6 +382,8 @@ static NSString *const kPKOldLocalizedStringsTableName = @"STPaymentLocalizable"
     [self setPlaceholderViewImage:[UIImage imageNamed:cardTypeName]];
 }
 
+
+
 #pragma mark - Delegates
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

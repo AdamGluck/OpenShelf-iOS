@@ -10,6 +10,8 @@
 
 @interface OSLoginManager : NSObject
 
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSString *password;
 
 @property (strong, nonatomic) OSUser *user;
 
@@ -21,6 +23,8 @@
 -(void)presentLoginPage:(UIViewController *)vc
        successfullLogin:(void (^)(void))successCompletion
            canceldLogin:(void (^)(void))canceledCompletion;
+- (void)refreshUserInfoWithSuccess:(void (^)(NSDictionary *dictionary))successCompletion
+                           failure:(void (^)(NSError *error))failureCompletion;
 -(void)logout;
 -(void)attemptAutoLogin;
 @end

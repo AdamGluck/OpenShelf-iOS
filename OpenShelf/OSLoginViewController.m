@@ -266,7 +266,7 @@ static CGFloat switchHeight = 50.0f;
                                             password:self.passwordField.textField.text
                                              success:^(NSDictionary *dictionary) {
                                                  NSLog(@"Login successful");
-                                                 OSUser *user = [OSUser createFromInfo:dictionary];
+                                                 OSUser *user = [OSUser createWithDataFromDictionary:dictionary];
                                                  [OSLoginManager sharedInstance].user = user;
                                                  
                                                  //Save auto-login preferences to user defaults

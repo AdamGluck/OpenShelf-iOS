@@ -8,8 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "STPView.h"
+
+@protocol OSPaymentMethodPickerDelegate <NSObject>
+
+@required
+- (void) userDidSavePaymentMethod;
+@end
 @interface OSPaymentMethodPicker : UIViewController<STPViewDelegate>
+
+
 @property (strong, nonatomic) STPView *stripeView;
 @property (strong, nonatomic) UIBarButtonItem *saveButton;
+
+@property (nonatomic, assign) id<OSPaymentMethodPickerDelegate> delegate;
+
 
 @end

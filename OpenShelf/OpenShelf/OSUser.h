@@ -15,8 +15,9 @@
 @property (strong, nonatomic) NSString *lastName;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *email;
-@property (strong, nonatomic) NSMutableArray *cards;
+@property (strong, nonatomic) NSDictionary *cards;
 @property (strong, nonatomic) NSMutableArray *deliveryLocations;
+@property (strong, nonatomic) NSMutableArray *stripeCardArray;
 
 //@property (strong, nonatomic) NSMutableArray *rentedItems;
 

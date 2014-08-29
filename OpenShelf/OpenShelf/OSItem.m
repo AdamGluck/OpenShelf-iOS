@@ -10,7 +10,8 @@
 
 @implementation OSItem
 -(NSString *)formattedPrice{
-    return [NSString stringWithFormat:@"$%@",[self.cost stringValue]];
+    NSNumber *costInDollars = [NSNumber numberWithDouble:[self.cost doubleValue] / 100.0];
+    return [NSString stringWithFormat:@"$%@",[costInDollars stringValue]];
 }
 
 @end

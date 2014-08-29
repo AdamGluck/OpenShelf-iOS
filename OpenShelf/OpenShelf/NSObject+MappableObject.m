@@ -12,56 +12,11 @@
 
 @implementation NSObject (MappableObject)
 
-+ (instancetype)createFromInfo:(NSDictionary *)info {
++ (instancetype)createWithDataFromDictionary:(NSDictionary *)dictionary {
     NSObject *object = [self new];
     
+    [object populateObjectWithDataFromDictionary:dictionary];
     
-    for (NSString *property in object.propertyList) {
-        // look for the underscore in camelcase form first
-        id value = info[property];
-        NSString *underscoreProperty;
-        
-        // if it doesn't exist, convert to underscore and check that
-        if (value == nil) {
-            underscoreProperty = [property camelCaseToUnderscores];
-            value = info[underscoreProperty];
-        }
-        
-        // if it still doesn't exist, dictionary does not contain value for that property
-        if (value == nil) {
-            NSLog(@"No value in dictionary for keys %@, %@", property, underscoreProperty);
-        }
-        
-        // else if it does, set the property to the value
-        else{
-            //Recursive calls to handle collections
-            if ([value isKindOfClass:[NSArray class]]) {
-                
-                NSMutableArray *array = [[NSMutableArray alloc]init];
-                for (NSObject *object in value) {
-                    if ([object isKindOfClass:[NSDictionary class]]) {
-                        NSDictionary *objectDict = (NSDictionary *)object;
-                        NSString *className = [self convertPluralKeyToClassName:property];
-                        
-                        NSObject *childObject = [NSClassFromString(className) createFromInfo:objectDict];
-                        [array addObject:childObject];
-                        
-                    }
-                    else{
-                        [array addObject:object];
-                    }
-                    
-                }
-                //                [object setValue:array forKey:property];
-                value = array;
-            }
-            else if ([value isKindOfClass:[NSDictionary class]]){
-                NSString *className = [self convertKeyToClassName:property];
-                value = [NSClassFromString(className) createFromInfo:value];
-            }
-            [object setValue:value forKey:property];
-        }
-    }
     
     //    for (NSString *key in [info allKeys]) {
     //        id value = info[key];
@@ -81,7 +36,61 @@
     return object;
 }
 
-- (NSArray *)propertyList {
+-(void)populateObjectWithDataFromDictionary:(NSDictionary *)dictionary{
+    NSObject *object = self;
+    for (NSString *property in object.getPropertyList) {
+        // look for the underscore in camelcase form first
+        id value = dictionary[property];
+        NSString *underscoreProperty;
+        
+        // if it doesn't exist, convert to underscore and check that
+        if (value == nil) {
+            underscoreProperty = [property camelCaseToUnderscores];
+            value = dictionary[underscoreProperty];
+        }
+        
+        // if it still doesn't exist, dictionary does not contain value for that property
+        if (value == nil) {
+            NSLog(@"No value in dictionary for keys %@, %@", property, underscoreProperty);
+        }
+        
+        // else if it does, set the property to the value
+        else{
+            //Recursive calls to handle collections
+            if ([value isKindOfClass:[NSArray class]]) {
+                
+                NSMutableArray *array = [[NSMutableArray alloc]init];
+                for (NSObject *object in value) {
+                    if ([object isKindOfClass:[NSDictionary class]]) {
+                        NSDictionary *objectDict = (NSDictionary *)object;
+                        NSString *className = [self convertPluralKeyToClassName:property];
+                        
+                        NSObject *childObject = [NSClassFromString(className) createWithDataFromDictionary:objectDict];
+                        [array addObject:childObject];
+                        
+                    }
+                    else{
+                        [array addObject:object];
+                    }
+                    
+                }
+                //                [object setValue:array forKey:property];
+                value = array;
+            }
+            else if ([value isKindOfClass:[NSDictionary class]]){
+                NSString *className = [self convertKeyToClassName:property];
+                id someObject = [NSClassFromString(className) createWithDataFromDictionary:value];
+                if (someObject) {
+                    value = someObject;
+                }
+            }
+            [object setValue:value forKey:property];
+        }
+    }
+
+}
+
+- (NSArray *)getPropertyList {
     Class currentClass = [self class];
     
     NSMutableArray *propertyList = [[NSMutableArray alloc]init];
@@ -119,7 +128,8 @@
 
 -(NSDictionary *)mapToDictionary{
     NSMutableDictionary *dictionary = [NSMutableDictionary new];
-    for (NSString *property in self.propertyList) {
+    NSArray *propertyList = self.getPropertyList;
+    for (NSString *property in propertyList) {
         NSString *key = [property camelCaseToUnderscores];
         id value = [self valueForKey:property];
         if ([value isKindOfClass:NSArray.class]) {
@@ -135,7 +145,7 @@
             [dictionary setValue:array forKey:key];
         }
         else{
-            if ([value respondsToSelector:@selector(propertyList)] && ((NSObject *)value).propertyList.count > 1) {
+            if ([value respondsToSelector:@selector(getPropertyList)] && ![value isKindOfClass:NSString.class] && ((NSObject *)value).getPropertyList.count > 1) {
                 NSObject *object = (NSObject *)value;
                 NSDictionary *objectDict = [object mapToDictionary];
                 [dictionary setValue:objectDict forKey:key];

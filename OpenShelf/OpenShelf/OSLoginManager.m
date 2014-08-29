@@ -47,26 +47,62 @@
 
 
 -(void)attemptAutoLogin{
-    NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
-    NSArray *accounts = [SSKeychain accountsForService:bundleIdentifier];
-    NSDictionary *account;
-    if (accounts.count > 0) {
-        account = [accounts objectAtIndex:0];
+    if (!self.user) {
+        NSString *bundleIdentifier = [[NSBundle mainBundle] bundleIdentifier];
+        NSArray *accounts = [SSKeychain accountsForService:bundleIdentifier];
+        NSDictionary *account;
+        if (accounts.count > 0) {
+            account = [accounts objectAtIndex:0];
+        }
+        NSString *accountLogin = [account objectForKey:@"acct"];
+        NSString *password = [SSKeychain passwordForService:[[NSBundle mainBundle]bundleIdentifier] account:accountLogin];
+        
+        if (password) {
+            [OSProgressHUD showGlobalProgressHUDWithTitle:@"Logging In"];
+            [[OSNetworking sharedInstance]loginWithEmail:accountLogin
+                                                password:password
+                                                 success:^(NSDictionary *dictionary) {
+                [OSProgressHUD showGlobalProgressHUDWithTitle:@"Login Successful"];
+                
+                OSUser *user = [OSUser createWithDataFromDictionary:dictionary];
+                [OSLoginManager sharedInstance].user = user;
+                NSLog(@"AUTOLOGIN successful");
+            
+                [OSProgressHUD dismissGlobalHUD];
+            } failure:^(NSError *error){
+                [OSProgressHUD showGlobalProgressHUDWithTitle:@"Login Failed"];
+                NSLog(@"AUTOLOGIN unsuccessful");
+                [OSProgressHUD dismissGlobalHUD];
+            }];
+        }
     }
-    NSString *accountLogin = [account objectForKey:@"acct"];
-    NSString *password = [SSKeychain passwordForService:[[NSBundle mainBundle]bundleIdentifier] account:accountLogin];
     
-    if (password) {
-        [[OSNetworking sharedInstance]loginWithEmail:accountLogin password:password success:^(NSDictionary *dictionary) {
-            OSUser *user = [OSUser createFromInfo:dictionary];
-            [OSLoginManager sharedInstance].user = user;
-             NSLog(@"AUTOLOGIN successful");
-        } failure:^(NSError *error){
-             NSLog(@"AUTOLOGIN unsuccessful");
-        }];
+}
+
+- (void)refreshUserInfoWithSuccess:(void (^)(NSDictionary *dictionary))successCompletion
+                           failure:(void (^)(NSError *error))failureCompletion{
+    if (self.email && self.password) {
+        [OSProgressHUD showGlobalProgressHUDWithTitle:@"Refreshing user info"];
+        [[OSNetworking sharedInstance]loginWithEmail:self.email
+                                            password:self.password
+                                             success:^(NSDictionary *dictionary) {
+                                                 [OSProgressHUD showGlobalProgressHUDWithTitle:@"Refresh Successful"];
+                                                 
+                                                 OSUser *user = [OSUser createWithDataFromDictionary:dictionary];
+                                                 [OSLoginManager sharedInstance].user = user;
+                                                 NSLog(@"Refresh successful");
+                                                 
+                                                 [OSProgressHUD dismissGlobalHUD];
+                                             } failure:^(NSError *error){
+                                                 [OSProgressHUD showGlobalProgressHUDWithTitle:@"Refresh Failed"];
+                                                 NSLog(@"Refresh unsuccessful");
+                                                 [OSProgressHUD dismissGlobalHUD];
+                                             }];
+
     }
 }
-    
+
+
 
 
 @end

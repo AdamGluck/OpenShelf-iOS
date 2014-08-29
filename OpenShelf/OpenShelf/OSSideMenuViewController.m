@@ -131,7 +131,7 @@
 
 -(void)presentFailedLoginAlert{
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Failed to login"
-                                                 message:@"You must login to view your account page, ASSHOLE."
+                                                 message:@"You must login to view your account page."
                                                 delegate:nil
                                        cancelButtonTitle:@"OK"
                                        otherButtonTitles:nil];
