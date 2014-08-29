@@ -79,7 +79,7 @@
     
 }
 
-- (void)refreshUserInfoWithSuccess:(void (^)(NSDictionary *dictionary))successCompletion
+- (void)refreshUserInfoWithSuccess:(void (^)(void))successCompletion
                            failure:(void (^)(NSError *error))failureCompletion{
     if (self.email && self.password) {
         [OSProgressHUD showGlobalProgressHUDWithTitle:@"Refreshing user info"];
@@ -91,7 +91,7 @@
                                                  OSUser *user = [OSUser createWithDataFromDictionary:dictionary];
                                                  [OSLoginManager sharedInstance].user = user;
                                                  NSLog(@"Refresh successful");
-                                                 
+                                                 successCompletion();
                                                  [OSProgressHUD dismissGlobalHUD];
                                              } failure:^(NSError *error){
                                                  [OSProgressHUD showGlobalProgressHUDWithTitle:@"Refresh Failed"];

@@ -23,7 +23,7 @@
 -(void)presentLoginPage:(UIViewController *)vc
        successfullLogin:(void (^)(void))successCompletion
            canceldLogin:(void (^)(void))canceledCompletion;
-- (void)refreshUserInfoWithSuccess:(void (^)(NSDictionary *dictionary))successCompletion
+- (void)refreshUserInfoWithSuccess:(void (^)(void))successCompletion
                            failure:(void (^)(NSError *error))failureCompletion;
 -(void)logout;
 -(void)attemptAutoLogin;

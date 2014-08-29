@@ -258,7 +258,18 @@ static CGFloat headerHeight = 50;
 #pragma Location Picker delegate methods
 
 -(void)userDidSaveAddress:(OSAddress *)address{
-    [self refreshUserInfo];
+    OSDeliveryLocation *location = [[OSDeliveryLocation alloc]initWithAddress:address userID: [OSLoginManager sharedInstance].user.id title:@"TESTTITLE"];
+    [[OSNetworking sharedInstance] addAddressToDatabase:location success:^(NSDictionary *dictionary) {
+        [[OSLoginManager sharedInstance] refreshUserInfoWithSuccess:^(void) {
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            NSLog(@"Failed to reload user data");
+        }];
+        NSLog(@"Successfully Save Address to DB");
+    } failure:^(NSError *error){
+        NSLog(@"Failed to save address to DB");
+    }];
+
 }
 
 
@@ -267,7 +278,7 @@ static CGFloat headerHeight = 50;
 }
 
 -(void)refreshUserInfo{
-    [[OSLoginManager sharedInstance]refreshUserInfoWithSuccess:^(NSDictionary *dictionary) {
+    [[OSLoginManager sharedInstance]refreshUserInfoWithSuccess:^(void) {
         [self.tableView reloadData];
     } failure:^(NSError *error) {
          NSLog(@"Failed to reload user data.");
